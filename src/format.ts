@@ -74,6 +74,8 @@ export async function doFormat(
   }
 
   return new Promise((resolve) => {
+    let newText = '';
+    let isSuccess = false;
     const cps = cp.spawn(toolPath, args, opts);
 
     cps.on('error', (err: Error) => {
@@ -96,15 +98,24 @@ export async function doFormat(
       });
 
       cps.stdout.on('data', (data: Buffer) => {
-        outputChannel.appendLine(`\n==== STDOUT ===\n`);
-        outputChannel.appendLine(`${data}`);
-
-        const isSuccess = isSuccessFormat(data.toString());
-        outputChannel.appendLine(`== success ==: ${isSuccess}\n`);
-
+        outputChannel.appendLine(`\n==== STDOUT (data) ===\n`);
+        isSuccess = isSuccessFormat(data.toString());
+        outputChannel.appendLine(`== success ==: ${isSuccess}`);
         if (isSuccess) {
+          newText = newText + data.toString();
+        } else {
+          // rollback
+          window.showWarningMessage(`Formatting failed due to an error in the template.`);
+          resolve(originalText);
+        }
+      });
+
+      cps.stdout.on('close', () => {
+        if (isSuccess) {
+          outputChannel.appendLine(`\n==== STDOUT (close) ===\n`);
+          outputChannel.appendLine(`${newText}`);
           // auto-fixed
-          resolve(data.toString());
+          resolve(newText);
         } else {
           // rollback
           window.showWarningMessage(`Formatting failed due to an error in the template.`);

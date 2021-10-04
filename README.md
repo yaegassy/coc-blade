@@ -2,6 +2,8 @@
 
 Laravel Blade Templates extension for [coc.nvim](https://github.com/neoclide/coc.nvim). Provides "formatter", "linter", "completion" and more...
 
+<img width="760" alt="coc-blade-demo" src="https://user-images.githubusercontent.com/188642/135827583-09771a6d-2d14-48ee-bd9e-e1081ee3c8ad.gif">
+
 ## Features
 
 - Format

@@ -1,0 +1,139 @@
+{
+  "name": "coc-blade",
+  "version": "0.0.1",
+  "description": "Laravel Blade Templates extension for coc.nvim",
+  "author": "yaegassy <yosstools@gmail.com>",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "keywords": [
+    "coc.nvim",
+    "php",
+    "laravel",
+    "blade",
+    "formatter",
+    "linter",
+    "vim",
+    "neovim"
+  ],
+  "engines": {
+    "coc": "^0.0.80"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yaegassy/coc-blade"
+  },
+  "scripts": {
+    "snippets": "yarn snippets:blade && yarn snippets:helper && yarn snippets:livewire && yarn snippets:snippets && node fixSnippets.js",
+    "snippets:blade": "curl -o snippets/blade.json https://raw.githubusercontent.com/onecentlin/laravel-blade-snippets-vscode/master/snippets/blade.json",
+    "snippets:helper": "curl -o snippets/helpers.json https://raw.githubusercontent.com/onecentlin/laravel-blade-snippets-vscode/master/snippets/helpers.json",
+    "snippets:livewire": "curl -o snippets/livewire.json https://raw.githubusercontent.com/onecentlin/laravel-blade-snippets-vscode/master/snippets/livewire.json",
+    "snippets:snippets": "curl -o snippets/snippets.json https://raw.githubusercontent.com/onecentlin/laravel-blade-snippets-vscode/master/snippets/snippets.json",
+    "lint": "eslint src --ext ts",
+    "clean": "rimraf lib",
+    "watch": "node esbuild.js --watch",
+    "build": "node esbuild.js",
+    "prepare": "node esbuild.js"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 120,
+    "semi": true
+  },
+  "devDependencies": {
+    "@types/node": "^14.17.6",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
+    "coc.nvim": "^0.0.80",
+    "esbuild": "^0.8.42",
+    "eslint": "^7.14.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "ignore": "^5.1.8",
+    "prettier": "^2.2.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.1.2"
+  },
+  "activationEvents": [
+    "onLanguage:blade"
+  ],
+  "contributes": {
+    "rootPatterns": [
+      {
+        "filetype": "blade",
+        "patterns": [
+          ".bladeignore",
+          "composer.json"
+        ]
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "coc-blade configuration",
+      "properties": {
+        "blade.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable coc-blade extension"
+        },
+        "blade.completion.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable snippets completion"
+        },
+        "blade.completion.exclude": {
+          "type": "array",
+          "default": [],
+          "description": "Exclude specific prefix in snippet completion"
+        },
+        "blade.bladeFormatter.enable": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Enable/Disable the formatting feature by blade-formatter"
+        },
+        "blade.bladeFormatter.toolPath": {
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to blade-formatter. If there is no setting, the built-in blade-formatter will be used"
+        },
+        "blade.bladeFormatter.optIndentSize": {
+          "type": "integer",
+          "default": 4,
+          "markdownDescription": "Indent size"
+        },
+        "blade.bladeFormatter.optWrapLineLength": {
+          "type": "integer",
+          "default": 120,
+          "markdownDescription": "The length of line wrap size"
+        },
+        "blade.bladeFormatter.optWrapAttributes": {
+          "type": "string",
+          "default": "auto",
+          "enum": [
+            "auto",
+            "force",
+            "force-aligned",
+            "force-expand-multiline",
+            "aligned-multiple",
+            "preserve",
+            "preserve-aligned"
+          ],
+          "markdownDescription": "The way to wrap attributes"
+        },
+        "blade.bladeLinter.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/Disable the linting feature by laravel-blade-linter"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "blade.bladeFormatter.run",
+        "title": "Run bladeFormatter.run"
+      }
+    ]
+  },
+  "dependencies": {
+    "blade-formatter": "^1.12.5"
+  }
+}

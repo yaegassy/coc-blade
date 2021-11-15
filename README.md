@@ -61,6 +61,10 @@ resources/views/products/*
 resources/views/books/**/*
 ```
 
+**Auto-run on save is not recommended**:
+
+`blade-formatter` is slow, we do not recommend that you set it to auto-execute on save. If you set up `blade-formatter` to auto-execute on save, the process may not be completed normally.
+
 ### linter (laravel-blade-linter)
 
 You will need to have [laravel-blade-linter](https://github.com/bdelespierre/laravel-blade-linter) installed in your "Laravel project".

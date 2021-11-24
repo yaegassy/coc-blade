@@ -12,6 +12,10 @@ Laravel Blade Templates extension for [coc.nvim](https://github.com/neoclide/coc
   - by [laravel-blade-linter](https://github.com/bdelespierre/laravel-blade-linter) (A simple Blade template syntax checker for Laravel)
 - Completion
   - Completion of snippets data via `completionItemProvider`
+- Definition
+  - Jump to template file specified by `@extends`, `@include` directive, etc.
+  - Jump to "Blade Components" file.
+    - **[Warning]** Class-based Blade Components are not supported.
 - Hover
 
 ## Install

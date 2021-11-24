@@ -16,6 +16,7 @@ import { BladeHoverProvider } from './hover/hover';
 import { BladeSnippetsCompletionProvider } from './completion/bladeSnippetsCompletion';
 import { BladelinterLintEngine } from './lint';
 import BladeFormattingEditProvider, { doFormat, fullDocumentRange } from './format';
+import BladeDefinitionProvider from './definition';
 
 let formatterHandler: undefined | Disposable;
 
@@ -131,4 +132,9 @@ export async function activate(context: ExtensionContext): Promise<void> {
   // hover
   //
   context.subscriptions.push(languages.registerHoverProvider(['blade'], new BladeHoverProvider(context)));
+
+  //
+  // definition
+  //
+  context.subscriptions.push(languages.registerDefinitionProvider(['blade'], new BladeDefinitionProvider()));
 }

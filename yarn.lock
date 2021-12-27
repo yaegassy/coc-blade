@@ -81,14 +81,14 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@prettier/plugin-php@^0.17.4":
-  version "0.17.5"
-  resolved "https://registry.yarnpkg.com/@prettier/plugin-php/-/plugin-php-0.17.5.tgz#030633730d8396d40e0c4bb958cce38e6a3f6a8c"
-  integrity sha512-RjnM1hPYJfM42bwMKucLwnconyamPAl6EWXUobJvR+QR6+O57YL2du5CSz4U6XjRnkj/pCdmHxQ9egxDJcgrBA==
+"@prettier/plugin-php@^0.17.6":
+  version "0.17.6"
+  resolved "https://registry.yarnpkg.com/@prettier/plugin-php/-/plugin-php-0.17.6.tgz#49e2cb091da89d525842412d2de20fc3ca3d1a20"
+  integrity sha512-Nxkq+Gl8bGbutRV7e3/p5d+Bcftn75oH61RT8xzk44T5ET7fVP50pUdaOdvt704GSNr6wwmfBW8MhBz5IKt+fA==
   dependencies:
     linguist-languages "^7.5.1"
     mem "^8.0.0"
-    php-parser glayzzle/php-parser#4c5b0675f52c0baab2e5b10a4e50e5d7a79b2767
+    php-parser "https://github.com/glayzzle/php-parser#27abcb2337ac6450c068ef064982dfabf77916a5"
 
 "@types/json-schema@^7.0.7":
   version "7.0.9"
@@ -263,12 +263,12 @@ balanced-match@^1.0.0:
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
   integrity sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==
 
-blade-formatter@1.14.3:
-  version "1.14.3"
-  resolved "https://registry.yarnpkg.com/blade-formatter/-/blade-formatter-1.14.3.tgz#b5c9f3a19bcdcd1f5d9295bfabb115cacb0a6fa4"
-  integrity sha512-6zHmjBudWQCivCey65Kf4ZUlW7CMhoCkjZm3OT/+74hR8aH6QRhhw+rlRC7g028fJdPLNr59s+UR6De4u3JHoA==
+blade-formatter@1.14.4:
+  version "1.14.4"
+  resolved "https://registry.yarnpkg.com/blade-formatter/-/blade-formatter-1.14.4.tgz#86243a1c4b00018d392cf18f2462e6e09f4e5016"
+  integrity sha512-1Epr6ZMMPcN73Sg60vBeidjYCOBGu2+oIJ0MRdUv6e/ukBPQVDJmkPAsdlXBSPsxCUU7M7TYhtakv67lOphWKw==
   dependencies:
-    "@prettier/plugin-php" "^0.17.4"
+    "@prettier/plugin-php" "^0.17.6"
     aigle "^1.14.1"
     chalk "^4.1.0"
     concat-stream "^2.0.0"
@@ -276,7 +276,7 @@ blade-formatter@1.14.3:
     esm "^3.2.25"
     glob "^7.1.4"
     ignore "^5.1.8"
-    js-beautify "^1.10.2"
+    js-beautify "^1.14.0"
     lodash "^4.17.19"
     php-parser "3.0.3"
     prettier "^2.2.0"
@@ -814,7 +814,7 @@ isexe@^2.0.0:
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
 
-js-beautify@^1.10.2:
+js-beautify@^1.14.0:
   version "1.14.0"
   resolved "https://registry.yarnpkg.com/js-beautify/-/js-beautify-1.14.0.tgz#2ce790c555d53ce1e3d7363227acf5dc69024c2d"
   integrity sha512-yuck9KirNSCAwyNJbqW+BxJqJ0NLJ4PwBUzQQACl5O3qHMBXVkXb/rD0ilh/Lat/tn88zSZ+CAHOlk0DsY7GuQ==
@@ -1008,9 +1008,9 @@ php-parser@3.0.3:
   resolved "https://registry.yarnpkg.com/php-parser/-/php-parser-3.0.3.tgz#287779ea8a273ec5cf926f28e5f38ffa4ad32d4a"
   integrity sha512-WjbrtYrwmLY9hpoKoq1+mVqJhT0dEVDZRWSpNIw2MpTw3VM/K4C6e0WR4KlU6G/XROkV7tpH4NesV2dDiPxqaw==
 
-php-parser@glayzzle/php-parser#4c5b0675f52c0baab2e5b10a4e50e5d7a79b2767:
+"php-parser@git+https://github.com/glayzzle/php-parser.git#27abcb2337ac6450c068ef064982dfabf77916a5":
   version "3.0.2"
-  resolved "https://codeload.github.com/glayzzle/php-parser/tar.gz/4c5b0675f52c0baab2e5b10a4e50e5d7a79b2767"
+  resolved "git+https://github.com/glayzzle/php-parser.git#27abcb2337ac6450c068ef064982dfabf77916a5"
 
 picomatch@^2.2.3:
   version "2.3.0"

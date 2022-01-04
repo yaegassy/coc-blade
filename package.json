@@ -135,6 +135,6 @@
     ]
   },
   "dependencies": {
-    "blade-formatter": "1.14.4"
+    "blade-formatter": "1.15.1"
   }
 }

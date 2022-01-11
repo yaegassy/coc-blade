@@ -263,17 +263,16 @@ balanced-match@^1.0.0:
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
   integrity sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==
 
-blade-formatter@1.16.0:
-  version "1.16.0"
-  resolved "https://registry.yarnpkg.com/blade-formatter/-/blade-formatter-1.16.0.tgz#1fd72b447c6863d6fa9f2aa2a1db7c536c320d90"
-  integrity sha512-b9vHaZBiivfYY7Gbd+AgzKz1Glc5H2dlCn5ddY4a6oyp5XFNgOE5pQPMNGcDGwrEd+Fx1zdTNedDxf7GZ992Qw==
+blade-formatter@1.16.1:
+  version "1.16.1"
+  resolved "https://registry.yarnpkg.com/blade-formatter/-/blade-formatter-1.16.1.tgz#0a0ad4d3cb30033d64b94aea4ee05c0d1df2686a"
+  integrity sha512-rLH1OuO9seW9fQmUdHiSirMVOv9o8+Hzt8RwRSvKmZMr3cE6/S05u8FXYEnLUfqHqp2Mfm8Nh7TDV67sSIU/iA==
   dependencies:
     "@prettier/plugin-php" "^0.17.6"
     aigle "^1.14.1"
     chalk "^4.1.0"
     concat-stream "^2.0.0"
     detect-indent "^6.0.0"
-    esm "^3.2.25"
     glob "^7.1.4"
     ignore "^5.1.8"
     js-beautify "^1.14.0"
@@ -569,11 +568,6 @@ eslint@^7.14.0:
     table "^6.0.9"
     text-table "^0.2.0"
     v8-compile-cache "^2.0.3"
-
-esm@^3.2.25:
-  version "3.2.25"
-  resolved "https://registry.yarnpkg.com/esm/-/esm-3.2.25.tgz#342c18c29d56157688ba5ce31f8431fbb795cc10"
-  integrity sha512-U1suiZ2oDVWv4zPO56S0NcR5QriEahGtdN2OR6FiOG4WJvcjBVFB0qI4+eKoWFH483PKGuLuu6V8Z4T5g63UVA==
 
 espree@^7.3.0, espree@^7.3.1:
   version "7.3.1"

@@ -16,6 +16,8 @@ Laravel Blade Templates extension for [coc.nvim](https://github.com/neoclide/coc
   - Jump to template file specified by `@extends`, `@include` directive, etc.
   - Jump to "Blade Components" file.
     - **[Warning]** Class-based Blade Components are not supported.
+- Code Action
+  - Add a blade comment to disable the formatting.
 - Hover
 
 ## Install
@@ -65,6 +67,12 @@ resources/views/products/*
 resources/views/books/**/*
 ```
 
+**Disabling format in file**:
+
+- See: <https://github.com/shufo/blade-formatter#disabling-format-in-file>
+
+> In coc-blade, there is a code action feature to add a blade comment to disable the formatting.
+
 **Auto-run on save is not recommended**:
 
 `blade-formatter` is slow, we do not recommend that you set it to auto-execute on save. If you set up `blade-formatter` to auto-execute on save, the process may not be completed normally.
@@ -94,6 +102,22 @@ composer require --dev bdelespierre/laravel-blade-linter
 ## Commands
 
 - `blade.bladeFormatter.run`: Run blade-formatter
+
+## Code Actions
+
+**Example key mapping (Code Action related)**:
+
+```vim
+nmap <silent> ga <Plug>(coc-codeaction-line)
+nmap <silent> gA <Plug>(coc-codeaction)
+```
+
+**Actions**:
+
+- `Add "blade-formatter-disable-next-line" for this line`
+- `Add "blade-formatter-disable" for this line`
+- `Add "blade-formatter-enable" for this line`
+- `Add "blade-formatter-disable" for whole file`
 
 ## Thanks
 

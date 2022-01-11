@@ -17,6 +17,7 @@ import { BladeSnippetsCompletionProvider } from './completion/bladeSnippetsCompl
 import { BladelinterLintEngine } from './lint';
 import BladeFormattingEditProvider, { doFormat, fullDocumentRange } from './format';
 import BladeDefinitionProvider from './definition';
+import { BladeCodeActionProvider } from './action';
 
 let formatterHandler: undefined | Disposable;
 
@@ -40,6 +41,8 @@ export async function activate(context: ExtensionContext): Promise<void> {
     fs.mkdirSync(extensionStoragePath);
   }
 
+  const languageSelector: DocumentSelector = [{ language: 'blade', scheme: 'file' }];
+
   //
   // format
   //
@@ -50,8 +53,6 @@ export async function activate(context: ExtensionContext): Promise<void> {
 
     function registerFormatter(): void {
       disposeHandlers();
-      const languageSelector: DocumentSelector = [{ language: 'blade', scheme: 'file' }];
-
       formatterHandler = languages.registerDocumentFormatProvider(languageSelector, editProvider, priority);
     }
     registerFormatter();
@@ -131,10 +132,16 @@ export async function activate(context: ExtensionContext): Promise<void> {
   //
   // hover
   //
-  context.subscriptions.push(languages.registerHoverProvider(['blade'], new BladeHoverProvider(context)));
+  context.subscriptions.push(languages.registerHoverProvider(languageSelector, new BladeHoverProvider(context)));
 
   //
   // definition
   //
-  context.subscriptions.push(languages.registerDefinitionProvider(['blade'], new BladeDefinitionProvider()));
+  context.subscriptions.push(languages.registerDefinitionProvider(languageSelector, new BladeDefinitionProvider()));
+
+  //
+  // code action
+  //
+  const codeActionProvider = new BladeCodeActionProvider();
+  context.subscriptions.push(languages.registerCodeActionProvider(languageSelector, codeActionProvider, 'blade'));
 }

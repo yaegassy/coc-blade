@@ -87,6 +87,20 @@ If "laravel-blade-linter" is not detected, the lint (diagnostics) feature is aut
 composer require --dev bdelespierre/laravel-blade-linter
 ```
 
+### completion (laravel-blade-snippets-vscode)
+
+It uses snippet files from [onecentlin/laravel-blade-snippets-vscode](https://github.com/onecentlin/laravel-blade-snippets-vscode) to provide completion.
+
+You can auto-complete by typing `b:`, `lv:`, `Blade::`, `livewire::`.
+
+If you want to disable this completion feature, set `blade.completion.enable` to `false` in `coc-settings.json`.
+
+```json
+{
+  "blade.completion.enable": false
+}
+```
+
 ## Configuration options
 
 - `blade.enable`: Enable coc-blade extension, default: `true`

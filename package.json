@@ -62,6 +62,8 @@
       {
         "filetype": "blade",
         "patterns": [
+          ".bladeformatterrc.json",
+          ".bladeformatterrc",
           ".bladeignore",
           "composer.json"
         ]

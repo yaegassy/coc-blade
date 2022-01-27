@@ -57,6 +57,22 @@ Set up `autocmd BufNewFile,BufRead *.blade.php set filetype=blade` in `.vimrc/in
 
 > If there is a "syntax error" in the blade template, the formatting will fail.
 
+**Configuration file: .bladeformatterrc.json or .bladeformatterrc**:
+
+To configure settings per project, put `.bladeformatterrc.json` or `.bladeformatterrc` to your project root will blade-formatter treat it as setting files.
+
+Configuration file will like below:
+
+```json
+{
+    "indentSize": 4,
+    "wrapAttributues": "auto",
+    "wrapLineLength": 120,
+    "endWithNewLine": true,
+    "useTabs": false
+}
+```
+
 **Ignoring Files: .bladeignore**:
 
 To ignore specific file, put `.bladeignore` to your repository root will `blade-formatter` treat it as ignored files.

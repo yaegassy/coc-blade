@@ -97,18 +97,27 @@
           "description": "Absolute path to blade-formatter. If there is no setting, the built-in blade-formatter will be used"
         },
         "blade.bladeFormatter.optIndentSize": {
-          "type": "integer",
-          "default": 4,
+          "type": [
+            null,
+            "integer"
+          ],
+          "default": null,
           "markdownDescription": "Indent size"
         },
         "blade.bladeFormatter.optWrapLineLength": {
-          "type": "integer",
-          "default": 120,
+          "type": [
+            null,
+            "integer"
+          ],
+          "default": null,
           "markdownDescription": "The length of line wrap size"
         },
         "blade.bladeFormatter.optWrapAttributes": {
-          "type": "string",
-          "default": "auto",
+          "type": [
+            null,
+            "string"
+          ],
+          "default": null,
           "enum": [
             "auto",
             "force",

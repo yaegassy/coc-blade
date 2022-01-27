@@ -31,9 +31,9 @@ export async function doFormat(
 
   const extConfig = workspace.getConfiguration('blade.bladeFormatter');
 
-  const formatIndentSize = extConfig.get('optIndentSize', 4);
-  const formatWrapLineLength = extConfig.get('optWrapLineLength', 120);
-  const formatWrapAttributes = extConfig.get('optWrapAttributes', 'auto');
+  const formatIndentSize = extConfig.get('optIndentSize', null);
+  const formatWrapLineLength = extConfig.get('optWrapLineLength', null);
+  const formatWrapAttributes = extConfig.get('optWrapAttributes', null);
 
   let toolPath = extConfig.get('toolPath', '');
   if (!toolPath) {
@@ -54,9 +54,9 @@ export async function doFormat(
   const cwd = Uri.file(workspace.root).fsPath;
   const opts = { cwd, shell: true };
 
-  args.push(`--indent-size ${formatIndentSize}`);
-  args.push(`--wrap-line-length ${formatWrapLineLength}`);
-  args.push(`--wrap-attributes ${formatWrapAttributes}`);
+  if (formatIndentSize) args.push(`--indent-size ${formatIndentSize}`);
+  if (formatWrapLineLength) args.push(`--wrap-line-length ${formatWrapLineLength}`);
+  if (formatWrapAttributes) args.push(`--wrap-attributes ${formatWrapAttributes}`);
 
   args.push('--stdin');
 

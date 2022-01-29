@@ -10,7 +10,6 @@ import {
   OutputChannel,
 } from 'coc.nvim';
 
-import cp from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import ignore from 'ignore';
@@ -175,21 +174,6 @@ function shouldIgnore(filepath: string, outputChannel: OutputChannel): boolean {
   }
 
   return false;
-}
-
-function isSuccessFormat(s: string) {
-  let flag = true;
-  const lines = s.split('\n');
-  const p = /^SyntaxError:\s.*$/;
-
-  for (const v of lines) {
-    const m = v.match(p);
-    if (m) {
-      flag = false;
-    }
-  }
-
-  return flag;
 }
 
 export default BladeFormattingEditProvider;

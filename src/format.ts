@@ -30,9 +30,13 @@ export async function doFormat(
 
   const extConfig = workspace.getConfiguration('blade.bladeFormatter');
 
-  const formatIndentSize = extConfig.get('optIndentSize', null);
-  const formatWrapLineLength = extConfig.get('optWrapLineLength', null);
-  const formatWrapAttributes = extConfig.get('optWrapAttributes', null);
+  const defaultIndentSize = 4;
+  const defaultWrapLineLength = 120;
+  const defaultWrapAttributes: WrapAttributes = 'auto';
+
+  const formatIndentSize = extConfig.get('optIndentSize', defaultIndentSize);
+  const formatWrapLineLength = extConfig.get('optWrapLineLength', defaultWrapLineLength);
+  const formatWrapAttributes = extConfig.get('optWrapAttributes', defaultWrapAttributes);
 
   let toolPath = extConfig.get('toolPath', '');
   if (!toolPath) {
@@ -49,22 +53,21 @@ export async function doFormat(
     }
   }
 
-  const args: string[] = [];
+  const args: FormatterOption = {
+    indentSize: formatIndentSize,
+    wrapAttributes: formatWrapAttributes,
+    wrapLineLength: formatWrapLineLength,
+  };
+
   const cwd = Uri.file(workspace.root).fsPath;
-  const opts = { cwd, shell: true };
-
-  if (formatIndentSize) args.push(`--indent-size ${formatIndentSize}`);
-  if (formatWrapLineLength) args.push(`--wrap-line-length ${formatWrapLineLength}`);
-  if (formatWrapAttributes) args.push(`--wrap-attributes ${formatWrapAttributes}`);
-
-  args.push('--stdin');
+  const opts = { cwd };
 
   // ---- Output the command to be executed to channel log. ----
   outputChannel.appendLine(`${'#'.repeat(10)} blade-formatter\n`);
   outputChannel.appendLine(`Cwd: ${opts.cwd}`);
-  outputChannel.appendLine(`Args: ${args.join(' ')}`);
+  outputChannel.appendLine(`Args: ${JSON.stringify(args)}`);
   outputChannel.appendLine(`File: ${fileName}`);
-  outputChannel.appendLine(`Run: ${toolPath} ${args.join(' ')}`);
+  outputChannel.appendLine(`Run: ${toolPath} ${JSON.stringify(args)}`);
 
   const isIgnoreFile = shouldIgnore(fileName, outputChannel);
   if (isIgnoreFile) {

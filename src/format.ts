@@ -13,6 +13,7 @@ import {
 import fs from 'fs';
 import path from 'path';
 import ignore from 'ignore';
+import { createSyncFn } from 'synckit';
 import { FormatterOption, WrapAttributes } from 'blade-formatter';
 
 export async function doFormat(
@@ -77,54 +78,23 @@ export async function doFormat(
   }
 
   return new Promise((resolve) => {
+    const syncFn = createSyncFn(require.resolve('../src/worker'));
     let newText = '';
-    let isSuccess = false;
-    const cps = cp.spawn(toolPath, args, opts);
 
-    cps.on('error', (err: Error) => {
+    try {
+      // try formatting in worker thread
+      newText = syncFn(originalText, args);
+      outputChannel.appendLine(`\n==== STDOUT ===\n`);
+      outputChannel.appendLine(`${newText}`);
+      outputChannel.appendLine(`== success ==`);
+      resolve(newText);
+    } catch (error: any) {
+      // show error if something goes wrong while formatting
+      window.showWarningMessage(`Formatting failed due to an error in the template.\n${error.message}`);
       outputChannel.appendLine(`\n==== ERROR ===\n`);
-      outputChannel.appendLine(`${err}`);
-      return;
-    });
-
-    if (cps.pid) {
-      cps.stdin.write(originalText);
-      cps.stdin.end();
-
-      cps.stderr.on('data', (data: Buffer) => {
-        outputChannel.appendLine(`\n==== STDERR ===\n`);
-        outputChannel.appendLine(`${data}`);
-
-        // rollback
-        window.showWarningMessage(`Formatting failed due to an error in the template.`);
-        resolve(originalText);
-      });
-
-      cps.stdout.on('data', (data: Buffer) => {
-        outputChannel.appendLine(`\n==== STDOUT (data) ===\n`);
-        isSuccess = isSuccessFormat(data.toString());
-        outputChannel.appendLine(`== success ==: ${isSuccess}`);
-        if (isSuccess) {
-          newText = newText + data.toString();
-        } else {
-          // rollback
-          window.showWarningMessage(`Formatting failed due to an error in the template.`);
-          resolve(originalText);
-        }
-      });
-
-      cps.stdout.on('close', () => {
-        if (isSuccess) {
-          outputChannel.appendLine(`\n==== STDOUT (close) ===\n`);
-          outputChannel.appendLine(`${newText}`);
-          // auto-fixed
-          resolve(newText);
-        } else {
-          // rollback
-          window.showWarningMessage(`Formatting failed due to an error in the template.`);
-          resolve(originalText);
-        }
-      });
+      outputChannel.appendLine(`${error.message}`);
+      outputChannel.appendLine(`\n==== originalText: ===\n`);
+      outputChannel.appendLine(`${originalText}`);
     }
   });
 }

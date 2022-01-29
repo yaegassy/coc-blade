@@ -13,6 +13,7 @@ import {
 import fs from 'fs';
 import path from 'path';
 import ignore from 'ignore';
+import { FormatterOption, WrapAttributes } from 'blade-formatter';
 
 export async function doFormat(
   context: ExtensionContext,

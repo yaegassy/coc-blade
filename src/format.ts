@@ -77,7 +77,7 @@ export async function doFormat(
     return originalText;
   }
 
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     const syncFn = createSyncFn(require.resolve('../src/worker'));
     let newText = '';
 
@@ -95,6 +95,7 @@ export async function doFormat(
       outputChannel.appendLine(`${error.message}`);
       outputChannel.appendLine(`\n==== originalText: ===\n`);
       outputChannel.appendLine(`${originalText}`);
+      reject(error)
     }
   });
 }

@@ -119,7 +119,6 @@ If you want to disable this completion feature, set `blade.completion.enable` to
 - `blade.completion.enable`: Enable snippets completion, default: `true`
 - `blade.completion.exclude`: Exclude specific prefix in snippet completion, e.g. `["b:extends", "lv:url", "Blade::component"]`, default: `[]`
 - `blade.bladeFormatter.enable`: Enable/Disable the formatting feature by `blade-formatter`, default: `true`
-- `blade.bladeFormatter.toolPath`: Absolute path to blade-formatter. If there is no setting, the built-in blade-formatter will be used, default: `""`
 - `blade.bladeFormatter.optIndentSize`: Indent size (`--indent-size`), valid type `integer` or `null`, default: `null`,
 - `blade.bladeFormatter.optWrapLineLength`: The length of line wrap size (`--wrap-line-length`), valid type `integer` or `null`, default: `null`
 - `blade.bladeFormatter.optWrapAttributes`: The way to wrap attributes (`--wrap-attributes`), valid options `["auto", "force", "force-aligned", "force-expand-multiline", "aligned-multiple", "preserve", "preserve-aligned"]`, valid type `string` or `null`, default: `null`

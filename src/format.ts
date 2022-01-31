@@ -40,22 +40,7 @@ export async function doFormat(
   const formatWrapLineLength = extConfig.get('optWrapLineLength', defaultWrapLineLength);
   const formatWrapAttributes = extConfig.get('optWrapAttributes', defaultWrapAttributes);
 
-  let toolPath = extConfig.get('toolPath', '');
-  if (!toolPath) {
-    if (fs.existsSync(context.asAbsolutePath('node_modules/blade-formatter/bin/blade-formatter'))) {
-      toolPath = context.asAbsolutePath('node_modules/blade-formatter/bin/blade-formatter');
-    } else {
-      window.showErrorMessage('Unable to find the blade-formatter.');
-      return originalText;
-    }
-  } else {
-    if (!fs.existsSync(toolPath)) {
-      window.showErrorMessage('Unable to find the blade-formatter (user setting).');
-      return originalText;
-    }
-  }
-
-  const args: FormatterOption = {
+  const options: FormatterOption = {
     indentSize: formatIndentSize,
     wrapAttributes: formatWrapAttributes,
     wrapLineLength: formatWrapLineLength,
@@ -67,9 +52,8 @@ export async function doFormat(
   // ---- Output the command to be executed to channel log. ----
   outputChannel.appendLine(`${'#'.repeat(10)} blade-formatter\n`);
   outputChannel.appendLine(`Cwd: ${opts.cwd}`);
-  outputChannel.appendLine(`Args: ${JSON.stringify(args)}`);
+  outputChannel.appendLine(`Option: ${JSON.stringify(options)}`);
   outputChannel.appendLine(`File: ${fileName}`);
-  outputChannel.appendLine(`Run: ${toolPath} ${JSON.stringify(args)}`);
 
   const isIgnoreFile = shouldIgnore(fileName, outputChannel);
   if (isIgnoreFile) {
@@ -84,7 +68,7 @@ export async function doFormat(
 
     try {
       // try formatting in worker thread
-      newText = syncFn(originalText, args);
+      newText = syncFn(originalText, options);
       outputChannel.appendLine(`\n==== STDOUT ===\n`);
       outputChannel.appendLine(`${newText}`);
       outputChannel.appendLine(`== success ==`);

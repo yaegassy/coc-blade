@@ -23,6 +23,7 @@
     "url": "https://github.com/yaegassy/coc-blade"
   },
   "scripts": {
+    "schema": "curl -o schemas/bladeformatterrc.schema.json https://raw.githubusercontent.com/shufo/vscode-blade-formatter/master/schemas/bladeformatterrc.schema.json",
     "snippets": "yarn snippets:blade && yarn snippets:helper && yarn snippets:livewire && yarn snippets:snippets && node fixSnippets.js && yarn snippets:format",
     "snippets:blade": "curl -o snippets/blade.json https://raw.githubusercontent.com/onecentlin/laravel-blade-snippets-vscode/master/snippets/blade.json",
     "snippets:helper": "curl -o snippets/helpers.json https://raw.githubusercontent.com/onecentlin/laravel-blade-snippets-vscode/master/snippets/helpers.json",
@@ -67,6 +68,16 @@
           ".bladeignore",
           "composer.json"
         ]
+      }
+    ],
+    "jsonValidation": [
+      {
+        "fileMatch": ".bladeformatterrc.json",
+        "url": "./schemas/bladeformatterrc.schema.json"
+      },
+      {
+        "fileMatch": ".bladeformatterrc",
+        "url": "./schemas/bladeformatterrc.schema.json"
       }
     ],
     "configuration": {

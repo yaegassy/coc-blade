@@ -146,6 +146,10 @@
     },
     "commands": [
       {
+        "command": "blade.showOutput",
+        "title": "Show blade output channel"
+      },
+      {
         "command": "blade.bladeFormatter.run",
         "title": "Run bladeFormatter.run"
       }

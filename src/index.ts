@@ -43,6 +43,15 @@ export async function activate(context: ExtensionContext): Promise<void> {
 
   const languageSelector: DocumentSelector = [{ language: 'blade', scheme: 'file' }];
 
+  // blade.showOutput command
+  context.subscriptions.push(
+    commands.registerCommand('blade.showOutput', () => {
+      if (outputChannel) {
+        outputChannel.show();
+      }
+    })
+  );
+
   //
   // format
   //

@@ -126,6 +126,7 @@ If you want to disable this completion feature, set `blade.completion.enable` to
 
 ## Commands
 
+- `blade.showOutput`: Show blade output channel
 - `blade.bladeFormatter.run`: Run blade-formatter
 
 ## Code Actions

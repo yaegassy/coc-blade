@@ -10,10 +10,11 @@ import {
   OutputChannel,
 } from 'coc.nvim';
 
-import cp from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import ignore from 'ignore';
+import { createSyncFn } from 'synckit';
+import { FormatterOption, WrapAttributes } from 'blade-formatter';
 
 export async function doFormat(
   context: ExtensionContext,
@@ -31,9 +32,13 @@ export async function doFormat(
 
   const extConfig = workspace.getConfiguration('blade.bladeFormatter');
 
-  const formatIndentSize = extConfig.get('optIndentSize', null);
-  const formatWrapLineLength = extConfig.get('optWrapLineLength', null);
-  const formatWrapAttributes = extConfig.get('optWrapAttributes', null);
+  const defaultIndentSize = 4;
+  const defaultWrapLineLength = 120;
+  const defaultWrapAttributes: WrapAttributes = 'auto';
+
+  const formatIndentSize = extConfig.get('optIndentSize', defaultIndentSize);
+  const formatWrapLineLength = extConfig.get('optWrapLineLength', defaultWrapLineLength);
+  const formatWrapAttributes = extConfig.get('optWrapAttributes', defaultWrapAttributes);
 
   let toolPath = extConfig.get('toolPath', '');
   if (!toolPath) {
@@ -50,22 +55,21 @@ export async function doFormat(
     }
   }
 
-  const args: string[] = [];
+  const args: FormatterOption = {
+    indentSize: formatIndentSize,
+    wrapAttributes: formatWrapAttributes,
+    wrapLineLength: formatWrapLineLength,
+  };
+
   const cwd = Uri.file(workspace.root).fsPath;
-  const opts = { cwd, shell: true };
-
-  if (formatIndentSize) args.push(`--indent-size ${formatIndentSize}`);
-  if (formatWrapLineLength) args.push(`--wrap-line-length ${formatWrapLineLength}`);
-  if (formatWrapAttributes) args.push(`--wrap-attributes ${formatWrapAttributes}`);
-
-  args.push('--stdin');
+  const opts = { cwd };
 
   // ---- Output the command to be executed to channel log. ----
   outputChannel.appendLine(`${'#'.repeat(10)} blade-formatter\n`);
   outputChannel.appendLine(`Cwd: ${opts.cwd}`);
-  outputChannel.appendLine(`Args: ${args.join(' ')}`);
+  outputChannel.appendLine(`Args: ${JSON.stringify(args)}`);
   outputChannel.appendLine(`File: ${fileName}`);
-  outputChannel.appendLine(`Run: ${toolPath} ${args.join(' ')}`);
+  outputChannel.appendLine(`Run: ${toolPath} ${JSON.stringify(args)}`);
 
   const isIgnoreFile = shouldIgnore(fileName, outputChannel);
   if (isIgnoreFile) {
@@ -73,55 +77,25 @@ export async function doFormat(
     return originalText;
   }
 
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
+    const syncFn = createSyncFn(require.resolve('../src/worker'));
     let newText = '';
-    let isSuccess = false;
-    const cps = cp.spawn(toolPath, args, opts);
 
-    cps.on('error', (err: Error) => {
+    try {
+      // try formatting in worker thread
+      newText = syncFn(originalText, args);
+      outputChannel.appendLine(`\n==== STDOUT ===\n`);
+      outputChannel.appendLine(`${newText}`);
+      outputChannel.appendLine(`== success ==`);
+      resolve(newText);
+    } catch (error: any) {
+      // show error if something goes wrong while formatting
+      window.showWarningMessage(`Formatting failed due to an error in the template.\n${error.message}`);
       outputChannel.appendLine(`\n==== ERROR ===\n`);
-      outputChannel.appendLine(`${err}`);
-      return;
-    });
-
-    if (cps.pid) {
-      cps.stdin.write(originalText);
-      cps.stdin.end();
-
-      cps.stderr.on('data', (data: Buffer) => {
-        outputChannel.appendLine(`\n==== STDERR ===\n`);
-        outputChannel.appendLine(`${data}`);
-
-        // rollback
-        window.showWarningMessage(`Formatting failed due to an error in the template.`);
-        resolve(originalText);
-      });
-
-      cps.stdout.on('data', (data: Buffer) => {
-        outputChannel.appendLine(`\n==== STDOUT (data) ===\n`);
-        isSuccess = isSuccessFormat(data.toString());
-        outputChannel.appendLine(`== success ==: ${isSuccess}`);
-        if (isSuccess) {
-          newText = newText + data.toString();
-        } else {
-          // rollback
-          window.showWarningMessage(`Formatting failed due to an error in the template.`);
-          resolve(originalText);
-        }
-      });
-
-      cps.stdout.on('close', () => {
-        if (isSuccess) {
-          outputChannel.appendLine(`\n==== STDOUT (close) ===\n`);
-          outputChannel.appendLine(`${newText}`);
-          // auto-fixed
-          resolve(newText);
-        } else {
-          // rollback
-          window.showWarningMessage(`Formatting failed due to an error in the template.`);
-          resolve(originalText);
-        }
-      });
+      outputChannel.appendLine(`${error.message}`);
+      outputChannel.appendLine(`\n==== originalText: ===\n`);
+      outputChannel.appendLine(`${originalText}`);
+      reject(error)
     }
   });
 }
@@ -175,21 +149,6 @@ function shouldIgnore(filepath: string, outputChannel: OutputChannel): boolean {
   }
 
   return false;
-}
-
-function isSuccessFormat(s: string) {
-  let flag = true;
-  const lines = s.split('\n');
-  const p = /^SyntaxError:\s.*$/;
-
-  for (const v of lines) {
-    const m = v.match(p);
-    if (m) {
-      flag = false;
-    }
-  }
-
-  return flag;
 }
 
 export default BladeFormattingEditProvider;

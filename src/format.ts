@@ -69,9 +69,9 @@ export async function doFormat(
     try {
       // try formatting in worker thread
       newText = syncFn(originalText, options);
-      outputChannel.appendLine(`\n==== STDOUT ===\n`);
+      outputChannel.appendLine(`\n==== OUTPUT ===\n`);
       outputChannel.appendLine(`${newText}`);
-      outputChannel.appendLine(`== success ==`);
+      outputChannel.appendLine(`== success ==\n`);
       resolve(newText);
     } catch (error: any) {
       // show error if something goes wrong while formatting

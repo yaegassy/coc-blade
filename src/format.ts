@@ -14,7 +14,7 @@ import fs from 'fs';
 import path from 'path';
 import ignore from 'ignore';
 import { createSyncFn } from 'synckit';
-import { FormatterOption, WrapAttributes } from 'blade-formatter';
+import { FormatterOption } from 'blade-formatter';
 
 export async function doFormat(
   context: ExtensionContext,
@@ -34,7 +34,7 @@ export async function doFormat(
 
   const defaultIndentSize = 4;
   const defaultWrapLineLength = 120;
-  const defaultWrapAttributes: WrapAttributes = 'auto';
+  const defaultWrapAttributes = 'auto';
 
   const formatIndentSize = extConfig.get('optIndentSize', defaultIndentSize);
   const formatWrapLineLength = extConfig.get('optWrapLineLength', defaultWrapLineLength);

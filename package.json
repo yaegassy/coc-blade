@@ -104,11 +104,6 @@
           "default": true,
           "markdownDescription": "Enable/Disable the formatting feature by blade-formatter"
         },
-        "blade.bladeFormatter.toolPath": {
-          "type": "string",
-          "default": "",
-          "description": "Absolute path to blade-formatter. If there is no setting, the built-in blade-formatter will be used"
-        },
         "blade.bladeFormatter.optIndentSize": {
           "type": [
             null,

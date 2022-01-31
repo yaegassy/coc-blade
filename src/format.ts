@@ -78,7 +78,8 @@ export async function doFormat(
   }
 
   return new Promise((resolve, reject) => {
-    const syncFn = createSyncFn(require.resolve('../src/worker'));
+    const workerPath = path.join(context.extensionPath, 'worker', 'index.js');
+    const syncFn = createSyncFn(workerPath);
     let newText = '';
 
     try {
@@ -95,7 +96,7 @@ export async function doFormat(
       outputChannel.appendLine(`${error.message}`);
       outputChannel.appendLine(`\n==== originalText: ===\n`);
       outputChannel.appendLine(`${originalText}`);
-      reject(error)
+      reject(error);
     }
   });
 }

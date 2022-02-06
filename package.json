@@ -50,7 +50,6 @@
     "eslint": "^8.8.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "ignore": "^5.1.8",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
     "typescript": "^4.5.5"
@@ -157,6 +156,7 @@
   },
   "dependencies": {
     "blade-formatter": "1.17.2",
+    "ignore": "^5.2.0",
     "synckit": "^0.6.0"
   }
 }

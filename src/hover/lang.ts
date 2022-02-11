@@ -3,10 +3,13 @@ export interface BladeHover {
   alias: string[];
 }
 
-// REF: https://laravel.com/docs/8.x/blade#components
 export const bladeHovers: BladeHover[] = [
   {
     prefix: '@json',
+    alias: [],
+  },
+  {
+    prefix: '@js',
     alias: [],
   },
   {
@@ -89,6 +92,16 @@ export const bladeHovers: BladeHover[] = [
     prefix: '$loop',
     alias: ['loop'],
   },
+  // ==== 9.x ====
+  // ---- Checked / Selected ----
+  {
+    prefix: '@checked',
+    alias: [],
+  },
+  {
+    prefix: '@selected',
+    alias: [],
+  },
   // ---- Including Subviews ----
   {
     prefix: '@include',
@@ -126,7 +139,12 @@ export const bladeHovers: BladeHover[] = [
   // ---- Data Properties / Attributes ----
   {
     prefix: '@props',
-    alias: ['@props'],
+    alias: [],
+  },
+  // ---- Accessing Parent Data ----
+  {
+    prefix: '@aware',
+    alias: [],
   },
   // ---- 6.x ----
   // https://laravel.com/docs/6.x/blade#components-and-slots

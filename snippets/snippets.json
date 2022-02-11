@@ -304,5 +304,27 @@
     "prefix": "b:once",
     "body": ["@once", "    $1", "@endonce"],
     "description": "define a portion of template that will only be evaluated once per rendering cycle"
+  },
+
+  "blade-aware": {
+    "prefix": "b:aware",
+    "body": "@aware(['${1:propName}'])",
+    "description": "Accessing data from a parent component (Laravel 8.64)"
+  },
+  "blade-js": {
+    "prefix": "b:js",
+    "body": "@js(${1:\\$data})",
+    "description": "This directive is useful to properly escape JSON within HTML quotes"
+  },
+
+  "checked": {
+    "prefix": "b:checked",
+    "body": "@checked(${1:true})",
+    "description": "This directive will echo checked if the provided condition evaluates to true (Laravel 9.x)"
+  },
+  "selected": {
+    "prefix": "b:selected",
+    "body": "@selected(${1:true})",
+    "description": "The @selected directive may be used to indicate if a given select option should be \"selected\" (Laravel 9.x)"
   }
 }

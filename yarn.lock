@@ -233,10 +233,10 @@ balanced-match@^1.0.0:
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
   integrity sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==
 
-blade-formatter@1.18.1:
-  version "1.18.1"
-  resolved "https://registry.yarnpkg.com/blade-formatter/-/blade-formatter-1.18.1.tgz#7d7358cba434526d2dd816cce4a3488650ff7cd2"
-  integrity sha512-AYArNr9WgT9F5OTBBkUoMlKA2BuL0F1gU7hLBeyZMS1j9i1q6zhqzanC90bsZ1vNWq/cNMqdOF78oWrJsUUTdQ==
+blade-formatter@1.18.2:
+  version "1.18.2"
+  resolved "https://registry.yarnpkg.com/blade-formatter/-/blade-formatter-1.18.2.tgz#55281e4bd77210cde7b9340afecfb7e910db0084"
+  integrity sha512-FTXYpzdu7MOJZ5+5U2CiPrKr/xnFyiTWkwRdansyXS/F8s0Tw+tEFZCuFo3zj9fEaaDY8o9HE6OgGac6+O/URg==
   dependencies:
     "@prettier/plugin-php" "^0.18.0"
     aigle "^1.14.1"

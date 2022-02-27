@@ -35,15 +35,19 @@ export async function doFormat(
   const defaultIndentSize = 4;
   const defaultWrapLineLength = 120;
   const defaultWrapAttributes = 'auto';
+  const defaultSortTailwindcssClasses = false;
 
   const formatIndentSize = extConfig.get('optIndentSize', defaultIndentSize);
   const formatWrapLineLength = extConfig.get('optWrapLineLength', defaultWrapLineLength);
   const formatWrapAttributes = extConfig.get('optWrapAttributes', defaultWrapAttributes);
+  const formatSortTailwindcssClasses = extConfig.get('optSortTailwindcssClasses', defaultSortTailwindcssClasses);
 
   const options: FormatterOption = {
     indentSize: formatIndentSize,
     wrapAttributes: formatWrapAttributes,
     wrapLineLength: formatWrapLineLength,
+    // MEMO: type is ----> sortTailwindcssClasses?: true;
+    sortTailwindcssClasses: formatSortTailwindcssClasses ? formatSortTailwindcssClasses : undefined,
   };
 
   const cwd = Uri.file(workspace.root).fsPath;

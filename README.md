@@ -69,7 +69,8 @@ Configuration file will like below:
     "wrapAttributes": "auto",
     "wrapLineLength": 120,
     "endWithNewLine": true,
-    "useTabs": false
+    "useTabs": false,
+    "sortTailwindcssClasses": true
 }
 ```
 
@@ -122,6 +123,7 @@ If you want to disable this completion feature, set `blade.completion.enable` to
 - `blade.bladeFormatter.optIndentSize`: Indent size (`--indent-size`), valid type `integer` or `null`, default: `null`,
 - `blade.bladeFormatter.optWrapLineLength`: The length of line wrap size (`--wrap-line-length`), valid type `integer` or `null`, default: `null`
 - `blade.bladeFormatter.optWrapAttributes`: The way to wrap attributes (`--wrap-attributes`), valid options `["auto", "force", "force-aligned", "force-expand-multiline", "aligned-multiple", "preserve", "preserve-aligned"]`, valid type `string` or `null`, default: `null`
+- `blade.bladeFormatter.optSortTailwindcssClasses`: markdownDescription": "Sort Tailwindcss classes automatically. This option respects `tailwind.config.js` and sort classes according to settings, valid type `boolean` or `null`, default: `null`
 - `blade.bladeLinter.enable`: Enable/Disable the linting feature by `laravel-blade-linter`, default: `true`
 
 ## Commands

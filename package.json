@@ -136,6 +136,14 @@
           ],
           "markdownDescription": "The way to wrap attributes"
         },
+        "blade.bladeFormatter.optSortTailwindcssClasses": {
+          "type": [
+            null,
+            "boolean"
+          ],
+          "default": false,
+          "markdownDescription": "Sort Tailwindcss classes automatically. This option respects `tailwind.config.js` and sort classes according to settings"
+        },
         "blade.bladeLinter.enable": {
           "type": "boolean",
           "default": true,

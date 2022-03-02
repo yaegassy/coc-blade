@@ -163,7 +163,7 @@
     ]
   },
   "dependencies": {
-    "blade-formatter": "^1.20.1",
+    "blade-formatter": "^1.20.2",
     "ignore": "^5.2.0",
     "synckit": "^0.6.0"
   }

@@ -92,6 +92,11 @@ export const bladeHovers: BladeHover[] = [
     prefix: '$loop',
     alias: ['loop'],
   },
+  // ---- Conditional Classes ----
+  {
+    prefix: '@class',
+    alias: [],
+  },
   // ==== 9.x ====
   // ---- Checked / Selected ----
   {
@@ -100,6 +105,10 @@ export const bladeHovers: BladeHover[] = [
   },
   {
     prefix: '@selected',
+    alias: [],
+  },
+  {
+    prefix: '@disabled',
     alias: [],
   },
   // ---- Including Subviews ----

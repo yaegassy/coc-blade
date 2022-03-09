@@ -1,12 +1,12 @@
 {
   "Blade-component": {
     "prefix": "Blade::component",
-    "body": ["Blade::component('${1:package-name}', ${2:PackageNameComponent}::class);"],
+    "body": "Blade::component('${1:package-name}', ${2:PackageNameComponent}::class);",
     "description": "Registering Package Components (AppServiceProvider boot method)"
   },
   "Blade-include": {
     "prefix": "Blade::include",
-    "body": ["Blade::include('${1:includes.input}', '${2:input}');"],
+    "body": "Blade::include('${1:includes.input}', '${2:input}');",
     "description": "Aliasing Includes (AppServiceProvider boot method)"
   },
   "Blade-if": {
@@ -38,12 +38,12 @@
   },
   "Blade-render": {
     "prefix": "Blade::render",
-    "body": ["Blade::render(${1:'Blade template string'}, ${2:\\$data});"],
+    "body": "Blade::render(${1:'Blade template string'}, ${2:\\$data});",
     "description": "Transform a raw Blade template string into valid HTML (Laravel 9.x)"
   },
   "Blade-renderComponent": {
     "prefix": "Blade::renderComponent",
-    "body": ["Blade::renderComponent(new ${1:HelloComponent}(${2:\\$params}));"],
+    "body": "Blade::renderComponent(new ${1:HelloComponent}(${2:\\$params}));",
     "description": "Render a given class component by passing the component instance to the method  (Laravel 9.x)"
   }
 }

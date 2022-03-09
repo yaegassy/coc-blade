@@ -1,12 +1,12 @@
 {
   "Extend layout": {
     "prefix": "b:extends",
-    "body": ["@extends('${1:name}')"],
+    "body": "@extends('${1:name}')",
     "description": "extends view layout"
   },
   "Yield content": {
     "prefix": "b:yield",
-    "body": ["@yield('${1:name}')"],
+    "body": "@yield('${1:name}')",
     "description": "yield content section"
   },
   "Content Section": {
@@ -19,13 +19,11 @@
     "body": ["@section('$1')", "    $2", "@show"],
     "description": "content section show"
   },
-
   "Include view": {
     "prefix": "b:include",
-    "body": ["@include('${1:name}')"],
+    "body": "@include('${1:name}')",
     "description": "include view"
   },
-
   "If-block": {
     "prefix": "b:if",
     "body": ["@if ($1)", "    $2", "@endif"],
@@ -46,7 +44,6 @@
     "body": ["@unless ($1)", "    $2", "@endunless"],
     "description": "@unless block"
   },
-
   "For-block": {
     "prefix": "b:for",
     "body": ["@for (\\$i = ${1:0}; \\$i < ${2:\\$count}; \\$i++)", "    $3", "@endfor"],
@@ -67,32 +64,29 @@
     "body": ["@while ($1)", "    $2", "@endwhile"],
     "description": "@while block"
   },
-
   "each loop": {
     "prefix": "b:each",
-    "body": ["@each('${1:view.name}', ${2:\\$collection}, '${3:variable}', '${4:view.empty}')"],
+    "body": "@each('${1:view.name}', ${2:\\$collection}, '${3:variable}', '${4:view.empty}')",
     "description": "@each loop"
   },
-
   "blade comment": {
     "prefix": "b:comment",
-    "body": ["{{-- ${1:comment} --}}", "$2"],
+    "body": "{{-- ${1:comment} --}}",
     "description": "comment block"
   },
-
   "blade echo-data": {
     "prefix": "b:echo",
-    "body": ["{{ ${1:\\$data} }}"],
+    "body": "{{ ${1:\\$data} }}",
     "description": "echo data"
   },
   "blade echo-unescaped-data": {
     "prefix": "b:echo-html",
-    "body": ["{!! ${1:\\$html_data} !!}"],
+    "body": "{!! ${1:\\$html_data} !!}",
     "description": "echo unescaped data (allow html outputs)"
   },
   "blade echo-untouch": {
     "prefix": "b:echo-raw",
-    "body": ["@{{ ${1:variable} }}"],
+    "body": "@{{ ${1:variable} }}",
     "description": "echo untouched data (allow javascript expression)"
   },
   "blade verbatim": {
@@ -100,7 +94,6 @@
     "body": ["@verbatim", "{{ ${1:variable} }}", "@endverbatim"],
     "description": "displaying JavaScript variables in a large portion of your template"
   },
-
   "Push stack": {
     "prefix": "b:push",
     "body": ["@push('${1:name}')", "    $2", "@endpush"],
@@ -108,73 +101,70 @@
   },
   "Stack": {
     "prefix": "b:stack",
-    "body": ["@stack('${1:name}')"],
+    "body": "@stack('${1:name}')",
     "description": "@stack"
   },
-
   "inject service": {
     "prefix": "b:inject",
-    "body": ["@inject('${1:name}', '${2:class}')"],
+    "body": "@inject('${1:name}', '${2:class}')",
     "description": "@inject Service"
   },
-
   "can": {
     "prefix": "b:can",
-    "body": ["@can('${1:update}', ${2:\\$post})", "\t$3", "@endcan"],
+    "body": ["@can('${1:update}', ${2:\\$post})", "    $3", "@endcan"],
     "description": "display a portion of the page only if the user is authorized to perform a given action."
   },
   "can-elsecan": {
     "prefix": "b:can-elsecan",
     "body": [
       "@can('${1:update}', ${2:\\$post})",
-      "\t$3",
+      "    $3",
       "@elsecan('create', App\\Models\\\\${4:Post}::class)",
-      "\t$5",
+      "    $5",
       "@endcan"
     ],
     "description": "display a portion of the page only if the user is authorized to perform a given action."
   },
   "canany": {
     "prefix": "b:canany",
-    "body": ["@canany(['update', 'view', 'delete'], ${1:\\$post})", "\t$2", "@endcanany"],
+    "body": ["@canany(['update', 'view', 'delete'], ${1:\\$post})", "    $2", "@endcanany"],
     "description": "display a portion of the page only if the user is authorized to perform a given action."
   },
   "canany-elsecanany": {
     "prefix": "b:canany-elsecanany",
     "body": [
       "@canany(['update', 'view', 'delete'], ${1:\\$post})",
-      "\t$2",
+      "    $2",
       "@elsecanany(['create'], App\\Models\\\\${3:Post}::class)",
-      "\t$4",
+      "    $4",
       "@endcanany"
     ],
     "description": "display a portion of the page only if the user is authorized to perform a given action."
   },
   "cannot": {
     "prefix": "b:cannot",
-    "body": ["@cannot('${1:update}', ${2:\\$post})", "\t$3", "@endcannot"],
+    "body": ["@cannot('${1:update}', ${2:\\$post})", "    $3", "@endcannot"],
     "description": "display a portion of the page only if the user is authorized to perform a given action."
   },
   "cannot-elsecannot": {
     "prefix": "b:cannot-elsecannot",
     "body": [
       "@cannot('${1:update}', ${2:\\$post})",
-      "\t$3",
+      "    $3",
       "@elsecannot('create', App\\Models\\\\${5:Post}::class)",
-      "\t$6",
+      "    $6",
       "@endcannot"
     ],
     "description": "display a portion of the page only if the user is authorized to perform a given action."
   },
-
   "loop": {
     "prefix": "b:loop",
-    "body": ["\\$loop->${1:first}$2"],
+    "body": ["\\$loop->${1:first}"],
     "description": "$loop->(index|remaining|count|first|last|depth|parent)"
   },
   "loop first": {
     "prefix": "b:loop-first",
-    "body": ["@if (\\$loop->first)", "    ${1:{{-- This is the first iteration --\\}\\}}", "@endif", "$2"],
+    "body": ["@if (\\$loop->first)", "    ${1:{{-- This is the first iteration --\\}\\}}", "@endif"],
     "description": "$loop->first"
   },
   "loop last": {
@@ -189,10 +179,9 @@
   },
   "includeIf": {
     "prefix": "b:includeIf",
-    "body": ["@includeIf('${1:view.name}'${2:, ['some' => 'data']})"],
+    "body": "@includeIf('${1:view.name}'${2:, ['some' => 'data']})",
     "description": "include a view that may or may not be present, you should use the @includeIf directive"
   },
-
   "component": {
     "prefix": "b:component",
     "body": ["@component('$1')", "    $2", "@endcomponent"],
@@ -220,10 +209,9 @@
   },
   "includeWhen": {
     "prefix": "b:includeWhen",
-    "body": ["@includeWhen(${1:\\$boolean}, '${2:view.name}', [${3:'some' => 'data'}])"],
+    "body": "@includeWhen(${1:\\$boolean}, '${2:view.name}', [${3:'some' => 'data'}])",
     "description": "includeWhen"
   },
-
   "auth": {
     "prefix": "b:auth",
     "body": ["@auth", "    $1", "@endauth"],
@@ -252,38 +240,34 @@
   },
   "includeFirst": {
     "prefix": "b:includeFirst",
-    "body": ["@includeFirst(['${1:view.name}', '${2:variable}'], [${3:'some' => 'data'}])"],
+    "body": "@includeFirst(['${1:view.name}', '${2:variable}'], [${3:'some' => 'data'}])",
     "description": "includeFirst"
   },
-
   "csrf": {
     "prefix": "b:csrf",
-    "body": ["@csrf"],
+    "body": "@csrf",
     "description": "form csrf field"
   },
   "method": {
     "prefix": "b:method",
-    "body": ["@method($1)"],
+    "body": "@method($1)",
     "description": "form method field"
   },
   "dump": {
     "prefix": "b:dump",
-    "body": ["@dump($1)"],
+    "body": "@dump($1)",
     "description": "dump"
   },
-
   "lang": {
     "prefix": "b:lang",
-    "body": ["@lang('${1:messages.welcome}')"],
+    "body": "@lang('${1:messages.welcome}')",
     "description": "lang"
   },
-
   "includeUnless": {
     "prefix": "b:includeUnless",
-    "body": ["@includeUnless(${1:\\$boolean}, '${2:view.name}', [${3:'some' => 'data'}])"],
+    "body": "@includeUnless(${1:\\$boolean}, '${2:view.name}', [${3:'some' => 'data'}])",
     "description": "includeUnless"
   },
-
   "props": {
     "prefix": "b:props",
     "body": "@props(['${1:propName}'])",
@@ -299,24 +283,26 @@
     "body": ["@production", "    $1", "@endproduction"],
     "description": "production"
   },
-
   "once": {
     "prefix": "b:once",
     "body": ["@once", "    $1", "@endonce"],
     "description": "define a portion of template that will only be evaluated once per rendering cycle"
   },
-
-  "blade-aware": {
+  "aware": {
     "prefix": "b:aware",
     "body": "@aware(['${1:propName}'])",
     "description": "Accessing data from a parent component (Laravel 8.64)"
   },
-  "blade-js": {
+  "js": {
     "prefix": "b:js",
     "body": "@js(${1:\\$data})",
     "description": "This directive is useful to properly escape JSON within HTML quotes"
   },
-
+  "class": {
+    "prefix": "b:class",
+    "body": "@class(['${1:p-4}', ${2:'font-bold' => true}])",
+    "description": "conditionally compiles a CSS class string. (Laravel 8.51)"
+  },
   "checked": {
     "prefix": "b:checked",
     "body": "@checked(${1:true})",
@@ -326,5 +312,10 @@
     "prefix": "b:selected",
     "body": "@selected(${1:true})",
     "description": "The @selected directive may be used to indicate if a given select option should be \"selected\" (Laravel 9.x)"
+  },
+  "disabled": {
+    "prefix": "b:disabled",
+    "body": "@disabled(${1:true})",
+    "description": "The @disabled directive may be used to indicate if a given element should be \"disabled\" (Laravel 9.x)"
   }
 }

@@ -30,8 +30,10 @@ export default class BladeDefinitionProvider implements DefinitionProvider {
     if (!text) return null;
 
     let locationPath: string | undefined;
-    if (text.startsWith('x-')) {
-      locationPath = this.getComponentLocationPath(workspace.root, text);
+    if (text.startsWith('x-jet-')) {
+      locationPath = this.getComponentLocationPath(workspace.root, text, true);
+    } else if (text.startsWith('x-')) {
+      locationPath = this.getComponentLocationPath(workspace.root, text, false);
     } else if (text.startsWith('"') || text.startsWith("'")) {
       const templateStr = text.replace(/\"/g, '').replace(/\'/g, '');
       locationPath = this.getTemplateLocationPath(workspace.root, templateStr);
@@ -48,11 +50,19 @@ export default class BladeDefinitionProvider implements DefinitionProvider {
     return null;
   }
 
-  private getComponentLocationPath(workspaceRootPath: string, componentTag: string): string | undefined {
-    const componentText = componentTag.replace(/^x-/, '');
-    let componentPath = this.componentNameToPath(componentText);
+  private getComponentLocationPath(
+    workspaceRootPath: string,
+    componentTag: string,
+    isJet: boolean
+  ): string | undefined {
+    let componentText = componentTag.replace(/^x-/, '');
+    if (isJet) {
+      componentText = componentTag.replace(/^x-jet-/, '');
+    }
+
+    let componentPath = this.componentNameToPath(componentText, isJet);
     if (!fs.existsSync(workspaceRootPath + componentPath)) {
-      componentPath = this.componentNameToIndexPath(componentText);
+      componentPath = this.componentNameToIndexPath(componentText, isJet);
       if (!fs.existsSync(workspaceRootPath + componentPath)) {
         return undefined;
       }
@@ -73,12 +83,20 @@ export default class BladeDefinitionProvider implements DefinitionProvider {
     return locationPath;
   }
 
-  private componentNameToPath(path: string): string {
-    return `/resources/views/components/${path.replace(/\./g, '/')}.blade.php`;
+  private componentNameToPath(path: string, isJet: boolean): string {
+    if (isJet) {
+      return `/resources/views/vendor/jetstream/components/${path.replace(/\./g, '/')}.blade.php`;
+    } else {
+      return `/resources/views/components/${path.replace(/\./g, '/')}.blade.php`;
+    }
   }
 
-  private componentNameToIndexPath(path: string): string {
-    return `/resources/views/components/${path.replace(/\./g, '/')}/index.blade.php`;
+  private componentNameToIndexPath(path: string, isJet: boolean): string {
+    if (isJet) {
+      return `/resources/views/vendor/jetstream/components/${path.replace(/\./g, '/')}/index.blade.php`;
+    } else {
+      return `/resources/views/components/${path.replace(/\./g, '/')}/index.blade.php`;
+    }
   }
 
   private templateNameToPath(path: string): string {

@@ -7,15 +7,17 @@ Laravel Blade Templates extension for [coc.nvim](https://github.com/neoclide/coc
 ## Features
 
 - Format
-  - by [blade-formatter](https://github.com/shufo/blade-formatter) (An opinionated blade template formatter for Laravel that respects readability)
+  - by [blade-formatter](https://github.com/shufo/blade-formatter)
 - Lint
-  - by [laravel-blade-linter](https://github.com/bdelespierre/laravel-blade-linter) (A simple Blade template syntax checker for Laravel)
+  - by [laravel-blade-linter](https://github.com/bdelespierre/laravel-blade-linter)
 - Completion
-  - Completion of snippets data via `completionItemProvider`
+  - Blade Snippets Completion
+  - Blade Directive Completion
 - Definition
   - Jump to template file specified by `@extends`, `@include` directive, etc.
   - Jump to "Blade Components" file.
-    - **[Warning]** Class-based Blade Components are not supported.
+    - **[Warning]** Class-based Components are not supported.
+  - Jump to "Jetstream Components" file.
 - Code Action
   - Add a blade comment to disable the formatting.
 - Hover
@@ -100,25 +102,25 @@ If "laravel-blade-linter" is not detected, the lint (diagnostics) feature is aut
 composer require --dev bdelespierre/laravel-blade-linter
 ```
 
-### completion (laravel-blade-snippets-vscode)
+### directive completion
+
+You can auto-complete by typing `@`.
+
+- [DEMO](https://github.com/yaegassy/coc-blade/pull/10)
+
+### snippets completion (laravel-blade-snippets-vscode)
 
 It uses snippet files from [onecentlin/laravel-blade-snippets-vscode](https://github.com/onecentlin/laravel-blade-snippets-vscode) to provide completion.
 
 You can auto-complete by typing `b:`, `lv:`, `Blade::`, `livewire::`.
 
-If you want to disable this completion feature, set `blade.completion.enable` to `false` in `coc-settings.json`.
-
-```json
-{
-  "blade.completion.enable": false
-}
-```
-
 ## Configuration options
 
 - `blade.enable`: Enable coc-blade extension, default: `true`
-- `blade.completion.enable`: Enable snippets completion, default: `true`
-- `blade.completion.exclude`: Exclude specific prefix in snippet completion, e.g. `["b:extends", "lv:url", "Blade::component"]`, default: `[]`
+- `blade.completion.enable`: Enable completion feature, default: `true`
+- `blade.completion.enableDirective`: Enable directive completion, default: `true`
+- `blade.completion.enableSnippets`: Enable snippets completion, default: `true`
+- `blade.completion.excludeSnippets`: Exclude specific prefix in snippet completion, e.g. `["b:extends", "lv:url", "Blade::component"]`, default: `[]`
 - `blade.bladeFormatter.enable`: Enable/Disable the formatting feature by `blade-formatter`, default: `true`
 - `blade.bladeFormatter.optIndentSize`: Indent size (`--indent-size`), valid type `integer` or `null`, default: `null`,
 - `blade.bladeFormatter.optWrapLineLength`: The length of line wrap size (`--wrap-line-length`), valid type `integer` or `null`, default: `null`

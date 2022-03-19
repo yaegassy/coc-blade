@@ -39,7 +39,7 @@ export class BladeSnippetsCompletionProvider implements CompletionItemProvider {
       path.join(this._context.extensionPath, 'data', 'snippets', 'blade.json'),
       path.join(this._context.extensionPath, 'data', 'snippets', 'livewire.json'),
     ];
-    this.excludeSnippetsKeys = workspace.getConfiguration('blade').get<string[]>('completion.exclude', []);
+    this.excludeSnippetsKeys = workspace.getConfiguration('blade').get<string[]>('completion.excludeSnippets', []);
   }
 
   async getSnippetsCompletionItems(snippetsFilePath: string) {

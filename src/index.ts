@@ -155,24 +155,28 @@ export async function activate(context: ExtensionContext): Promise<void> {
       }
     }
 
-    context.subscriptions.push(
-      languages.registerCompletionItemProvider(
-        'blade-snippets',
-        'blade',
-        ['blade'],
-        new BladeSnippetsCompletionProvider(context, outputChannel)
-      )
-    );
+    if (workspace.getConfiguration('blade').get<boolean>('completion.enableDirective', true)) {
+      context.subscriptions.push(
+        languages.registerCompletionItemProvider(
+          'blade-directive',
+          'blade',
+          ['blade'],
+          new BladeDirectiveCompletionProvider(context),
+          ['@']
+        )
+      );
+    }
 
-    context.subscriptions.push(
-      languages.registerCompletionItemProvider(
-        'blade-directive',
-        'blade',
-        ['blade'],
-        new BladeDirectiveCompletionProvider(context),
-        ['@']
-      )
-    );
+    if (workspace.getConfiguration('blade').get<boolean>('completion.enableSnippets', true)) {
+      context.subscriptions.push(
+        languages.registerCompletionItemProvider(
+          'blade-snippets',
+          'blade',
+          ['blade'],
+          new BladeSnippetsCompletionProvider(context, outputChannel)
+        )
+      );
+    }
   }
 
   //

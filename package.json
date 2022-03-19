@@ -92,9 +92,19 @@
         "blade.completion.enable": {
           "type": "boolean",
           "default": true,
-          "description": "Enable snippets completion"
+          "description": "Enable completion feature"
         },
-        "blade.completion.exclude": {
+        "blade.completion.enableDirective": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Enable directive completion"
+        },
+        "blade.completion.enableSnippets": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Enable snippets completion"
+        },
+        "blade.completion.excludeSnippets": {
           "type": "array",
           "default": [],
           "description": "Exclude specific prefix in snippet completion"

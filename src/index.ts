@@ -14,6 +14,7 @@ import path from 'path';
 
 import { BladeHoverProvider } from './hover/hover';
 import { BladeSnippetsCompletionProvider } from './completion/provider/bladeSnippets';
+import { BladeDirectiveCompletionProvider } from './completion/provider/bladeDirective';
 import { BladelinterLintEngine } from './lint';
 import BladeFormattingEditProvider, { doFormat, fullDocumentRange } from './format';
 import BladeDefinitionProvider from './definition';
@@ -119,10 +120,36 @@ export async function activate(context: ExtensionContext): Promise<void> {
   const isEnableCompletion = extConfig.get<boolean>('completion.enable', true);
   if (isEnableCompletion) {
     const { document } = await workspace.getCurrentState();
+    const indentexpr = await (await workspace.nvim.buffer).getOption('indentexpr');
     if (document.languageId === 'blade') {
       try {
-        await workspace.nvim.command('setlocal iskeyword+=:');
-        await workspace.nvim.command('setlocal iskeyword+=-');
+        workspace.registerAutocmd({
+          event: 'FileType',
+          pattern: 'blade',
+          request: true,
+          callback: async () => {
+            await workspace.nvim.command('setlocal iskeyword+=:');
+            await workspace.nvim.command('setlocal iskeyword+=-');
+          },
+        });
+
+        workspace.registerAutocmd({
+          event: 'InsertEnter',
+          pattern: '*.blade.php',
+          request: true,
+          callback: async () => {
+            await workspace.nvim.command('setlocal indentexpr=');
+          },
+        });
+
+        workspace.registerAutocmd({
+          event: 'InsertLeave',
+          pattern: '*.blade.php',
+          request: true,
+          callback: async () => {
+            await workspace.nvim.command(`setlocal indentexpr=${indentexpr}`);
+          },
+        });
       } catch {
         // noop
       }
@@ -134,6 +161,16 @@ export async function activate(context: ExtensionContext): Promise<void> {
         'blade',
         ['blade'],
         new BladeSnippetsCompletionProvider(context, outputChannel)
+      )
+    );
+
+    context.subscriptions.push(
+      languages.registerCompletionItemProvider(
+        'blade-directive',
+        'blade',
+        ['blade'],
+        new BladeDirectiveCompletionProvider(context),
+        ['@']
       )
     );
   }

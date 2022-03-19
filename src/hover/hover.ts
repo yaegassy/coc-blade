@@ -43,7 +43,7 @@ export class BladeHoverProvider implements HoverProvider {
         const markdownPath = path.join(
           this.context.extensionPath,
           'data',
-          'hover',
+          'documantation',
           hoverLang,
           // File names remove the @ and $.
           defineHovers[h].prefix.replace(/@|\$/, '') + '.md'

@@ -46,7 +46,7 @@ Plug 'yaegassy/coc-blade', {'do': 'yarn install --frozen-lockfile'}
 
 The "filetype" must be `blade` for this extension to work.
 
-Set up `autocmd BufNewFile,BufRead *.blade.php set filetype=blade` in `.vimrc/init.vim`, Or install "blade" related plugin (e.g. [jwalton512/vim-blade](https://github.com/jwalton512/vim-blade) or [sheerun/vim-polyglot](https://github.com/sheerun/vim-polyglot)).
+Install "blade" related plugin (e.g. [jwalton512/vim-blade](https://github.com/jwalton512/vim-blade) or [sheerun/vim-polyglot](https://github.com/sheerun/vim-polyglot)).
 
 ## Usage Topics
 

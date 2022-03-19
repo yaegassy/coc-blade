@@ -1,0 +1,5 @@
+{
+  "@livewireStyles": "Livewire Styles directive",
+  "@livewireScripts": "Livewire Scripts directive",
+  "@livewire": "Livewire nesting components"
+}

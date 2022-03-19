@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 const fixSnippets = (filename) => {
   fs.readFile(filename, 'utf8', (err, data) => {
@@ -16,7 +17,7 @@ const fixSnippets = (filename) => {
   });
 };
 
-fixSnippets('snippets/snippets.json');
-fixSnippets('snippets/helpers.json');
-fixSnippets('snippets/blade.json');
-fixSnippets('snippets/livewire.json');
+fixSnippets(path.join(path.dirname(__dirname), 'data', 'snippets', 'snippets.json'));
+fixSnippets(path.join(path.dirname(__dirname), 'data', 'snippets', 'helpers.json'));
+fixSnippets(path.join(path.dirname(__dirname), 'data', 'snippets', 'blade.json'));
+fixSnippets(path.join(path.dirname(__dirname), 'data', 'snippets', 'livewire.json'));

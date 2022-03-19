@@ -34,10 +34,10 @@ export class BladeSnippetsCompletionProvider implements CompletionItemProvider {
     this._context = context;
     this._outputChannel = outputChannel;
     this.snippetsFilePaths = [
-      path.join(this._context.extensionPath, 'snippets', 'snippets.json'),
-      path.join(this._context.extensionPath, 'snippets', 'helpers.json'),
-      path.join(this._context.extensionPath, 'snippets', 'blade.json'),
-      path.join(this._context.extensionPath, 'snippets', 'livewire.json'),
+      path.join(this._context.extensionPath, 'data', 'snippets', 'snippets.json'),
+      path.join(this._context.extensionPath, 'data', 'snippets', 'helpers.json'),
+      path.join(this._context.extensionPath, 'data', 'snippets', 'blade.json'),
+      path.join(this._context.extensionPath, 'data', 'snippets', 'livewire.json'),
     ];
     this.excludeSnippetsKeys = workspace.getConfiguration('blade').get<string[]>('completion.exclude', []);
   }

@@ -13,7 +13,7 @@ import fs from 'fs';
 import path from 'path';
 
 import { BladeHoverProvider } from './hover/hover';
-import { BladeSnippetsCompletionProvider } from './completion/bladeSnippetsCompletion';
+import { BladeSnippetsCompletionProvider } from './completion/provider/bladeSnippets';
 import { BladelinterLintEngine } from './lint';
 import BladeFormattingEditProvider, { doFormat, fullDocumentRange } from './format';
 import BladeDefinitionProvider from './definition';

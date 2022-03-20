@@ -24,7 +24,7 @@ const generate = (filename, outputPath) => {
         if (matches) {
           matches.forEach((v) => {
             if (v !== '@{') {
-              output[v] = jsonData[key]['description'];
+              output[v] = v;
             }
           });
         }

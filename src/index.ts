@@ -123,6 +123,9 @@ export async function activate(context: ExtensionContext): Promise<void> {
     const indentexpr = await (await workspace.nvim.buffer).getOption('indentexpr');
     if (document.languageId === 'blade') {
       try {
+        await workspace.nvim.command('setlocal iskeyword+=:');
+        await workspace.nvim.command('setlocal iskeyword+=-');
+
         workspace.registerAutocmd({
           event: 'FileType',
           pattern: 'blade',

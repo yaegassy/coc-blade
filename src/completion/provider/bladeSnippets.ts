@@ -15,6 +15,7 @@ import {
 
 import path from 'path';
 import fs from 'fs';
+import { getConfigBladeCompletionExcludeSnippets } from '../../config';
 
 type SnippetsJsonType = {
   [key: string]: {
@@ -39,7 +40,7 @@ export class BladeSnippetsCompletionProvider implements CompletionItemProvider {
       path.join(this._context.extensionPath, 'data', 'snippets', 'blade.json'),
       path.join(this._context.extensionPath, 'data', 'snippets', 'livewire.json'),
     ];
-    this.excludeSnippetsKeys = workspace.getConfiguration('blade').get<string[]>('completion.excludeSnippets', []);
+    this.excludeSnippetsKeys = getConfigBladeCompletionExcludeSnippets();
   }
 
   async getSnippetsCompletionItems(snippetsFilePath: string) {

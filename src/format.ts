@@ -15,6 +15,12 @@ import path from 'path';
 import ignore from 'ignore';
 import { createSyncFn } from 'synckit';
 import { FormatterOption } from 'blade-formatter';
+import {
+  getConfigBladeFormatterOptIndentSize,
+  getConfigBladeFormatterOptSortTailwindcssClasses,
+  getConfigBladeFormatterOptWrapAttributes,
+  getConfigBladeFormatterOptWrapLineLength,
+} from './config';
 
 export async function doFormat(
   context: ExtensionContext,
@@ -30,17 +36,10 @@ export async function doFormat(
     return originalText;
   }
 
-  const extConfig = workspace.getConfiguration('blade.bladeFormatter');
-
-  const defaultIndentSize = 4;
-  const defaultWrapLineLength = 120;
-  const defaultWrapAttributes = 'auto';
-  const defaultSortTailwindcssClasses = false;
-
-  const formatIndentSize = extConfig.get('optIndentSize', defaultIndentSize);
-  const formatWrapLineLength = extConfig.get('optWrapLineLength', defaultWrapLineLength);
-  const formatWrapAttributes = extConfig.get('optWrapAttributes', defaultWrapAttributes);
-  const formatSortTailwindcssClasses = extConfig.get('optSortTailwindcssClasses', defaultSortTailwindcssClasses);
+  const formatIndentSize = getConfigBladeFormatterOptIndentSize();
+  const formatWrapLineLength = getConfigBladeFormatterOptWrapLineLength();
+  const formatWrapAttributes = getConfigBladeFormatterOptWrapAttributes();
+  const formatSortTailwindcssClasses = getConfigBladeFormatterOptSortTailwindcssClasses();
 
   const options: FormatterOption = {
     indentSize: formatIndentSize,

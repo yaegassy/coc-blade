@@ -19,6 +19,14 @@ import { BladelinterLintEngine } from './lint';
 import BladeFormattingEditProvider, { doFormat, fullDocumentRange } from './format';
 import BladeDefinitionProvider from './definition';
 import { BladeCodeActionProvider } from './action';
+import {
+  getConfigBladeCompletionEnable,
+  getConfigBladeCompletionEnableDirective,
+  getConfigBladeCompletionEnableSnippets,
+  getConfigBladeEnable,
+  getConfigBladeFormatterEnable,
+  getConfigBladeLinterEnable,
+} from './config';
 
 let formatterHandler: undefined | Disposable;
 
@@ -30,12 +38,9 @@ function disposeHandlers(): void {
 }
 
 export async function activate(context: ExtensionContext): Promise<void> {
-  const extConfig = workspace.getConfiguration('blade');
-  const isEnable = extConfig.get<boolean>('enable', true);
-  if (!isEnable) return;
+  if (!getConfigBladeEnable()) return;
 
   const outputChannel = window.createOutputChannel('blade');
-  const { subscriptions } = context;
 
   const extensionStoragePath = context.storagePath;
   if (!fs.existsSync(extensionStoragePath)) {
@@ -56,8 +61,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
   //
   // format
   //
-  const isEnableBladeFormatter = extConfig.get<boolean>('bladeFormatter.enable', true);
-  if (isEnableBladeFormatter) {
+  if (getConfigBladeFormatterEnable()) {
     const editProvider = new BladeFormattingEditProvider(context, outputChannel);
     const priority = 1;
 
@@ -83,8 +87,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
   //
   // lint
   //
-  const isEnableBladeLinter = extConfig.get<boolean>('bladeLinter.enable', true);
-  if (isEnableBladeLinter) {
+  if (getConfigBladeLinterEnable()) {
     if (
       fs.existsSync(path.join(workspace.root, 'artisan')) &&
       fs.existsSync(path.join(workspace.root, 'vendor', 'bdelespierre', 'laravel-blade-linter'))
@@ -100,7 +103,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
           await engine.lint(e);
         },
         null,
-        subscriptions
+        context.subscriptions
       );
 
       // onSave
@@ -109,7 +112,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
           await engine.lint(e);
         },
         null,
-        subscriptions
+        context.subscriptions
       );
     }
   }
@@ -117,8 +120,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
   //
   // completion
   //
-  const isEnableCompletion = extConfig.get<boolean>('completion.enable', true);
-  if (isEnableCompletion) {
+  if (getConfigBladeCompletionEnable()) {
     const { document } = await workspace.getCurrentState();
     const indentexpr = await (await workspace.nvim.buffer).getOption('indentexpr');
     if (document.languageId === 'blade') {
@@ -158,7 +160,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
       }
     }
 
-    if (workspace.getConfiguration('blade').get<boolean>('completion.enableDirective', true)) {
+    if (getConfigBladeCompletionEnableDirective()) {
       context.subscriptions.push(
         languages.registerCompletionItemProvider(
           'blade-directive',
@@ -170,7 +172,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
       );
     }
 
-    if (workspace.getConfiguration('blade').get<boolean>('completion.enableSnippets', true)) {
+    if (getConfigBladeCompletionEnableSnippets()) {
       context.subscriptions.push(
         languages.registerCompletionItemProvider(
           'blade-snippets',

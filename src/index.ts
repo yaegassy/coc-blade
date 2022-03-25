@@ -12,21 +12,31 @@ import {
 import fs from 'fs';
 import path from 'path';
 
-import { BladeHoverProvider } from './hover/hover';
-import { BladeSnippetsCompletionProvider } from './completion/provider/bladeSnippets';
-import { BladeDirectiveCompletionProvider } from './completion/provider/bladeDirective';
-import { BladelinterLintEngine } from './lint';
-import BladeFormattingEditProvider, { doFormat, fullDocumentRange } from './format';
-import BladeDefinitionProvider from './definition';
-import { BladeCodeActionProvider } from './action';
 import {
   getConfigBladeCompletionEnable,
   getConfigBladeCompletionEnableDirective,
+  getConfigBladeCompletionEnableLivewireDirectiveComponent,
+  getConfigBladeCompletionEnableLivewireTag,
+  getConfigBladeCompletionEnableLivewireWire,
   getConfigBladeCompletionEnableSnippets,
   getConfigBladeEnable,
   getConfigBladeFormatterEnable,
   getConfigBladeLinterEnable,
 } from './config';
+
+import { BladeHoverProvider } from './hover/hover';
+import { BladelinterLintEngine } from './lint';
+import BladeFormattingEditProvider, { doFormat, fullDocumentRange } from './format';
+import BladeDefinitionProvider from './definition';
+import { BladeCodeActionProvider } from './action';
+import { BladeSnippetsCompletionProvider } from './completion/provider/bladeSnippets';
+import { BladeDirectiveCompletionProvider } from './completion/provider/bladeDirective';
+import { LivewireTagProvider } from './completion/provider/livewireTag';
+import { LivewireWireProvider } from './completion/provider/livewireWire';
+import { LivewireDirectiveComponentProvider } from './completion/provider/livewireDirectiveComponent';
+import { LivewireTagComponentProvider } from './completion/provider/livewireTagComponent';
+import { LivewireWireActionProvider } from './completion/provider/livewireWireAction';
+import { LivewireWireEventProvider } from './completion/provider/livewireWireEvent';
 
 let formatterHandler: undefined | Disposable;
 
@@ -127,6 +137,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
       try {
         await workspace.nvim.command('setlocal iskeyword+=:');
         await workspace.nvim.command('setlocal iskeyword+=-');
+        await workspace.nvim.command('setlocal iskeyword+=.');
 
         workspace.registerAutocmd({
           event: 'FileType',
@@ -135,6 +146,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
           callback: async () => {
             await workspace.nvim.command('setlocal iskeyword+=:');
             await workspace.nvim.command('setlocal iskeyword+=-');
+            await workspace.nvim.command('setlocal iskeyword+=.');
           },
         });
 
@@ -160,6 +172,17 @@ export async function activate(context: ExtensionContext): Promise<void> {
       }
     }
 
+    if (getConfigBladeCompletionEnableSnippets()) {
+      context.subscriptions.push(
+        languages.registerCompletionItemProvider(
+          'blade-snippets',
+          'blade',
+          ['blade'],
+          new BladeSnippetsCompletionProvider(context, outputChannel)
+        )
+      );
+    }
+
     if (getConfigBladeCompletionEnableDirective()) {
       context.subscriptions.push(
         languages.registerCompletionItemProvider(
@@ -172,13 +195,60 @@ export async function activate(context: ExtensionContext): Promise<void> {
       );
     }
 
-    if (getConfigBladeCompletionEnableSnippets()) {
+    if (getConfigBladeCompletionEnableLivewireDirectiveComponent()) {
       context.subscriptions.push(
         languages.registerCompletionItemProvider(
-          'blade-snippets',
-          'blade',
+          'livewire-directive-component',
+          'livewire',
           ['blade'],
-          new BladeSnippetsCompletionProvider(context, outputChannel)
+          new LivewireDirectiveComponentProvider(),
+          ['(']
+        )
+      );
+    }
+
+    if (getConfigBladeCompletionEnableLivewireTag()) {
+      context.subscriptions.push(
+        languages.registerCompletionItemProvider('livewire-tag', 'livewire', ['blade'], new LivewireTagProvider(), [
+          '<',
+        ])
+      );
+
+      context.subscriptions.push(
+        languages.registerCompletionItemProvider(
+          'livewire-tag-component',
+          'livewire',
+          ['blade'],
+          new LivewireTagComponentProvider(),
+          [...':.-abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_']
+        )
+      );
+    }
+
+    if (getConfigBladeCompletionEnableLivewireWire()) {
+      context.subscriptions.push(
+        languages.registerCompletionItemProvider('livewire-wire', 'livewire', ['blade'], new LivewireWireProvider(), [
+          'w',
+        ])
+      );
+
+      context.subscriptions.push(
+        languages.registerCompletionItemProvider(
+          'livewire-wire-event',
+          'livewire',
+          ['blade'],
+          new LivewireWireEventProvider(),
+          [':', '.']
+        )
+      );
+
+      context.subscriptions.push(
+        languages.registerCompletionItemProvider(
+          'livewire-wire-action',
+          'livewire',
+          ['blade'],
+          new LivewireWireActionProvider(),
+          ['=', "'", '"']
         )
       );
     }

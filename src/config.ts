@@ -16,16 +16,28 @@ export function getConfigBladeCompletionEnable() {
   return workspace.getConfiguration('blade').get<boolean>('completion.enable', true);
 }
 
-export function getConfigBladeCompletionEnableDirective() {
-  return workspace.getConfiguration('blade').get<boolean>('completion.enableDirective', true);
-}
-
 export function getConfigBladeCompletionEnableSnippets() {
   return workspace.getConfiguration('blade').get<boolean>('completion.enableSnippets', true);
 }
 
+export function getConfigBladeCompletionEnableDirective() {
+  return workspace.getConfiguration('blade').get<boolean>('completion.enableDirective', true);
+}
+
 export function getConfigBladeCompletionExcludeSnippets() {
   return workspace.getConfiguration('blade').get<string[]>('completion.excludeSnippets', []);
+}
+
+export function getConfigBladeCompletionEnableLivewireDirectiveComponent() {
+  return workspace.getConfiguration('blade').get<boolean>('completion.enableLivewireDirectiveComponent', true);
+}
+
+export function getConfigBladeCompletionEnableLivewireTag() {
+  return workspace.getConfiguration('blade').get<boolean>('completion.enableLivewireTag', true);
+}
+
+export function getConfigBladeCompletionEnableLivewireWire() {
+  return workspace.getConfiguration('blade').get<boolean>('completion.enableLivewireWire', true);
 }
 
 export function getConfigBladeFormatterOptIndentSize() {

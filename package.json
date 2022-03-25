@@ -94,11 +94,6 @@
           "default": true,
           "description": "Enable completion feature"
         },
-        "blade.completion.enableDirective": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Enable directive completion"
-        },
         "blade.completion.enableSnippets": {
           "type": "boolean",
           "default": true,
@@ -108,6 +103,26 @@
           "type": "array",
           "default": [],
           "description": "Exclude specific prefix in snippet completion"
+        },
+        "blade.completion.enableDirective": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Enable directive completion"
+        },
+        "blade.completion.enableLivewireDirectiveComponent": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Enable Livewire directive component completion"
+        },
+        "blade.completion.enableLivewireTag": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Enable Livewire tag completion"
+        },
+        "blade.completion.enableLivewireWire": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Enable Livewire wire completion"
         },
         "blade.bladeFormatter.enable": {
           "type": "boolean",

@@ -120,11 +120,15 @@ You can auto-complete by typing `@livewire(`.
 
 Obtains the component name registered in the project and auto-completion. Parse `bootstrap/cache/livewire-components.php`.
 
+- [DEMO](https://github.com/yaegassy/coc-blade/pull/11#issuecomment-1078704670)
+
 ### Livewire tag completion
 
 You can auto-complete by typing `<livewire:`.
 
 Obtains the component name registered in the project and auto-completion. Parse `bootstrap/cache/livewire-components.php` files.
+
+- [DEMO](https://github.com/yaegassy/coc-blade/pull/11#issuecomment-1078704901)
 
 ### Livewire wire completion
 
@@ -133,6 +137,8 @@ You can auto-complete by typing `wire:`, `wire:click="`, `wire:model="`.
 Event, Action, and Property are supported.
 
 Parses `bootstrap/cache/livewire-components.php` files and target component classes.
+
+- [DEMO](https://github.com/yaegassy/coc-blade/pull/11#issuecomment-1078705276)
 
 ## Configuration options
 

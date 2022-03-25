@@ -13,6 +13,9 @@ Laravel Blade Templates extension for [coc.nvim](https://github.com/neoclide/coc
 - Completion
   - Blade Snippets Completion
   - Blade Directive Completion
+  - Livewire directive component completion
+  - Livewire tag completion
+  - Livewire wire completion
 - Definition
   - Jump to template file specified by `@extends`, `@include` directive, etc.
   - Jump to "Blade Components" file.

@@ -102,17 +102,37 @@ If "laravel-blade-linter" is not detected, the lint (diagnostics) feature is aut
 composer require --dev bdelespierre/laravel-blade-linter
 ```
 
+### snippets completion (laravel-blade-snippets-vscode)
+
+You can auto-complete by typing `b:`, `lv:`, `Blade::`, `livewire::`.
+
+It uses snippet files from [onecentlin/laravel-blade-snippets-vscode](https://github.com/onecentlin/laravel-blade-snippets-vscode) to provide completion.
+
 ### directive completion
 
 You can auto-complete by typing `@`.
 
 - [DEMO](https://github.com/yaegassy/coc-blade/pull/10)
 
-### snippets completion (laravel-blade-snippets-vscode)
+### Livewire directive component completion
 
-It uses snippet files from [onecentlin/laravel-blade-snippets-vscode](https://github.com/onecentlin/laravel-blade-snippets-vscode) to provide completion.
+You can auto-complete by typing `@livewire(`.
 
-You can auto-complete by typing `b:`, `lv:`, `Blade::`, `livewire::`.
+Obtains the component name registered in the project and auto-completion. Parse `bootstrap/cache/livewire-components.php`.
+
+### Livewire tag completion
+
+You can auto-complete by typing `<livewire:`.
+
+Obtains the component name registered in the project and auto-completion. Parse `bootstrap/cache/livewire-components.php` files.
+
+### Livewire wire completion
+
+You can auto-complete by typing `wire:`, `wire:click="`, `wire:model="`.
+
+Event, Action, and Property are supported.
+
+Parses `bootstrap/cache/livewire-components.php` files and target component classes.
 
 ## Configuration options
 

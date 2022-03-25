@@ -1,0 +1,146 @@
+import {
+  LinesTextDocument,
+  Position,
+  CancellationToken,
+  CompletionContext,
+  CompletionItem,
+  CompletionItemKind,
+} from 'coc.nvim';
+
+export class LivewireWireEventProvider {
+  async provideCompletionItems(
+    document: LinesTextDocument,
+    position: Position,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    token: CancellationToken,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    context: CompletionContext
+  ) {
+    const linePrefix = document.lineAt(position).text.slice(0, position.character);
+    const match = /(?:^|\s+)wire:(\w*)(?:(?:\.?)([A-Za-z0-9_.]*))?$/g.exec(linePrefix);
+    if (!match || match.length < 3) {
+      return [];
+    }
+
+    const attributes: string[] = [
+      'key',
+      'model',
+      'model.debounce',
+      'model.lazy',
+      'poll',
+      'init',
+      'loading',
+      'loading.class',
+      'loading.attr',
+      'loading.remove',
+      'loading.class.remove',
+      'dirty',
+      'dirty.class',
+      'dirty.attr',
+      'dirty.class.remove',
+      'offline.class',
+      'off.attr',
+      'offline.class.remove',
+      'target',
+      'ignore',
+      'ignore.self',
+      'abort',
+      'afterprint',
+      'animationend',
+      'animationiteration',
+      'animationstart',
+      'beforeprint',
+      'beforeunload',
+      'blur',
+      'canplay',
+      'canplaythrough',
+      'change',
+      'click',
+      'click.prefetch',
+      'contextmenu',
+      'copy',
+      'cut',
+      'dblclick',
+      'drag',
+      'dragend',
+      'dragenter',
+      'dragleave',
+      'dragover',
+      'dragstart',
+      'drop',
+      'durationchange',
+      'ended',
+      'error',
+      'focus',
+      'focusin',
+      'focusout',
+      'fullscreenchange',
+      'fullscreenerror',
+      'hashchange',
+      'input',
+      'invalid',
+      'keydown',
+      'keydown.enter',
+      'keypress',
+      'keyup',
+      'load',
+      'loadeddata',
+      'loadedmetadata',
+      'loadstart',
+      'message',
+      'mousedown',
+      'mouseenter',
+      'mouseleave',
+      'mousemove',
+      'mouseover',
+      'mouseout',
+      'mouseup',
+      'offline',
+      'online',
+      'open',
+      'pagehide',
+      'pageshow',
+      'paste',
+      'pause',
+      'play',
+      'playing',
+      'popstate',
+      'progress',
+      'ratechange',
+      'resize',
+      'reset',
+      'scroll',
+      'search',
+      'seeked',
+      'seeking',
+      'select',
+      'show',
+      'stalled',
+      'storage',
+      'submit',
+      'suspend',
+      'timeupdate',
+      'toggle',
+      'touchcancel',
+      'touchend',
+      'touchmove',
+      'touchstart',
+      'transitionend',
+      'unload',
+      'volumechange',
+      'waiting',
+      'wheel',
+    ];
+
+    const completionList = attributes.map((attribute) => {
+      const item: CompletionItem = {
+        label: 'wire:' + attribute,
+        kind: CompletionItemKind.Field,
+      };
+
+      return item;
+    });
+
+    return completionList;
+  }
+}

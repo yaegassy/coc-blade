@@ -132,12 +132,20 @@ export async function activate(context: ExtensionContext): Promise<void> {
   //
   if (getConfigBladeCompletionEnable()) {
     const { document } = await workspace.getCurrentState();
-    const indentexpr = await (await workspace.nvim.buffer).getOption('indentexpr');
     if (document.languageId === 'blade') {
+      const existsBladeIndent = (await workspace.nvim.eval('exists("*GetBladeIndent")')) as number;
+      let indentexpr: string;
+      if (existsBladeIndent === 1) {
+        indentexpr = 'GetBladeIndent()';
+      } else {
+        indentexpr = (await (await workspace.nvim.buffer).getOption('indentexpr')) as string;
+      }
+
       try {
         await workspace.nvim.command('setlocal iskeyword+=:');
         await workspace.nvim.command('setlocal iskeyword+=-');
         await workspace.nvim.command('setlocal iskeyword+=.');
+        await workspace.nvim.command(`setlocal indentexpr=${indentexpr}`);
 
         workspace.registerAutocmd({
           event: 'FileType',

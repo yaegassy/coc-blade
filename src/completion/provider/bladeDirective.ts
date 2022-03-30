@@ -8,11 +8,12 @@ import {
   ExtensionContext,
   LinesTextDocument,
   Position,
+  TextEdit,
   workspace,
 } from 'coc.nvim';
 
-import path from 'path';
 import fs from 'fs';
+import path from 'path';
 
 type CompletionJsonType = {
   [key: string]: string;
@@ -30,11 +31,12 @@ export class BladeDirectiveCompletionProvider implements CompletionItemProvider 
     ];
   }
 
-  async getCompletionItems(completionDataPath: string) {
+  async getCompletionItems(completionDataPath: string, text: string, position: Position) {
     const completionList: CompletionItem[] = [];
     if (fs.existsSync(completionDataPath)) {
       const completionJsonText = fs.readFileSync(completionDataPath, 'utf8');
       const completionJson: CompletionJsonType = JSON.parse(completionJsonText);
+
       if (completionJson) {
         Object.keys(completionJson).map((key) => {
           const docDataPath = path.join(
@@ -53,11 +55,20 @@ export class BladeDirectiveCompletionProvider implements CompletionItemProvider 
             documentationText = undefined;
           }
 
+          const edit: TextEdit = {
+            range: {
+              start: { line: position.line, character: position.character - text.length },
+              end: position,
+            },
+            newText: key,
+          };
+
           completionList.push({
             label: key,
             kind: CompletionItemKind.Text,
-            insertText: key.replace('@', ''),
+            insertText: key,
             detail: completionJson[key],
+            textEdit: edit,
             documentation: documentationText,
           });
         });
@@ -81,14 +92,14 @@ export class BladeDirectiveCompletionProvider implements CompletionItemProvider 
     if (!doc) return [];
     const wordRange = doc.getWordRangeAtPosition(Position.create(position.line, position.character - 1), '@');
     if (!wordRange) return [];
+
     const text = document.getText(wordRange) || '';
     if (!text) return [];
-
     if (!text.startsWith('@')) return [];
 
     const completionItemList: CompletionItem[] = [];
     this.directiveJsonPaths.forEach((v) => {
-      this.getCompletionItems(v).then((vv) => completionItemList.push(...vv));
+      this.getCompletionItems(v, text, position).then((vv) => completionItemList.push(...vv));
     });
     return completionItemList;
   }

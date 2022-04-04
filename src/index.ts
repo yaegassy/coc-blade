@@ -187,7 +187,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
           'blade',
           ['blade'],
           new BladeSnippetsCompletionProvider(context, outputChannel),
-          [':']
+          [':', 'b']
         )
       );
     }
@@ -228,8 +228,8 @@ export async function activate(context: ExtensionContext): Promise<void> {
           'livewire-tag-component',
           'livewire',
           ['blade'],
-          new LivewireTagComponentProvider(),
-          [...':.-abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_']
+          new LivewireTagComponentProvider()
+          //[...':.-abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_']
         )
       );
     }

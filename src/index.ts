@@ -187,7 +187,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
           'blade',
           ['blade'],
           new BladeSnippetsCompletionProvider(context, outputChannel),
-          [':', 'b']
+          [':']
         )
       );
     }

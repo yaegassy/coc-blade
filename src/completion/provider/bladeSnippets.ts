@@ -10,6 +10,7 @@ import {
   OutputChannel,
   Position,
   TextDocument,
+  TextEdit,
   workspace,
 } from 'coc.nvim';
 
@@ -43,7 +44,7 @@ export class BladeSnippetsCompletionProvider implements CompletionItemProvider {
     this.excludeSnippetsKeys = getConfigBladeCompletionExcludeSnippets();
   }
 
-  async getSnippetsCompletionItems(snippetsFilePath: string) {
+  async getSnippetsCompletionItems(snippetsFilePath: string, text: string, position: Position) {
     const snippetsCompletionList: CompletionItem[] = [];
     if (fs.existsSync(snippetsFilePath)) {
       const snippetsJsonText = fs.readFileSync(snippetsFilePath, 'utf8');
@@ -61,16 +62,24 @@ export class BladeSnippetsCompletionProvider implements CompletionItemProvider {
             snippetsText = body;
           }
 
-          // In this extention, "insertText" is handled by "resolveCompletionItem".
-          // In "provideCompletionItems", if "insertText" contains only snippets data,
+          const edit: TextEdit = {
+            range: {
+              start: { line: position.line, character: position.character - text.length },
+              end: position,
+            },
+            newText: snippetsJson[key].prefix,
+          };
+
+          // In this extention, "insertText" or "TextEdit" is handled by "resolveCompletionItem".
+          // In "provideCompletionItems", if "insertText" or "TextEdit" contains only snippets data,
           // it will be empty when the candidate is selected.
           snippetsCompletionList.push({
             label: snippetsJson[key].prefix,
             kind: CompletionItemKind.Snippet,
-            filterText: snippetsJson[key].prefix,
             detail: snippetsJson[key].description,
             documentation: { kind: 'markdown', value: '```blade\n' + snippetsText + '\n```' },
             insertTextFormat: InsertTextFormat.Snippet,
+            textEdit: edit,
             // The "snippetsText" that will eventually be added to the insertText
             // will be stored in the "data" key
             data: snippetsText,
@@ -99,19 +108,20 @@ export class BladeSnippetsCompletionProvider implements CompletionItemProvider {
 
     const text = document.getText(wordRange) || '';
     if (!text) return [];
-    if (!text.match(/(b:|lv:|livewire:|Blade::).*$/)) return [];
+    // MEMO: Cannot control correctly because multiple completionProvider are registered...
+    //if (!text.match(/(b:|lv:|livewire:|Blade::).*$/)) return [];
     if (text.match(/(<livewire:).*$/)) return [];
 
     const completionItemList: CompletionItem[] = [];
     this.snippetsFilePaths.forEach((v) => {
-      this.getSnippetsCompletionItems(v).then((vv) => completionItemList.push(...vv));
+      this.getSnippetsCompletionItems(v, text, position).then((vv) => completionItemList.push(...vv));
     });
     return completionItemList;
   }
 
   async resolveCompletionItem(item: CompletionItem): Promise<CompletionItem> {
-    if (item.kind === CompletionItemKind.Snippet) {
-      item.insertText = item.data;
+    if (item.textEdit) {
+      item.textEdit.newText = item.data;
     }
     return item;
   }

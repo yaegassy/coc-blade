@@ -1,10 +1,10 @@
 import {
-  LinesTextDocument,
-  Position,
   CancellationToken,
   CompletionContext,
   CompletionItem,
   CompletionItemKind,
+  LinesTextDocument,
+  Position,
 } from 'coc.nvim';
 
 export class LivewireWireEventProvider {

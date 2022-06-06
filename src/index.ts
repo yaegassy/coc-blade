@@ -24,19 +24,19 @@ import {
   getConfigBladeLinterEnable,
 } from './config';
 
-import { BladeHoverProvider } from './hover/hover';
-import { BladelinterLintEngine } from './lint';
-import BladeFormattingEditProvider, { doFormat, fullDocumentRange } from './format';
-import BladeDefinitionProvider from './definition';
 import { BladeCodeActionProvider } from './action';
-import { BladeSnippetsCompletionProvider } from './completion/provider/bladeSnippets';
 import { BladeDirectiveCompletionProvider } from './completion/provider/bladeDirective';
-import { LivewireTagProvider } from './completion/provider/livewireTag';
-import { LivewireWireProvider } from './completion/provider/livewireWire';
+import { BladeSnippetsCompletionProvider } from './completion/provider/bladeSnippets';
 import { LivewireDirectiveComponentProvider } from './completion/provider/livewireDirectiveComponent';
+import { LivewireTagProvider } from './completion/provider/livewireTag';
 import { LivewireTagComponentProvider } from './completion/provider/livewireTagComponent';
+import { LivewireWireProvider } from './completion/provider/livewireWire';
 import { LivewireWireActionProvider } from './completion/provider/livewireWireAction';
 import { LivewireWireEventProvider } from './completion/provider/livewireWireEvent';
+import BladeDefinitionProvider from './definition';
+import BladeFormattingEditProvider, { doFormat, fullDocumentRange } from './format';
+import { BladeHoverProvider } from './hover/hover';
+import { BladelinterLintEngine } from './lint';
 
 let formatterHandler: undefined | Disposable;
 

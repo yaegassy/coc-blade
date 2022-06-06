@@ -1,12 +1,12 @@
 import {
-  LinesTextDocument,
-  Position,
   CancellationToken,
   CompletionContext,
   CompletionItem,
   CompletionItemKind,
-  SnippetString,
   InsertTextFormat,
+  LinesTextDocument,
+  Position,
+  SnippetString,
   workspace,
 } from 'coc.nvim';
 

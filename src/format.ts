@@ -1,20 +1,20 @@
 import {
   DocumentFormattingEditProvider,
+  ExtensionContext,
+  OutputChannel,
   Range,
   TextDocument,
   TextEdit,
   Uri,
   window,
   workspace,
-  ExtensionContext,
-  OutputChannel,
 } from 'coc.nvim';
 
-import fs from 'fs';
-import path from 'path';
-import ignore from 'ignore';
-import { createSyncFn } from 'synckit';
 import { FormatterOption } from 'blade-formatter';
+import fs from 'fs';
+import ignore from 'ignore';
+import path from 'path';
+import { createSyncFn } from 'synckit';
 import {
   getConfigBladeFormatterOptIndentSize,
   getConfigBladeFormatterOptSortTailwindcssClasses,

@@ -1,12 +1,12 @@
 import {
-  LinesTextDocument,
-  Position,
   CancellationToken,
   CompletionContext,
   CompletionItem,
   CompletionItemKind,
-  SnippetString,
   InsertTextFormat,
+  LinesTextDocument,
+  Position,
+  SnippetString,
   Uri,
 } from 'coc.nvim';
 import { getComponentActionsFromView, getComponentPropertiesFromView } from '../util/livewireUtil';

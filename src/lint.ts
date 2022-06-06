@@ -2,12 +2,12 @@ import {
   DiagnosticCollection,
   DiagnosticSeverity,
   languages,
+  OutputChannel,
   Position,
   Range,
   TextDocument,
-  workspace,
-  OutputChannel,
   Uri,
+  workspace,
 } from 'coc.nvim';
 
 import cp from 'child_process';

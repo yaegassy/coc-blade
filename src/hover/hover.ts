@@ -1,9 +1,9 @@
-import { ExtensionContext, workspace, HoverProvider, TextDocument, Position, Hover } from 'coc.nvim';
+import { ExtensionContext, Hover, HoverProvider, Position, TextDocument, workspace } from 'coc.nvim';
 
 import fs from 'fs';
 import path from 'path';
 
-import { bladeHovers, BladeHover } from './lang';
+import { BladeHover, bladeHovers } from './lang';
 
 export class BladeHoverProvider implements HoverProvider {
   private context: ExtensionContext;

@@ -189,7 +189,7 @@
     ]
   },
   "dependencies": {
-    "blade-formatter": "^1.26.3",
+    "blade-formatter": "^1.26.5",
     "ignore": "^5.2.0",
     "synckit": "^0.6.0"
   }

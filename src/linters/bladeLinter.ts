@@ -1,6 +1,7 @@
 import {
   DiagnosticCollection,
   DiagnosticSeverity,
+  ExtensionContext,
   languages,
   OutputChannel,
   Position,
@@ -11,8 +12,44 @@ import {
 } from 'coc.nvim';
 
 import cp from 'child_process';
+import fs from 'fs';
+import path from 'path';
 
-export class BladelinterLintEngine {
+import { getConfigBladeLinterEnable } from '../config';
+
+export async function register(context: ExtensionContext, outputChannel: OutputChannel) {
+  if (getConfigBladeLinterEnable()) {
+    if (
+      fs.existsSync(path.join(workspace.root, 'artisan')) &&
+      fs.existsSync(path.join(workspace.root, 'vendor', 'bdelespierre', 'laravel-blade-linter'))
+    ) {
+      const engine = new BladeLinterEngine(outputChannel);
+
+      // onOpen
+      workspace.documents.map(async (doc) => {
+        await engine.lint(doc.textDocument);
+      });
+      workspace.onDidOpenTextDocument(
+        async (e) => {
+          await engine.lint(e);
+        },
+        null,
+        context.subscriptions
+      );
+
+      // onSave
+      workspace.onDidSaveTextDocument(
+        async (e) => {
+          await engine.lint(e);
+        },
+        null,
+        context.subscriptions
+      );
+    }
+  }
+}
+
+class BladeLinterEngine {
   private collection: DiagnosticCollection;
   private outputChannel: OutputChannel;
 

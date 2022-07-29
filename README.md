@@ -9,7 +9,7 @@ Laravel Blade Templates extension for [coc.nvim](https://github.com/neoclide/coc
 - Format
   - by [blade-formatter](https://github.com/shufo/blade-formatter)
 - Lint
-  - by [laravel-blade-linter](https://github.com/bdelespierre/laravel-blade-linter)
+  - using [Stillat/blade-parser-typescript](https://github.com/Stillat/blade-parser-typescript)
 - Completion
   - Blade Snippets Completion
   - Blade Directive Completion
@@ -95,15 +95,9 @@ resources/views/books/**/*
 
 > In coc-blade, there is a code action feature to add a blade comment to disable the formatting.
 
-### linter (laravel-blade-linter)
+### linter (using Stillat/blade-parser-typescript)
 
-You will need to have [laravel-blade-linter](https://github.com/bdelespierre/laravel-blade-linter) installed in your "Laravel project".
-
-If "laravel-blade-linter" is not detected, the lint (diagnostics) feature is automatically disabled.
-
-```sh
-composer require --dev bdelespierre/laravel-blade-linter
-```
+This feature is enabled by default. If you do not need the linter feature, set `blade.bladeParserLint.enable` to `false`
 
 ### snippets completion (laravel-blade-snippets-vscode)
 
@@ -155,7 +149,11 @@ Parses `bootstrap/cache/livewire-components.php` files and target component clas
 - `blade.bladeFormatter.optWrapLineLength`: The length of line wrap size (`--wrap-line-length`), valid type `integer` or `null`, default: `null`
 - `blade.bladeFormatter.optWrapAttributes`: The way to wrap attributes (`--wrap-attributes`), valid options `["auto", "force", "force-aligned", "force-expand-multiline", "aligned-multiple", "preserve", "preserve-aligned"]`, valid type `string` or `null`, default: `null`
 - `blade.bladeFormatter.optSortTailwindcssClasses`: markdownDescription": "Sort Tailwindcss classes automatically. This option respects `tailwind.config.js` and sort classes according to settings, valid type `boolean` or `null`, default: `null`
-- `blade.bladeLinter.enable`: Enable/Disable the linting feature by `laravel-blade-linter`, default: `true`
+- `blade.bladeParserLint.enable`: Enable/Disable the linting feature using `stillat-blade-parser`, default: `true`
+- `blade.bladeParserLint.debug`: Output the results of the parsing of stillat-blade-parser to the channel log, default: `false`
+- `blade.bladeParserLint.optCustomIfs`: A list of custom if directives, default: `[]`
+- `blade.bladeParserLint.optDirectives`: A list of directives that can be parsed, default: `[]`
+- `blade.bladeParserLint.optIgnoreDirectives`: A list of directive names that should be ignored, default: `[]`
 
 ## Commands
 
@@ -182,7 +180,7 @@ nmap <silent> gA <Plug>(coc-codeaction)
 
 - [shufo/blade-formatter](https://github.com/shufo/blade-formatter)
 - [shufo/vscode-blade-formatter](https://github.com/shufo/vscode-blade-formatter)
-- [bdelespierre/laravel-blade-linter](https://github.com/bdelespierre/laravel-blade-linter)
+- [Stillat/blade-parser-typescript](https://github.com/Stillat/blade-parser-typescript)
 - [onecentlin/laravel-blade-snippets-vscode](https://github.com/onecentlin/laravel-blade-snippets-vscode)
 
 ## License

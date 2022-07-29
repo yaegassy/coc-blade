@@ -99,6 +99,8 @@ resources/views/books/**/*
 
 This feature is enabled by default. If you do not need the linter feature, set `blade.bladeParserLint.enable` to `false`
 
+- [DEMO](https://github.com/yaegassy/coc-blade/pull/13)
+
 ### snippets completion (laravel-blade-snippets-vscode)
 
 You can auto-complete by typing `b:`, `lv:`, `Blade::`, `livewire::`.

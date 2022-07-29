@@ -12,6 +12,26 @@ export function getConfigBladeLinterEnable() {
   return workspace.getConfiguration('blade').get<boolean>('bladeLinter.enable', true);
 }
 
+export function getConfigBladeParserLintEnable() {
+  return workspace.getConfiguration('blade').get<boolean>('bladeParserLint.enable', true);
+}
+
+export function getConfigBladeParserLintDebug() {
+  return workspace.getConfiguration('blade').get<boolean>('bladeParserLint.debug', false);
+}
+
+export function getConfigBladeParserLintOptCustomIfs() {
+  return workspace.getConfiguration('blade').get<string[]>('bladeParserLint.optCustomIfs', []);
+}
+
+export function getConfigBladeParserLintOptDirectives() {
+  return workspace.getConfiguration('blade').get<string[]>('bladeParserLint.optDirectives', []);
+}
+
+export function getConfigBladeParserLintOptIgnoreDirectives() {
+  return workspace.getConfiguration('blade').get<string[]>('bladeParserLint.optIgnoreDirectives', []);
+}
+
 export function getConfigBladeCompletionEnable() {
   return workspace.getConfiguration('blade').get<boolean>('completion.enable', true);
 }

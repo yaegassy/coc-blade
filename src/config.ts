@@ -8,10 +8,6 @@ export function getConfigBladeFormatterEnable() {
   return workspace.getConfiguration('blade').get<boolean>('bladeFormatter.enable', true);
 }
 
-export function getConfigBladeLinterEnable() {
-  return workspace.getConfiguration('blade').get<boolean>('bladeLinter.enable', true);
-}
-
 export function getConfigBladeParserLintEnable() {
   return workspace.getConfiguration('blade').get<boolean>('bladeParserLint.enable', true);
 }

@@ -32,6 +32,7 @@
     "generate": "node scripts/snippetsToCompletionJson.js && yarn data:format",
     "data:format": "prettier --write data/snippets/*.json && prettier --write data/completion/*.json",
     "lint": "eslint src --ext ts",
+    "typecheck": "tsc --noEmit",
     "clean": "rimraf lib",
     "watch": "node esbuild.js --watch",
     "build": "node esbuild.js",

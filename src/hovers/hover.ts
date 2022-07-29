@@ -1,11 +1,25 @@
-import { ExtensionContext, Hover, HoverProvider, Position, TextDocument, workspace } from 'coc.nvim';
+import {
+  DocumentSelector,
+  ExtensionContext,
+  Hover,
+  HoverProvider,
+  languages,
+  Position,
+  TextDocument,
+  workspace,
+} from 'coc.nvim';
 
 import fs from 'fs';
 import path from 'path';
 
 import { BladeHover, bladeHovers } from './lang';
 
-export class BladeHoverProvider implements HoverProvider {
+export async function register(context: ExtensionContext) {
+  const documentSelector: DocumentSelector = [{ language: 'blade', scheme: 'file' }];
+  context.subscriptions.push(languages.registerHoverProvider(documentSelector, new BladeHoverProvider(context)));
+}
+
+class BladeHoverProvider implements HoverProvider {
   private context: ExtensionContext;
 
   constructor(context: ExtensionContext) {

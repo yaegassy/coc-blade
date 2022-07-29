@@ -2,6 +2,9 @@ import {
   CancellationToken,
   Definition,
   DefinitionProvider,
+  DocumentSelector,
+  ExtensionContext,
+  languages,
   Location,
   Position,
   ProviderResult,
@@ -12,7 +15,12 @@ import {
 } from 'coc.nvim';
 import fs from 'fs';
 
-export default class BladeDefinitionProvider implements DefinitionProvider {
+export async function register(context: ExtensionContext) {
+  const documentSelector: DocumentSelector = [{ language: 'blade', scheme: 'file' }];
+  context.subscriptions.push(languages.registerDefinitionProvider(documentSelector, new BladeDefinitionProvider()));
+}
+
+class BladeDefinitionProvider implements DefinitionProvider {
   public provideDefinition(
     document: TextDocument,
     position: Position,

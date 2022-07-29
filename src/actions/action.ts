@@ -3,6 +3,9 @@ import {
   CodeActionContext,
   CodeActionProvider,
   Document,
+  DocumentSelector,
+  ExtensionContext,
+  languages,
   Position,
   Range,
   TextDocument,
@@ -10,7 +13,14 @@ import {
   workspace,
 } from 'coc.nvim';
 
-export class BladeCodeActionProvider implements CodeActionProvider {
+export async function register(context: ExtensionContext) {
+  const documentSelector: DocumentSelector = [{ language: 'blade', scheme: 'file' }];
+  context.subscriptions.push(
+    languages.registerCodeActionProvider(documentSelector, new BladeCodeActionProvider(), 'blade')
+  );
+}
+
+class BladeCodeActionProvider implements CodeActionProvider {
   constructor() {}
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

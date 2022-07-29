@@ -1,16 +1,7 @@
-import {
-  DocumentFormattingEditProvider,
-  ExtensionContext,
-  OutputChannel,
-  Range,
-  TextDocument,
-  TextEdit,
-  Uri,
-  window,
-  workspace,
-} from 'coc.nvim';
+import { ExtensionContext, OutputChannel, Range, TextDocument, Uri, window, workspace } from 'coc.nvim';
 
 import { FormatterOption } from 'blade-formatter';
+
 import fs from 'fs';
 import ignore from 'ignore';
 import path from 'path';
@@ -20,7 +11,7 @@ import {
   getConfigBladeFormatterOptSortTailwindcssClasses,
   getConfigBladeFormatterOptWrapAttributes,
   getConfigBladeFormatterOptWrapLineLength,
-} from './config';
+} from '../config';
 
 export async function doFormat(
   context: ExtensionContext,
@@ -88,35 +79,6 @@ export async function doFormat(
   });
 }
 
-export function fullDocumentRange(document: TextDocument): Range {
-  const lastLineId = document.lineCount - 1;
-  const doc = workspace.getDocument(document.uri);
-
-  return Range.create({ character: 0, line: 0 }, { character: doc.getline(lastLineId).length, line: lastLineId });
-}
-
-class BladeFormattingEditProvider implements DocumentFormattingEditProvider {
-  public _context: ExtensionContext;
-  public _outputChannel: OutputChannel;
-
-  constructor(context: ExtensionContext, outputChannel: OutputChannel) {
-    this._context = context;
-    this._outputChannel = outputChannel;
-  }
-
-  public provideDocumentFormattingEdits(document: TextDocument): Promise<TextEdit[]> {
-    return this._provideEdits(document, undefined);
-  }
-
-  private async _provideEdits(document: TextDocument, range?: Range): Promise<TextEdit[]> {
-    const code = await doFormat(this._context, this._outputChannel, document, range);
-    if (!range) {
-      range = fullDocumentRange(document);
-    }
-    return [TextEdit.replace(range, code)];
-  }
-}
-
 function shouldIgnore(filepath: string, outputChannel: OutputChannel): boolean {
   const workspaceRootDir = Uri.file(workspace.root).fsPath;
 
@@ -138,5 +100,3 @@ function shouldIgnore(filepath: string, outputChannel: OutputChannel): boolean {
 
   return false;
 }
-
-export default BladeFormattingEditProvider;

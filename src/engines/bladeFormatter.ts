@@ -55,7 +55,7 @@ export async function doFormat(
     return originalText;
   }
 
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const workerPath = path.join(context.extensionPath, 'worker', 'index.js');
     const syncFn = createSyncFn(workerPath);
     let newText = '';
@@ -69,12 +69,12 @@ export async function doFormat(
       resolve(newText);
     } catch (error: any) {
       // show error if something goes wrong while formatting
-      window.showWarningMessage(`Formatting failed due to an error in the template.\n${error.message}`);
+      window.showWarningMessage(`[blade-formatter]: ${error.message}`);
       outputChannel.appendLine(`\n==== ERROR ===\n`);
       outputChannel.appendLine(`${error.message}`);
       outputChannel.appendLine(`\n==== originalText: ===\n`);
       outputChannel.appendLine(`${originalText}`);
-      reject(error);
+      resolve(originalText);
     }
   });
 }

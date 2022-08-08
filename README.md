@@ -150,7 +150,7 @@ Parses `bootstrap/cache/livewire-components.php` files and target component clas
 - `blade.bladeFormatter.optIndentSize`: Indent size (`--indent-size`), valid type `integer` or `null`, default: `null`,
 - `blade.bladeFormatter.optWrapLineLength`: The length of line wrap size (`--wrap-line-length`), valid type `integer` or `null`, default: `null`
 - `blade.bladeFormatter.optWrapAttributes`: The way to wrap attributes (`--wrap-attributes`), valid options `["auto", "force", "force-aligned", "force-expand-multiline", "aligned-multiple", "preserve", "preserve-aligned"]`, valid type `string` or `null`, default: `null`
-- `blade.bladeFormatter.optSortTailwindcssClasses`: markdownDescription": "Sort Tailwindcss classes automatically. This option respects `tailwind.config.js` and sort classes according to settings, valid type `boolean` or `null`, default: `null`
+- `blade.bladeFormatter.optSortTailwindcssClasses`: Sort Tailwindcss classes automatically. This option respects `tailwind.config.js` and sort classes according to settings, valid type `boolean` or `null`, default: `null`
 - `blade.bladeParserLint.enable`: Enable/Disable the linting feature using `stillat-blade-parser`, default: `true`
 - `blade.bladeParserLint.debug`: Output the results of the parsing of stillat-blade-parser to the channel log, default: `false`
 - `blade.bladeParserLint.optCustomIfs`: A list of custom if directives, default: `[]`

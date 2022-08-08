@@ -11,6 +11,7 @@ import {
   getConfigBladeFormatterOptSortTailwindcssClasses,
   getConfigBladeFormatterOptWrapAttributes,
   getConfigBladeFormatterOptWrapLineLength,
+  getConfigBladeFormatterOptSortHtmlAttributes,
 } from '../config';
 
 export async function doFormat(
@@ -31,6 +32,7 @@ export async function doFormat(
   const formatWrapLineLength = getConfigBladeFormatterOptWrapLineLength();
   const formatWrapAttributes = getConfigBladeFormatterOptWrapAttributes();
   const formatSortTailwindcssClasses = getConfigBladeFormatterOptSortTailwindcssClasses();
+  const formatSortHtmlAttributes = getConfigBladeFormatterOptSortHtmlAttributes();
 
   const options: FormatterOption = {
     indentSize: formatIndentSize,
@@ -38,6 +40,7 @@ export async function doFormat(
     wrapLineLength: formatWrapLineLength,
     // MEMO: type is ----> sortTailwindcssClasses?: true;
     sortTailwindcssClasses: formatSortTailwindcssClasses ? formatSortTailwindcssClasses : undefined,
+    sortHtmlAttributes: formatSortHtmlAttributes,
   };
 
   const cwd = Uri.file(workspace.root).fsPath;

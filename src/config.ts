@@ -88,3 +88,13 @@ export function getConfigBladeFormatterOptSortTailwindcssClasses() {
 
   return workspace.getConfiguration('blade').get<boolean>('bladeFormatter.optSortTailwindcssClasses', defaultValue);
 }
+
+type SortHtmlAttributes = 'none' | 'alphabetical' | 'code-guide' | 'idiomatic' | 'vuejs';
+
+export function getConfigBladeFormatterOptSortHtmlAttributes() {
+  const defaultValue = 'none';
+
+  return workspace
+    .getConfiguration('blade')
+    .get<SortHtmlAttributes>('bladeFormatter.optSortHtmlAttributes', defaultValue);
+}

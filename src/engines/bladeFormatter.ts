@@ -7,14 +7,14 @@ import ignore from 'ignore';
 import path from 'path';
 import { createSyncFn } from 'synckit';
 import {
+  getConfigBladeFormatterOptEndWithNewLine,
   getConfigBladeFormatterOptIndentSize,
+  getConfigBladeFormatterOptNoMultipleEmptyLines,
+  getConfigBladeFormatterOptSortHtmlAttributes,
   getConfigBladeFormatterOptSortTailwindcssClasses,
+  getConfigBladeFormatterOptUseTabs,
   getConfigBladeFormatterOptWrapAttributes,
   getConfigBladeFormatterOptWrapLineLength,
-  getConfigBladeFormatterOptSortHtmlAttributes,
-  getConfigBladeFormatterOptNoMultipleEmptyLines,
-  getConfigBladeFormatterOptEndWithNewLine,
-  getConfigBladeFormatterOptUseTabs,
 } from '../config';
 
 export async function doFormat(

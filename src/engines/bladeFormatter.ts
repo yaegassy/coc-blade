@@ -14,6 +14,7 @@ import {
   getConfigBladeFormatterOptSortHtmlAttributes,
   getConfigBladeFormatterOptNoMultipleEmptyLines,
   getConfigBladeFormatterOptEndWithNewLine,
+  getConfigBladeFormatterOptUseTabs,
 } from '../config';
 
 export async function doFormat(
@@ -37,12 +38,14 @@ export async function doFormat(
   const formatSortHtmlAttributes = getConfigBladeFormatterOptSortHtmlAttributes();
   const formatNoMultipleEmptyLines = getConfigBladeFormatterOptNoMultipleEmptyLines();
   const formatEndWithNewLine = getConfigBladeFormatterOptEndWithNewLine();
+  const formatUseTabs = getConfigBladeFormatterOptUseTabs();
 
   const options: FormatterOption = {
     indentSize: formatIndentSize,
     wrapAttributes: formatWrapAttributes,
     wrapLineLength: formatWrapLineLength,
     endWithNewline: formatEndWithNewLine,
+    useTabs: formatUseTabs,
     // MEMO: type is ----> sortTailwindcssClasses?: true;
     sortTailwindcssClasses: formatSortTailwindcssClasses ? formatSortTailwindcssClasses : undefined,
     sortHtmlAttributes: formatSortHtmlAttributes,

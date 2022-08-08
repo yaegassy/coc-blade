@@ -173,6 +173,13 @@
           "default": true,
           "markdownDescription": "End output with newline"
         },
+        "blade.bladeFormatter.optUseTabs": {
+          "type": [
+            "boolean"
+          ],
+          "default": false,
+          "markdownDescription": "Use tab as indentation character"
+        },
         "blade.bladeFormatter.optSortTailwindcssClasses": {
           "type": [
             null,

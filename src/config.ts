@@ -89,6 +89,12 @@ export function getConfigBladeFormatterOptEndWithNewLine() {
   return workspace.getConfiguration('blade').get<boolean>('bladeFormatter.optEndWithNewLine', defaultValue);
 }
 
+export function getConfigBladeFormatterOptUseTabs() {
+  const defaultValue = false;
+
+  return workspace.getConfiguration('blade').get<boolean>('bladeFormatter.optUseTabs', defaultValue);
+}
+
 export function getConfigBladeFormatterOptSortTailwindcssClasses() {
   const defaultValue = false;
 

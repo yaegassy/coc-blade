@@ -83,6 +83,12 @@ export function getConfigBladeFormatterOptWrapAttributes() {
   return workspace.getConfiguration('blade').get<WrapAttributes>('bladeFormatter.optWrapAttributes', defaultValue);
 }
 
+export function getConfigBladeFormatterOptEndWithNewLine() {
+  const defaultValue = true;
+
+  return workspace.getConfiguration('blade').get<boolean>('bladeFormatter.optEndWithNewLine', defaultValue);
+}
+
 export function getConfigBladeFormatterOptSortTailwindcssClasses() {
   const defaultValue = false;
 

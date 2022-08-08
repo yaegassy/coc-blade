@@ -166,6 +166,13 @@
           ],
           "markdownDescription": "The way to wrap attributes"
         },
+        "blade.bladeFormatter.optEndWithNewLine": {
+          "type": [
+            "boolean"
+          ],
+          "default": true,
+          "markdownDescription": "End output with newline"
+        },
         "blade.bladeFormatter.optSortTailwindcssClasses": {
           "type": [
             null,

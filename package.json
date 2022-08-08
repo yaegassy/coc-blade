@@ -178,7 +178,7 @@
           "type": [
             "string"
           ],
-          "default": null,
+          "default": "none",
           "enum": [
             "none",
             "alphabetical",

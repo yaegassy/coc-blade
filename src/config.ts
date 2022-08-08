@@ -98,3 +98,9 @@ export function getConfigBladeFormatterOptSortHtmlAttributes() {
     .getConfiguration('blade')
     .get<SortHtmlAttributes>('bladeFormatter.optSortHtmlAttributes', defaultValue);
 }
+
+export function getConfigBladeFormatterOptNoMultipleEmptyLines() {
+  const defaultValue = false;
+
+  return workspace.getConfiguration('blade').get<boolean>('bladeFormatter.optNoMultipleEmptyLines', defaultValue);
+}

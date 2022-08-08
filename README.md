@@ -152,6 +152,7 @@ Parses `bootstrap/cache/livewire-components.php` files and target component clas
 - `blade.bladeFormatter.optWrapAttributes`: The way to wrap attributes, valid options `["auto", "force", "force-aligned", "force-expand-multiline", "aligned-multiple", "preserve", "preserve-aligned"]`, valid type `string` or `null`, default: `null`
 - `blade.bladeFormatter.optSortTailwindcssClasses`: Sort Tailwindcss classes automatically. This option respects `tailwind.config.js` and sort classes according to settings, valid type `boolean` or `null`, default: `null`
 - `blade.bladeFormatter.optSortHtmlAttributes`: Sort HTML attributes, valid option `["none", "alphabetical", "code-guide", "idiomatic", "vuejs"]`, default: `"none"`
+- `blade.bladeFormatter.optNoMultipleEmptyLines`: Collapses multiple blank lines into a single blank line, default: `false`
 - `blade.bladeParserLint.enable`: Enable/Disable the linting feature using `stillat-blade-parser`, default: `true`
 - `blade.bladeParserLint.debug`: Output the results of the parsing of stillat-blade-parser to the channel log, default: `false`
 - `blade.bladeParserLint.optCustomIfs`: A list of custom if directives, default: `[]`

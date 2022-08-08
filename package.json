@@ -188,6 +188,13 @@
           ],
           "markdownDescription": "Sort HTML attributes"
         },
+        "blade.bladeFormatter.optNoMultipleEmptyLines": {
+          "type": [
+            "boolean"
+          ],
+          "default": false,
+          "markdownDescription": "Collapses multiple blank lines into a single blank line"
+        },
         "blade.bladeParserLint.enable": {
           "type": "boolean",
           "default": true,

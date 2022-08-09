@@ -200,7 +200,7 @@
             "idiomatic",
             "vuejs"
           ],
-          "markdownDescription": "Sort HTML attributes"
+          "markdownDescription": "Sort HTML Attributes in the specified order"
         },
         "blade.bladeFormatter.optNoMultipleEmptyLines": {
           "type": [

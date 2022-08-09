@@ -301,10 +301,10 @@ binary-extensions@^2.0.0:
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
   integrity sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
 
-blade-formatter@^1.27.0:
-  version "1.27.0"
-  resolved "https://registry.yarnpkg.com/blade-formatter/-/blade-formatter-1.27.0.tgz#3c052aa83af5208e272477c1442107d5b102e178"
-  integrity sha512-JyaUS10fAKVcpBnk6kC2/SyNx1iIWIpoPVcOIIvYYwVNAqyRMpf75Tc0X1+VJ3r7Ck0S9IG305hiPlj2FeNUzQ==
+blade-formatter@^1.27.2:
+  version "1.27.2"
+  resolved "https://registry.yarnpkg.com/blade-formatter/-/blade-formatter-1.27.2.tgz#1de6e7efd6731d1a659a7fcf83a91cfc8cdddd37"
+  integrity sha512-LimRfvJoO5StdEaTSlbpBwj2RLqTUqn18JTiAYA+BrgBNmtVCjYmfpXGJvkEsdH8usQpSJWlbgwfAzvKirG6Lw==
   dependencies:
     "@prettier/plugin-php" "^0.18.0"
     "@shufo/tailwindcss-class-sorter" "^1.0.3"
@@ -315,7 +315,7 @@ blade-formatter@^1.27.0:
     detect-indent "^6.0.0"
     find-config "^1.0.0"
     glob "^8.0.1"
-    html-attribute-sorter "^0.4.0"
+    html-attribute-sorter "^0.4.2"
     ignore "^5.1.8"
     js-beautify "^1.14.0"
     lodash "^4.17.19"
@@ -1139,10 +1139,10 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
-html-attribute-sorter@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/html-attribute-sorter/-/html-attribute-sorter-0.4.0.tgz#c9021e51f8170fd971296497884fc32d3fe18db8"
-  integrity sha512-GxGTu1FtmABg/5AUovWnIxmOEJMvZOMqBnmRuut2bLfxy/Tn+pI93l0devqaB9UkG8UoviTLJtOqz1+DBHqtbA==
+html-attribute-sorter@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/html-attribute-sorter/-/html-attribute-sorter-0.4.2.tgz#803dfb2fb7c749cbf92fe52e7d3e331990072539"
+  integrity sha512-WjAaUWPuqXxddyQ5M4vqDHG8tcO+ajTnz03GNwmTsTyGdg9dJqoswwHyniK5ygitgXxqBYIE4T88/edWkl7wMQ==
 
 ignore@^5.1.8, ignore@^5.2.0:
   version "5.2.0"

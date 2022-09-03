@@ -253,7 +253,7 @@
     ]
   },
   "dependencies": {
-    "blade-formatter": "^1.27.6",
+    "blade-formatter": "^1.27.7",
     "ignore": "^5.2.0",
     "stillat-blade-parser": "^0.1.0",
     "synckit": "^0.6.0"

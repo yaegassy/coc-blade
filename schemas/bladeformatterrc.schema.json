@@ -42,10 +42,14 @@
       "type": "boolean"
     },
     "sortHtmlAttributes": {
+      "description": "Sort HTML Attributes in the specified order. `none`, `alphabetical`, `code-guide`, `idiomatic`, `vuejs`",
       "default": "none",
-      "description": "Sort HTML attributes",
-      "type": "string",
-      "enum": ["none", "alphabetical", "code-guide", "idiomatic", "vuejs"]
+      "type": "string"
+    },
+    "tailwindcssConfigPath": {
+      "description": "Path to custom tailwind config",
+      "default": "",
+      "type": "string"
     },
     "noMultipleEmptyLines": {
       "description": "Collapses multiple blank lines into a single blank line",

@@ -116,3 +116,9 @@ export function getConfigBladeFormatterOptNoMultipleEmptyLines() {
 
   return workspace.getConfiguration('blade').get<boolean>('bladeFormatter.optNoMultipleEmptyLines', defaultValue);
 }
+
+export function getConfigBladeFormatterOptNoPhpSyntaxCheck() {
+  const defaultValue = false;
+
+  return workspace.getConfiguration('blade').get<boolean>('bladeFormatter.noPhpSyntaxCheck', defaultValue);
+}

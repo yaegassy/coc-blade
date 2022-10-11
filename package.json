@@ -209,6 +209,11 @@
           "default": false,
           "markdownDescription": "Collapses multiple blank lines into a single blank line"
         },
+        "blade.bladeFormatter.noPhpSyntaxCheck": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "Disable PHP syntax check. Enabling this will suppress PHP syntax error reporting"
+        },
         "blade.bladeParserLint.enable": {
           "type": "boolean",
           "default": true,

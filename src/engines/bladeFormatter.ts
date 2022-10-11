@@ -10,6 +10,7 @@ import {
   getConfigBladeFormatterOptEndWithNewLine,
   getConfigBladeFormatterOptIndentSize,
   getConfigBladeFormatterOptNoMultipleEmptyLines,
+  getConfigBladeFormatterOptNoPhpSyntaxCheck,
   getConfigBladeFormatterOptSortHtmlAttributes,
   getConfigBladeFormatterOptSortTailwindcssClasses,
   getConfigBladeFormatterOptUseTabs,
@@ -34,11 +35,12 @@ export async function doFormat(
   const formatIndentSize = getConfigBladeFormatterOptIndentSize();
   const formatWrapLineLength = getConfigBladeFormatterOptWrapLineLength();
   const formatWrapAttributes = getConfigBladeFormatterOptWrapAttributes();
+  const formatEndWithNewLine = getConfigBladeFormatterOptEndWithNewLine();
+  const formatUseTabs = getConfigBladeFormatterOptUseTabs();
   const formatSortTailwindcssClasses = getConfigBladeFormatterOptSortTailwindcssClasses();
   const formatSortHtmlAttributes = getConfigBladeFormatterOptSortHtmlAttributes();
   const formatNoMultipleEmptyLines = getConfigBladeFormatterOptNoMultipleEmptyLines();
-  const formatEndWithNewLine = getConfigBladeFormatterOptEndWithNewLine();
-  const formatUseTabs = getConfigBladeFormatterOptUseTabs();
+  const formatNoPhpSyntaxCheck = getConfigBladeFormatterOptNoPhpSyntaxCheck();
 
   const options: FormatterOption = {
     indentSize: formatIndentSize,
@@ -50,6 +52,7 @@ export async function doFormat(
     sortTailwindcssClasses: formatSortTailwindcssClasses ? formatSortTailwindcssClasses : undefined,
     sortHtmlAttributes: formatSortHtmlAttributes,
     noMultipleEmptyLines: formatNoMultipleEmptyLines,
+    noPhpSyntaxCheck: formatNoPhpSyntaxCheck,
   };
 
   const cwd = Uri.file(workspace.root).fsPath;

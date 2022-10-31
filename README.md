@@ -153,7 +153,7 @@ Parses `bootstrap/cache/livewire-components.php` files and target component clas
 - `blade.bladeFormatter.optEndWithNewLine`: End output with newline, default: `true`
 - `blade.bladeFormatter.optUseTabs`: Use tab as indentation character, default: `false`
 - `blade.bladeFormatter.optSortTailwindcssClasses`: Sort Tailwindcss classes automatically. This option respects `tailwind.config.js` and sort classes according to settings, valid type `boolean` or `null`, default: `null`
-- `blade.bladeFormatter.optSortHtmlAttributes`: Sort HTML Attributes in the specified order, valid option `["none", "alphabetical", "code-guide", "idiomatic", "vuejs"]`, default: `"none"`
+- `blade.bladeFormatter.optSortHtmlAttributes`: Sort HTML Attributes in the specified order, valid option `["none", "alphabetical", "code-guide", "idiomatic", "vuejs", "custom"]`, default: `"none"`
 - `blade.bladeFormatter.optNoMultipleEmptyLines`: Collapses multiple blank lines into a single blank line, default: `false`
 - `blade.bladeFormatter.noPhpSyntaxCheck`: Disable PHP syntax check. Enabling this will suppress PHP syntax error reporting, default: `false`
 - `blade.bladeParserLint.enable`: Enable/Disable the linting feature using `stillat-blade-parser`, default: `true`

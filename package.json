@@ -198,7 +198,8 @@
             "alphabetical",
             "code-guide",
             "idiomatic",
-            "vuejs"
+            "vuejs",
+            "custom"
           ],
           "markdownDescription": "Sort HTML Attributes in the specified order"
         },

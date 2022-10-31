@@ -101,7 +101,7 @@ export function getConfigBladeFormatterOptSortTailwindcssClasses() {
   return workspace.getConfiguration('blade').get<boolean>('bladeFormatter.optSortTailwindcssClasses', defaultValue);
 }
 
-type SortHtmlAttributes = 'none' | 'alphabetical' | 'code-guide' | 'idiomatic' | 'vuejs';
+type SortHtmlAttributes = 'none' | 'alphabetical' | 'code-guide' | 'idiomatic' | 'vuejs' | 'custom';
 
 export function getConfigBladeFormatterOptSortHtmlAttributes() {
   const defaultValue = 'none';

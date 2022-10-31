@@ -7,6 +7,7 @@ import ignore from 'ignore';
 import path from 'path';
 import { createSyncFn } from 'synckit';
 import {
+  getConfigBladeFormatterOptCustomHtmlAttributesOrder,
   getConfigBladeFormatterOptEndWithNewLine,
   getConfigBladeFormatterOptIndentSize,
   getConfigBladeFormatterOptNoMultipleEmptyLines,
@@ -41,6 +42,7 @@ export async function doFormat(
   const formatSortHtmlAttributes = getConfigBladeFormatterOptSortHtmlAttributes();
   const formatNoMultipleEmptyLines = getConfigBladeFormatterOptNoMultipleEmptyLines();
   const formatNoPhpSyntaxCheck = getConfigBladeFormatterOptNoPhpSyntaxCheck();
+  const formatCustomHtmlAttributesOrder = getConfigBladeFormatterOptCustomHtmlAttributesOrder();
 
   const options: FormatterOption = {
     indentSize: formatIndentSize,
@@ -51,6 +53,7 @@ export async function doFormat(
     // MEMO: type is ----> sortTailwindcssClasses?: true;
     sortTailwindcssClasses: formatSortTailwindcssClasses ? formatSortTailwindcssClasses : undefined,
     sortHtmlAttributes: formatSortHtmlAttributes,
+    customHtmlAttributesOrder: formatCustomHtmlAttributesOrder ? formatCustomHtmlAttributesOrder : undefined,
     noMultipleEmptyLines: formatNoMultipleEmptyLines,
     noPhpSyntaxCheck: formatNoPhpSyntaxCheck,
   };

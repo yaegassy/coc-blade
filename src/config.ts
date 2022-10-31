@@ -111,6 +111,14 @@ export function getConfigBladeFormatterOptSortHtmlAttributes() {
     .get<SortHtmlAttributes>('bladeFormatter.optSortHtmlAttributes', defaultValue);
 }
 
+export function getConfigBladeFormatterOptCustomHtmlAttributesOrder() {
+  const defaultValue = null;
+
+  return workspace
+    .getConfiguration('blade')
+    .get<string | string[] | null>('bladeFormatter.optCustomHtmlAttributesOrder', defaultValue);
+}
+
 export function getConfigBladeFormatterOptNoMultipleEmptyLines() {
   const defaultValue = false;
 

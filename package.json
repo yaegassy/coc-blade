@@ -173,6 +173,18 @@
           "default": true,
           "markdownDescription": "End output with newline"
         },
+        "blade.bladeFormatter.optEndOfLine": {
+          "type": [
+            null,
+            "string"
+          ],
+          "default": null,
+          "enum": [
+            "LF",
+            "CRLF"
+          ],
+          "markdownDescription": "End of line character(s)."
+        },
         "blade.bladeFormatter.optUseTabs": {
           "type": [
             "boolean"

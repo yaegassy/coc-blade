@@ -8,6 +8,7 @@ import path from 'path';
 import { createSyncFn } from 'synckit';
 import {
   getConfigBladeFormatterOptCustomHtmlAttributesOrder,
+  getConfigBladeFormatterOptEndOfLine,
   getConfigBladeFormatterOptEndWithNewLine,
   getConfigBladeFormatterOptIndentSize,
   getConfigBladeFormatterOptNoMultipleEmptyLines,
@@ -37,6 +38,7 @@ export async function doFormat(
   const formatWrapLineLength = getConfigBladeFormatterOptWrapLineLength();
   const formatWrapAttributes = getConfigBladeFormatterOptWrapAttributes();
   const formatEndWithNewLine = getConfigBladeFormatterOptEndWithNewLine();
+  const formatEndOFLine = getConfigBladeFormatterOptEndOfLine();
   const formatUseTabs = getConfigBladeFormatterOptUseTabs();
   const formatSortTailwindcssClasses = getConfigBladeFormatterOptSortTailwindcssClasses();
   const formatSortHtmlAttributes = getConfigBladeFormatterOptSortHtmlAttributes();
@@ -49,6 +51,7 @@ export async function doFormat(
     wrapAttributes: formatWrapAttributes,
     wrapLineLength: formatWrapLineLength,
     endWithNewline: formatEndWithNewLine,
+    endOfLine: formatEndOFLine ? formatEndOFLine : undefined,
     useTabs: formatUseTabs,
     // MEMO: type is ----> sortTailwindcssClasses?: true;
     sortTailwindcssClasses: formatSortTailwindcssClasses ? formatSortTailwindcssClasses : undefined,

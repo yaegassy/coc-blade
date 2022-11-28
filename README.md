@@ -151,6 +151,7 @@ Parses `bootstrap/cache/livewire-components.php` files and target component clas
 - `blade.bladeFormatter.optWrapLineLength`: The length of line wrap size, valid type `integer` or `null`, default: `null`
 - `blade.bladeFormatter.optWrapAttributes`: The way to wrap attributes, valid options `["auto", "force", "force-aligned", "force-expand-multiline", "aligned-multiple", "preserve", "preserve-aligned"]`, valid type `string` or `null`, default: `null`
 - `blade.bladeFormatter.optEndWithNewLine`: End output with newline, default: `true`
+- `blade.bladeFormatter.optEndOfLine`: End of line character(s), valid options `["LF", "CRLF"]`, valid type `string` or `null`, default: `null`
 - `blade.bladeFormatter.optUseTabs`: Use tab as indentation character, default: `false`
 - `blade.bladeFormatter.optSortTailwindcssClasses`: Sort Tailwindcss classes automatically. This option respects `tailwind.config.js` and sort classes according to settings, valid type `boolean` or `null`, default: `null`
 - `blade.bladeFormatter.optSortHtmlAttributes`: Sort HTML Attributes in the specified order, valid option `["none", "alphabetical", "code-guide", "idiomatic", "vuejs", "custom"]`, default: `"none"`

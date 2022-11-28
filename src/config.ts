@@ -89,6 +89,14 @@ export function getConfigBladeFormatterOptEndWithNewLine() {
   return workspace.getConfiguration('blade').get<boolean>('bladeFormatter.optEndWithNewLine', defaultValue);
 }
 
+type EndOfLine = 'LF' | 'CRLF';
+
+export function getConfigBladeFormatterOptEndOfLine() {
+  const defaultValue = null;
+
+  return workspace.getConfiguration('blade').get<EndOfLine | null>('bladeFormatter.optEndOFLine', defaultValue);
+}
+
 export function getConfigBladeFormatterOptUseTabs() {
   const defaultValue = false;
 

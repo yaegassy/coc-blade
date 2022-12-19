@@ -46,7 +46,7 @@
     "semi": true
   },
   "devDependencies": {
-    "@types/node": "^16.18.3",
+    "@types/node": "^18.11.17",
     "@typescript-eslint/eslint-plugin": "^5.44.0",
     "@typescript-eslint/parser": "^5.44.0",
     "coc.nvim": "^0.0.82",

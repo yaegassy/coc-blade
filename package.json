@@ -50,7 +50,7 @@
     "@typescript-eslint/eslint-plugin": "^5.44.0",
     "@typescript-eslint/parser": "^5.44.0",
     "coc.nvim": "^0.0.82",
-    "esbuild": "^0.15.16",
+    "esbuild": "^0.16.9",
     "eslint": "^8.28.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",

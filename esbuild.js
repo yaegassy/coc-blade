@@ -20,7 +20,7 @@ async function start(watch) {
     mainFields: ['module', 'main'],
     external: ['coc.nvim'],
     platform: 'node',
-    target: 'node14.4',
+    target: 'node14.14',
     outfile: 'lib/index.js',
   };
 

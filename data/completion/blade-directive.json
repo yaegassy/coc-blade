@@ -62,6 +62,7 @@
   "@csrf": "@csrf",
   "@method": "@method",
   "@dump": "@dump",
+  "@dd": "@dd",
   "@lang": "@lang",
   "@includeUnless": "@includeUnless",
   "@props": "@props",
@@ -76,5 +77,13 @@
   "@class": "@class",
   "@checked": "@checked",
   "@selected": "@selected",
-  "@disabled": "@disabled"
+  "@disabled": "@disabled",
+  "@style": "@style",
+  "@readonly": "@readonly",
+  "@required": "@required",
+  "@pushOnce": "@pushOnce",
+  "@endPushOnce": "@endPushOnce",
+  "@prepend": "@prepend",
+  "@prependOnce": "@prependOnce",
+  "@endPrependOnce": "@endPrependOnce"
 }

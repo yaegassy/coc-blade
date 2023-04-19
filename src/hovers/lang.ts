@@ -236,4 +236,29 @@ export const bladeHovers: BladeHover[] = [
     prefix: '@lang',
     alias: [],
   },
+  // ==== xxx ====
+  {
+    prefix: '@dd',
+    alias: [],
+  },
+  {
+    prefix: '@style',
+    alias: [],
+  },
+  {
+    prefix: '@readonly',
+    alias: [],
+  },
+  {
+    prefix: '@required',
+    alias: [],
+  },
+  {
+    prefix: '@pushOnce',
+    alias: ['@endPushOnce'],
+  },
+  {
+    prefix: '@prependOnce',
+    alias: ['@endPrependOnce'],
+  },
 ];

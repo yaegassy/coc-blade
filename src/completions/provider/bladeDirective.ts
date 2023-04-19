@@ -7,6 +7,7 @@ import {
   CompletionList,
   ExtensionContext,
   LinesTextDocument,
+  MarkupKind,
   Position,
   TextEdit,
   workspace,
@@ -69,7 +70,12 @@ export class BladeDirectiveCompletionProvider implements CompletionItemProvider 
             insertText: key,
             detail: completionJson[key],
             textEdit: edit,
-            documentation: documentationText,
+            documentation: documentationText
+              ? {
+                  kind: MarkupKind.Markdown,
+                  value: documentationText,
+                }
+              : undefined,
           });
         });
       }

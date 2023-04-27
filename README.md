@@ -168,6 +168,7 @@ Parses `bootstrap/cache/livewire-components.php` files and target component clas
 
 - `blade.showOutput`: Show blade output channel
 - `blade.bladeFormatter.run`: Run blade-formatter
+- `blade.showReferences`: Show BladeDirective (`@...`) or BladeEcho (`{{ ... }}`, `{!! ... !!}`) location information for the current file
 
 ## Code Actions
 

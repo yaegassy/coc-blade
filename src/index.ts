@@ -5,6 +5,7 @@ import { getConfigBladeEnable } from './config';
 import * as bladeCodeActionFeature from './actions/action';
 import * as bladeFormatterRunCommandFeature from './commands/bladeFormatterRun';
 import * as showOutputCommandFeature from './commands/showOutput';
+import * as bladeShowReferencesCommandFeature from './commands/showReferences';
 import * as bladeCompletionFeature from './completions/completion';
 import * as bladeDefinisionFeature from './definitions/definition';
 import * as bladeFormatterDocumantFormattingEditFeature from './documentFormats/documentFormat';
@@ -18,6 +19,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
 
   showOutputCommandFeature.register(context, outputChannel);
   bladeFormatterRunCommandFeature.register(context, outputChannel);
+  bladeShowReferencesCommandFeature.register(context, outputChannel);
   await bladeCompletionFeature.register(context, outputChannel);
   bladeFormatterDocumantFormattingEditFeature.register(context, outputChannel);
   bladeHoverFeature.register(context);

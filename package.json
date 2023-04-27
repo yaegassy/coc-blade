@@ -276,6 +276,10 @@
       {
         "command": "blade.bladeFormatter.run",
         "title": "Run bladeFormatter.run"
+      },
+      {
+        "command": "blade.showReferences",
+        "title": "Show BladeDirective (`@...`) or BladeEcho (`{{ ... }}`, `{!! ... !!}`) location information for the current file"
       }
     ]
   },

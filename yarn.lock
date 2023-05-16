@@ -1805,9 +1805,9 @@ source-map-js@^1.0.2:
   integrity sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==
 
 stillat-blade-parser@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/stillat-blade-parser/-/stillat-blade-parser-1.1.0.tgz#28e77206f474bbf9f74ea6206f9b6738b1d3b043"
-  integrity sha512-57v8NSHQc9+piodQydTrIuyXw2CQxIXP18OCh9ZYxih9Tj5ri4FitS2I7mAFf7S1Wng9h6qXggYtz2QmvsMCow==
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/stillat-blade-parser/-/stillat-blade-parser-1.1.8.tgz#7a1a1df9a888e3ddae760d13c267c72ca995a427"
+  integrity sha512-QOE8e0X0/R2G3Y9vupl/I4hcc9ySZEEO/rJqoqFAX8MLbH5v6/qQ4o95tGYj5FkG6D2pCYSjZXcdPDzCIe0IAA==
   dependencies:
     camelize "^1.0.0"
     sha1 "^1.1.1"

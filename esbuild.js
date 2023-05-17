@@ -7,7 +7,9 @@ async function start(watch) {
     minify: process.env.NODE_ENV === 'production',
     sourcemap: process.env.NODE_ENV === 'development',
     mainFields: ['module', 'main'],
-    external: ['coc.nvim'],
+    // add the large-sized dependencies of the stillat-blade-parser package to external
+    // - 'prettier', '@prettier/plugin-php', '@stedi/prettier-plugin-jsonata', 'jsonata'
+    external: ['coc.nvim', 'prettier', '@prettier/plugin-php', '@stedi/prettier-plugin-jsonata', 'jsonata'],
     platform: 'node',
     target: 'node14.14',
     outfile: 'lib/index.js',

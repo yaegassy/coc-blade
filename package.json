@@ -236,6 +236,11 @@
           "default": false,
           "markdownDescription": "Disable PHP syntax check. Enabling this will suppress PHP syntax error reporting"
         },
+        "blade.bladeFormatter.optNoSingleQuote": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "Use double quotes instead of single quotes for php expression"
+        },
         "blade.bladeParserLint.enable": {
           "type": "boolean",
           "default": true,

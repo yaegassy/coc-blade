@@ -18,6 +18,7 @@ import {
   getConfigBladeFormatterOptUseTabs,
   getConfigBladeFormatterOptWrapAttributes,
   getConfigBladeFormatterOptWrapLineLength,
+  getConfigBladeFormatterOptNoSingleQuote,
 } from '../config';
 
 export async function doFormat(
@@ -44,6 +45,7 @@ export async function doFormat(
   const formatSortHtmlAttributes = getConfigBladeFormatterOptSortHtmlAttributes();
   const formatNoMultipleEmptyLines = getConfigBladeFormatterOptNoMultipleEmptyLines();
   const formatNoPhpSyntaxCheck = getConfigBladeFormatterOptNoPhpSyntaxCheck();
+  const formatNoSingleQuote = getConfigBladeFormatterOptNoSingleQuote();
   const formatCustomHtmlAttributesOrder = getConfigBladeFormatterOptCustomHtmlAttributesOrder();
 
   const options: FormatterOption = {
@@ -59,6 +61,7 @@ export async function doFormat(
     customHtmlAttributesOrder: formatCustomHtmlAttributesOrder ? formatCustomHtmlAttributesOrder : undefined,
     noMultipleEmptyLines: formatNoMultipleEmptyLines,
     noPhpSyntaxCheck: formatNoPhpSyntaxCheck,
+    noSingleQuote: formatNoSingleQuote,
   };
 
   const cwd = Uri.file(workspace.root).fsPath;

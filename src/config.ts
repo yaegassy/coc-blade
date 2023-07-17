@@ -138,3 +138,9 @@ export function getConfigBladeFormatterOptNoPhpSyntaxCheck() {
 
   return workspace.getConfiguration('blade').get<boolean>('bladeFormatter.noPhpSyntaxCheck', defaultValue);
 }
+
+export function getConfigBladeFormatterOptNoSingleQuote() {
+  const defaultValue = false;
+
+  return workspace.getConfiguration('blade').get<boolean>('bladeFormatter.optNoSingleQuote', defaultValue);
+}

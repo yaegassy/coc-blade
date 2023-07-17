@@ -158,6 +158,7 @@ Parses `bootstrap/cache/livewire-components.php` files and target component clas
 - `blade.bladeFormatter.optCustomHtmlAttributesOrder`: Comma separated custom HTML attributes order. To enable this you must specify sort html attributes option as `custom`. You can use regex for attribute names, valid type `string`, `string[]` or `null` default: `null`
 - `blade.bladeFormatter.optNoMultipleEmptyLines`: Collapses multiple blank lines into a single blank line, default: `false`
 - `blade.bladeFormatter.noPhpSyntaxCheck`: Disable PHP syntax check. Enabling this will suppress PHP syntax error reporting, default: `false`
+- `blade.bladeFormatter.optNoSingleQuote`: Use double quotes instead of single quotes for php expression, default: `false`
 - `blade.bladeParserLint.enable`: Enable/Disable the linting feature using `stillat-blade-parser`, default: `true`
 - `blade.bladeParserLint.debug`: Output the results of the parsing of stillat-blade-parser to the channel log, default: `false`
 - `blade.bladeParserLint.optCustomIfs`: A list of custom if directives, default: `[]`

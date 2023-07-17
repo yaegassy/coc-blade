@@ -136,7 +136,7 @@ export function getConfigBladeFormatterOptNoMultipleEmptyLines() {
 export function getConfigBladeFormatterOptNoPhpSyntaxCheck() {
   const defaultValue = false;
 
-  return workspace.getConfiguration('blade').get<boolean>('bladeFormatter.noPhpSyntaxCheck', defaultValue);
+  return workspace.getConfiguration('blade').get<boolean>('bladeFormatter.optNoPhpSyntaxCheck', defaultValue);
 }
 
 export function getConfigBladeFormatterOptNoSingleQuote() {

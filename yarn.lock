@@ -510,9 +510,9 @@ binary-extensions@^2.0.0:
   integrity sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
 
 blade-formatter@^1.34.0:
-  version "1.34.0"
-  resolved "https://registry.yarnpkg.com/blade-formatter/-/blade-formatter-1.34.0.tgz#e484e87c8a87d4246a249268b77b1421abbd2eed"
-  integrity sha512-AMJU55U43bHtdbXK6p239OPFrIu6x2v49nQLMx9nas3eJSDXIdv/89ZU0ZuWmtRdFKrceF4aBtwZ1/G/GcCveA==
+  version "1.34.1"
+  resolved "https://registry.yarnpkg.com/blade-formatter/-/blade-formatter-1.34.1.tgz#1ffeb884c3ba8c2b42f45030baeccc02047b36b0"
+  integrity sha512-U37Hgn3zYKbISglxhiSVnxo1KIFK4Kmy5c3jkkDmSRt1f30eDIPyDDtNX4o0kEe1yHYyoBrXN49eFcbNjMmXSg==
   dependencies:
     "@prettier/plugin-php" "^0.19.0"
     "@shufo/tailwindcss-class-sorter" "3.0.1"
@@ -1234,12 +1234,7 @@ html-attribute-sorter@^0.4.3:
   resolved "https://registry.yarnpkg.com/html-attribute-sorter/-/html-attribute-sorter-0.4.3.tgz#7f1aa9c496c827101125a2714f82296319d6c061"
   integrity sha512-HWSvaXJki44tg0uR1t+j5pRdUVpNiZcJaoB/PFhss/YoAw9cxUDLCpIBbLWQmKjBQfWk91P6LaRnredEyabrDw==
 
-ignore@^5.1.8, ignore@^5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.2.0.tgz#6d3bac8fa7fe0d45d9f9be7bac2fc279577e345a"
-  integrity sha512-CmxgYGiEPCLhfLnpPp1MoRmifwEIOgjcHXxOBjv7mY96c+eWScsOP9c112ZyLdWHi0FxHjI+4uVhKYp/gcdRmQ==
-
-ignore@^5.2.4:
+ignore@^5.1.8, ignore@^5.2.0, ignore@^5.2.4:
   version "5.2.4"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.2.4.tgz#a291c0c6178ff1b960befe47fcdec301674a6324"
   integrity sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==

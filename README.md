@@ -41,7 +41,16 @@ Plug 'yaegassy/coc-blade', {'do': 'yarn install --frozen-lockfile'}
 
 **Recommended coc extension**:
 
+## (Optional) Additional installation of laravel blade related coc-extension
+
+- [yaegassy/coc-laravel](https://github.com/yaegassy/coc-laravel)
+  - Various completions and more for laravel are available
+- [yaegassy/coc-intelephense](https://github.com/yaegassy/coc-intelephense)
+  - Artisan command integration and more are available
+- [yaegassy/coc-php-cs-fixer](https://github.com/yaegassy/coc-php-cs-fixer)
+  - Laravel Pint integration feature is available
 - [coc-html](https://github.com/neoclide/coc-html)
+  - html-related support will be added in blade
 
 ## Note
 

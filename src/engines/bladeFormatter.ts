@@ -13,12 +13,13 @@ import {
   getConfigBladeFormatterOptIndentSize,
   getConfigBladeFormatterOptNoMultipleEmptyLines,
   getConfigBladeFormatterOptNoPhpSyntaxCheck,
+  getConfigBladeFormatterOptNoSingleQuote,
   getConfigBladeFormatterOptSortHtmlAttributes,
   getConfigBladeFormatterOptSortTailwindcssClasses,
   getConfigBladeFormatterOptUseTabs,
   getConfigBladeFormatterOptWrapAttributes,
+  getConfigBladeFormatterOptWrapAttributesMinAttrs,
   getConfigBladeFormatterOptWrapLineLength,
-  getConfigBladeFormatterOptNoSingleQuote,
 } from '../config';
 
 export async function doFormat(
@@ -47,6 +48,7 @@ export async function doFormat(
   const formatNoPhpSyntaxCheck = getConfigBladeFormatterOptNoPhpSyntaxCheck();
   const formatNoSingleQuote = getConfigBladeFormatterOptNoSingleQuote();
   const formatCustomHtmlAttributesOrder = getConfigBladeFormatterOptCustomHtmlAttributesOrder();
+  const formatWrapAttributesMinAttrs = getConfigBladeFormatterOptWrapAttributesMinAttrs();
 
   const options: FormatterOption = {
     indentSize: formatIndentSize,
@@ -62,6 +64,7 @@ export async function doFormat(
     noMultipleEmptyLines: formatNoMultipleEmptyLines,
     noPhpSyntaxCheck: formatNoPhpSyntaxCheck,
     noSingleQuote: formatNoSingleQuote,
+    wrapAttributesMinAttrs: formatWrapAttributesMinAttrs ? formatWrapAttributesMinAttrs : undefined,
   };
 
   const cwd = Uri.file(workspace.root).fsPath;

@@ -144,3 +144,11 @@ export function getConfigBladeFormatterOptNoSingleQuote() {
 
   return workspace.getConfiguration('blade').get<boolean>('bladeFormatter.optNoSingleQuote', defaultValue);
 }
+
+export function getConfigBladeFormatterOptWrapAttributesMinAttrs() {
+  const defaultValue = null;
+
+  return workspace
+    .getConfiguration('blade')
+    .get<number | null>('bladeFormatter.optOptWrapAttributesMinAttrs', defaultValue);
+}

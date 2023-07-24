@@ -241,6 +241,14 @@
           "default": false,
           "markdownDescription": "Use double quotes instead of single quotes for php expression"
         },
+        "blade.bladeFormatter.optOptWrapAttributesMinAttrs": {
+          "type": [
+            null,
+            "integer"
+          ],
+          "default": null,
+          "markdownDescription": "Minimum number of html tag attributes for force wrap attribute options. Wrap the first attribute only if 'force-expand-multiline' is specified in wrap attributes"
+        },
         "blade.bladeParserLint.enable": {
           "type": "boolean",
           "default": true,

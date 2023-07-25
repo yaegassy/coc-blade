@@ -152,3 +152,9 @@ export function getConfigBladeFormatterOptWrapAttributesMinAttrs() {
     .getConfiguration('blade')
     .get<number | null>('bladeFormatter.optWrapAttributesMinAttrs', defaultValue);
 }
+
+export function getConfigBladeFormatterOptIndentInnerHtml() {
+  const defaultValue = false;
+
+  return workspace.getConfiguration('blade').get<boolean>('bladeFormatter.optIndentInnerHtml', defaultValue);
+}

@@ -241,7 +241,7 @@
           "default": false,
           "markdownDescription": "Use double quotes instead of single quotes for php expression"
         },
-        "blade.bladeFormatter.optOptWrapAttributesMinAttrs": {
+        "blade.bladeFormatter.optWrapAttributesMinAttrs": {
           "type": [
             null,
             "integer"

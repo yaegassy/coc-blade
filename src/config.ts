@@ -150,5 +150,5 @@ export function getConfigBladeFormatterOptWrapAttributesMinAttrs() {
 
   return workspace
     .getConfiguration('blade')
-    .get<number | null>('bladeFormatter.optOptWrapAttributesMinAttrs', defaultValue);
+    .get<number | null>('bladeFormatter.optWrapAttributesMinAttrs', defaultValue);
 }

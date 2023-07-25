@@ -297,7 +297,7 @@
     ]
   },
   "dependencies": {
-    "blade-formatter": "^1.35.1",
+    "blade-formatter": "^1.36.0",
     "ignore": "^5.2.0",
     "stillat-blade-parser": "^1.1.11",
     "synckit": "^0.6.0"

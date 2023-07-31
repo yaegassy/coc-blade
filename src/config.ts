@@ -45,15 +45,15 @@ export function getConfigBladeCompletionExcludeSnippets() {
 }
 
 export function getConfigBladeCompletionEnableLivewireDirectiveComponent() {
-  return workspace.getConfiguration('blade').get<boolean>('completion.enableLivewireDirectiveComponent', true);
+  return workspace.getConfiguration('blade').get<boolean>('completion.enableLivewireDirectiveComponent', false);
 }
 
 export function getConfigBladeCompletionEnableLivewireTag() {
-  return workspace.getConfiguration('blade').get<boolean>('completion.enableLivewireTag', true);
+  return workspace.getConfiguration('blade').get<boolean>('completion.enableLivewireTag', false);
 }
 
 export function getConfigBladeCompletionEnableLivewireWire() {
-  return workspace.getConfiguration('blade').get<boolean>('completion.enableLivewireWire', true);
+  return workspace.getConfiguration('blade').get<boolean>('completion.enableLivewireWire', false);
 }
 
 export function getConfigBladeFormatterOptIndentSize() {

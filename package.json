@@ -115,17 +115,17 @@
         },
         "blade.completion.enableLivewireDirectiveComponent": {
           "type": "boolean",
-          "default": true,
+          "default": false,
           "markdownDescription": "Enable Livewire directive component completion"
         },
         "blade.completion.enableLivewireTag": {
           "type": "boolean",
-          "default": true,
+          "default": false,
           "markdownDescription": "Enable Livewire tag completion"
         },
         "blade.completion.enableLivewireWire": {
           "type": "boolean",
-          "default": true,
+          "default": false,
           "markdownDescription": "Enable Livewire wire completion"
         },
         "blade.bladeFormatter.enable": {

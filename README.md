@@ -13,9 +13,9 @@ Laravel Blade Templates extension for [coc.nvim](https://github.com/neoclide/coc
 - Completion
   - Blade Snippets Completion
   - Blade Directive Completion
-  - Livewire directive component completion
-  - Livewire tag completion
-  - Livewire wire completion
+  - Livewire completion
+    - This feature is `disabled` by default. Please enable it in the configuration to use it.
+    - If you want to use livewire-related completion, we recommend installing [@yaegassy/coc-laravel](https://github.com/yaegassy/coc-laravel)
 - Definition
   - Jump to template file specified by `@extends`, `@include` directive, etc.
   - Jump to "Blade Components" file.
@@ -43,12 +43,8 @@ Plug 'yaegassy/coc-blade', {'do': 'yarn install --frozen-lockfile'}
 
 ## (Optional) Additional installation of laravel blade related coc-extension
 
-- [yaegassy/coc-laravel](https://github.com/yaegassy/coc-laravel)
+- [@yaegassy/coc-laravel](https://github.com/yaegassy/coc-laravel)
   - Various completions and more for laravel are available
-- [yaegassy/coc-intelephense](https://github.com/yaegassy/coc-intelephense)
-  - Artisan command integration and more are available
-- [yaegassy/coc-php-cs-fixer](https://github.com/yaegassy/coc-php-cs-fixer)
-  - Laravel Pint integration feature is available
 - [coc-html](https://github.com/neoclide/coc-html)
   - html-related support will be added in blade
 
@@ -155,6 +151,9 @@ Parses `bootstrap/cache/livewire-components.php` files and target component clas
 - `blade.completion.enableDirective`: Enable directive completion, default: `true`
 - `blade.completion.enableSnippets`: Enable snippets completion, default: `true`
 - `blade.completion.excludeSnippets`: Exclude specific prefix in snippet completion, e.g. `["b:extends", "lv:url", "Blade::component"]`, default: `[]`
+- `blade.completion.enableLivewireDirectiveComponent`: Enable Livewire directive component completion, default: `false`
+- `blade.completion.enableLivewireTag`: Enable Livewire tag completion, default: `false`
+- `blade.completion.enableLivewireWire`: Enable Livewire wire completion, default: `false`
 - `blade.bladeFormatter.enable`: Enable/Disable the formatting feature by `blade-formatter`, default: `true`
 - `blade.bladeFormatter.optIndentSize`: Indent size, valid type `integer` or `null`, default: `null`,
 - `blade.bladeFormatter.optWrapLineLength`: The length of line wrap size, valid type `integer` or `null`, default: `null`

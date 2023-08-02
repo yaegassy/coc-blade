@@ -4,7 +4,8 @@ async function start(watch) {
     entryPoints: ['src/index.ts'],
     bundle: true,
     watch,
-    minify: process.env.NODE_ENV === 'production',
+    //minify: process.env.NODE_ENV === 'production',
+    minify: true,
     sourcemap: process.env.NODE_ENV === 'development',
     mainFields: ['module', 'main'],
     // add the large-sized dependencies of the stillat-blade-parser package to external

@@ -44,18 +44,6 @@ export function getConfigBladeCompletionExcludeSnippets() {
   return workspace.getConfiguration('blade').get<string[]>('completion.excludeSnippets', []);
 }
 
-export function getConfigBladeCompletionEnableLivewireDirectiveComponent() {
-  return workspace.getConfiguration('blade').get<boolean>('completion.enableLivewireDirectiveComponent', false);
-}
-
-export function getConfigBladeCompletionEnableLivewireTag() {
-  return workspace.getConfiguration('blade').get<boolean>('completion.enableLivewireTag', false);
-}
-
-export function getConfigBladeCompletionEnableLivewireWire() {
-  return workspace.getConfiguration('blade').get<boolean>('completion.enableLivewireWire', false);
-}
-
 export function getConfigBladeFormatterOptIndentSize() {
   const defaultValue = 4;
 

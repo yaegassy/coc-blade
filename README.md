@@ -13,9 +13,6 @@ Laravel Blade Templates extension for [coc.nvim](https://github.com/neoclide/coc
 - Completion
   - Blade Snippets Completion
   - Blade Directive Completion
-  - Livewire completion
-    - This feature is `disabled` by default. Please enable it in the configuration to use it.
-    - If you want to use livewire-related completion, we recommend installing [@yaegassy/coc-laravel](https://github.com/yaegassy/coc-laravel)
 - Definition
   - Jump to template file specified by `@extends`, `@include` directive, etc.
   - Jump to "Blade Components" file.
@@ -118,32 +115,6 @@ You can auto-complete by typing `@`.
 
 - [DEMO](https://github.com/yaegassy/coc-blade/pull/10)
 
-### Livewire directive component completion
-
-You can auto-complete by typing `@livewire(`.
-
-Obtains the component name registered in the project and auto-completion. Parse `bootstrap/cache/livewire-components.php`.
-
-- [DEMO](https://github.com/yaegassy/coc-blade/pull/11#issuecomment-1078704670)
-
-### Livewire tag completion
-
-You can auto-complete by typing `<livewire:`.
-
-Obtains the component name registered in the project and auto-completion. Parse `bootstrap/cache/livewire-components.php` files.
-
-- [DEMO](https://github.com/yaegassy/coc-blade/pull/11#issuecomment-1078704901)
-
-### Livewire wire completion
-
-You can auto-complete by typing `wire:`, `wire:click="`, `wire:model="`.
-
-Event, Action, and Property are supported.
-
-Parses `bootstrap/cache/livewire-components.php` files and target component classes.
-
-- [DEMO](https://github.com/yaegassy/coc-blade/pull/11#issuecomment-1078705276)
-
 ## Configuration options
 
 - `blade.enable`: Enable coc-blade extension, default: `true`
@@ -151,9 +122,6 @@ Parses `bootstrap/cache/livewire-components.php` files and target component clas
 - `blade.completion.enableDirective`: Enable directive completion, default: `true`
 - `blade.completion.enableSnippets`: Enable snippets completion, default: `true`
 - `blade.completion.excludeSnippets`: Exclude specific prefix in snippet completion, e.g. `["b:extends", "lv:url", "Blade::component"]`, default: `[]`
-- `blade.completion.enableLivewireDirectiveComponent`: Enable Livewire directive component completion, default: `false`
-- `blade.completion.enableLivewireTag`: Enable Livewire tag completion, default: `false`
-- `blade.completion.enableLivewireWire`: Enable Livewire wire completion, default: `false`
 - `blade.bladeFormatter.enable`: Enable/Disable the formatting feature by `blade-formatter`, default: `true`
 - `blade.bladeFormatter.optIndentSize`: Indent size, valid type `integer` or `null`, default: `null`,
 - `blade.bladeFormatter.optWrapLineLength`: The length of line wrap size, valid type `integer` or `null`, default: `null`

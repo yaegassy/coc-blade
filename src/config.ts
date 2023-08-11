@@ -1,154 +1,116 @@
 import { workspace } from 'coc.nvim';
 
-export function getConfigBladeEnable() {
-  return workspace.getConfiguration('blade').get<boolean>('enable', true);
-}
+const _config = workspace.getConfiguration('blade');
 
-export function getConfigBladeFormatterEnable() {
-  return workspace.getConfiguration('blade').get<boolean>('bladeFormatter.enable', true);
-}
-
-export function getConfigBladeParserLintEnable() {
-  return workspace.getConfiguration('blade').get<boolean>('bladeParserLint.enable', true);
-}
-
-export function getConfigBladeParserLintDebug() {
-  return workspace.getConfiguration('blade').get<boolean>('bladeParserLint.debug', false);
-}
-
-export function getConfigBladeParserLintOptCustomIfs() {
-  return workspace.getConfiguration('blade').get<string[]>('bladeParserLint.optCustomIfs', []);
-}
-
-export function getConfigBladeParserLintOptDirectives() {
-  return workspace.getConfiguration('blade').get<string[]>('bladeParserLint.optDirectives', []);
-}
-
-export function getConfigBladeParserLintOptIgnoreDirectives() {
-  return workspace.getConfiguration('blade').get<string[]>('bladeParserLint.optIgnoreDirectives', []);
-}
-
-export function getConfigBladeCompletionEnable() {
-  return workspace.getConfiguration('blade').get<boolean>('completion.enable', true);
-}
-
-export function getConfigBladeCompletionEnableSnippets() {
-  return workspace.getConfiguration('blade').get<boolean>('completion.enableSnippets', true);
-}
-
-export function getConfigBladeCompletionEnableDirective() {
-  return workspace.getConfiguration('blade').get<boolean>('completion.enableDirective', true);
-}
-
-export function getConfigBladeCompletionExcludeSnippets() {
-  return workspace.getConfiguration('blade').get<string[]>('completion.excludeSnippets', []);
-}
-
-export function getConfigBladeFormatterOptIndentSize() {
-  const defaultValue = 4;
-
-  return workspace.getConfiguration('blade').get<number>('bladeFormatter.optIndentSize', defaultValue);
-}
-
-export function getConfigBladeFormatterOptWrapLineLength() {
-  const defaultValue = 120;
-
-  return workspace.getConfiguration('blade').get<number>('bladeFormatter.optWrapLineLength', defaultValue);
-}
-
-type WrapAttributes =
-  | 'auto'
-  | 'force'
-  | 'force-aligned'
-  | 'force-expand-multiline'
-  | 'aligned-multiple'
-  | 'preserve'
-  | 'preserve-aligned';
-
-export function getConfigBladeFormatterOptWrapAttributes() {
-  const defaultValue = 'auto';
-
-  return workspace.getConfiguration('blade').get<WrapAttributes>('bladeFormatter.optWrapAttributes', defaultValue);
-}
-
-export function getConfigBladeFormatterOptEndWithNewLine() {
-  const defaultValue = true;
-
-  return workspace.getConfiguration('blade').get<boolean>('bladeFormatter.optEndWithNewLine', defaultValue);
-}
-
-type EndOfLine = 'LF' | 'CRLF';
-
-export function getConfigBladeFormatterOptEndOfLine() {
-  const defaultValue = null;
-
-  return workspace.getConfiguration('blade').get<EndOfLine | null>('bladeFormatter.optEndOFLine', defaultValue);
-}
-
-export function getConfigBladeFormatterOptUseTabs() {
-  const defaultValue = false;
-
-  return workspace.getConfiguration('blade').get<boolean>('bladeFormatter.optUseTabs', defaultValue);
-}
-
-export function getConfigBladeFormatterOptSortTailwindcssClasses() {
-  const defaultValue = false;
-
-  return workspace.getConfiguration('blade').get<boolean>('bladeFormatter.optSortTailwindcssClasses', defaultValue);
-}
-
-type SortHtmlAttributes = 'none' | 'alphabetical' | 'code-guide' | 'idiomatic' | 'vuejs' | 'custom';
-
-export function getConfigBladeFormatterOptSortHtmlAttributes() {
-  const defaultValue = 'none';
-
-  return workspace
-    .getConfiguration('blade')
-    .get<SortHtmlAttributes>('bladeFormatter.optSortHtmlAttributes', defaultValue);
-}
-
-export function getConfigBladeFormatterOptCustomHtmlAttributesOrder() {
-  const defaultValue = null;
-
-  return workspace
-    .getConfiguration('blade')
-    .get<string | string[] | null>('bladeFormatter.optCustomHtmlAttributesOrder', defaultValue);
-}
-
-export function getConfigBladeFormatterOptNoMultipleEmptyLines() {
-  const defaultValue = false;
-
-  return workspace.getConfiguration('blade').get<boolean>('bladeFormatter.optNoMultipleEmptyLines', defaultValue);
-}
-
-export function getConfigBladeFormatterOptNoPhpSyntaxCheck() {
-  const defaultValue = false;
-
-  return workspace.getConfiguration('blade').get<boolean>('bladeFormatter.optNoPhpSyntaxCheck', defaultValue);
-}
-
-export function getConfigBladeFormatterOptNoSingleQuote() {
-  const defaultValue = false;
-
-  return workspace.getConfiguration('blade').get<boolean>('bladeFormatter.optNoSingleQuote', defaultValue);
-}
-
-export function getConfigBladeFormatterOptWrapAttributesMinAttrs() {
-  const defaultValue = null;
-
-  return workspace
-    .getConfiguration('blade')
-    .get<number | null>('bladeFormatter.optWrapAttributesMinAttrs', defaultValue);
-}
-
-export function getConfigBladeFormatterOptIndentInnerHtml() {
-  const defaultValue = false;
-
-  return workspace.getConfiguration('blade').get<boolean>('bladeFormatter.optIndentInnerHtml', defaultValue);
-}
-
-export function getConfigBladeFormatterOptExtraLiners() {
-  const defaultValue = [];
-
-  return workspace.getConfiguration('blade').get<string[]>('bladeFormatter.optExtraLiners', defaultValue);
-}
+/**
+ * Settings that are frequently referenced from multiple locations are added here
+ */
+export const config = {
+  enable: _config.get<boolean>('enable', true),
+  completion: {
+    get enable() {
+      return _config.get<boolean>('completion.enable', true);
+    },
+    get enableSnippets() {
+      return _config.get<boolean>('completion.enableSnippets', true);
+    },
+    get enableDirective() {
+      return _config.get<boolean>('completion.enableDirective', true);
+    },
+    get excludeSnippets() {
+      return _config.get<string[]>('completion.excludeSnippets', []);
+    },
+  },
+  bladeFormatter: {
+    get enable() {
+      return _config.get<boolean>('bladeFormatter.enable', true);
+    },
+    get optIndentSize() {
+      const defaultValue = 4;
+      return _config.get<number>('bladeFormatter.optIndentSize', defaultValue);
+    },
+    get optWrapLineLength() {
+      const defaultValue = 120;
+      return _config.get<number>('bladeFormatter.optWrapLineLength', defaultValue);
+    },
+    get optWrapAttributes() {
+      type WrapAttributes =
+        | 'auto'
+        | 'force'
+        | 'force-aligned'
+        | 'force-expand-multiline'
+        | 'aligned-multiple'
+        | 'preserve'
+        | 'preserve-aligned';
+      const defaultValue = 'auto';
+      return _config.get<WrapAttributes>('bladeFormatter.optWrapAttributes', defaultValue);
+    },
+    get optEndWithNewLine() {
+      const defaultValue = true;
+      return _config.get<boolean>('bladeFormatter.optEndWithNewLine', defaultValue);
+    },
+    get optEndOFLine() {
+      type EndOfLine = 'LF' | 'CRLF';
+      const defaultValue = null;
+      return _config.get<EndOfLine | null>('bladeFormatter.optEndOFLine', defaultValue);
+    },
+    get optUseTabs() {
+      const defaultValue = false;
+      return _config.get<boolean>('bladeFormatter.optUseTabs', defaultValue);
+    },
+    get optSortTailwindcssClasses() {
+      const defaultValue = false;
+      return _config.get<boolean>('bladeFormatter.optSortTailwindcssClasses', defaultValue);
+    },
+    get optSortHtmlAttributes() {
+      type SortHtmlAttributes = 'none' | 'alphabetical' | 'code-guide' | 'idiomatic' | 'vuejs' | 'custom';
+      const defaultValue = 'none';
+      return _config.get<SortHtmlAttributes>('bladeFormatter.optSortHtmlAttributes', defaultValue);
+    },
+    get optCustomHtmlAttributesOrder() {
+      const defaultValue = null;
+      return _config.get<string | string[] | null>('bladeFormatter.optCustomHtmlAttributesOrder', defaultValue);
+    },
+    get optNoMultipleEmptyLines() {
+      const defaultValue = false;
+      return _config.get<boolean>('bladeFormatter.optNoMultipleEmptyLines', defaultValue);
+    },
+    get optNoPhpSyntaxCheck() {
+      const defaultValue = false;
+      return _config.get<boolean>('bladeFormatter.optNoPhpSyntaxCheck', defaultValue);
+    },
+    get optNoSingleQuote() {
+      const defaultValue = false;
+      return _config.get<boolean>('bladeFormatter.optNoSingleQuote', defaultValue);
+    },
+    get optWrapAttributesMinAttrs() {
+      const defaultValue = null;
+      return _config.get<number | null>('bladeFormatter.optWrapAttributesMinAttrs', defaultValue);
+    },
+    get optIndentInnerHtml() {
+      const defaultValue = false;
+      return _config.get<boolean>('bladeFormatter.optIndentInnerHtml', defaultValue);
+    },
+    get optExtraLiners() {
+      const defaultValue = [];
+      return _config.get<string[]>('bladeFormatter.optExtraLiners', defaultValue);
+    },
+  },
+  bladeParserLint: {
+    get enable() {
+      return _config.get<boolean>('bladeParserLint.enable', true);
+    },
+    get debug() {
+      return _config.get<boolean>('bladeParserLint.debug', false);
+    },
+    get optCustomIfs() {
+      return _config.get<string[]>('bladeParserLint.optCustomIfs', []);
+    },
+    get optDirectives() {
+      return _config.get<string[]>('bladeParserLint.optDirectives', []);
+    },
+    get optIgnoreDirectives() {
+      return _config.get<string[]>('bladeParserLint.optIgnoreDirectives', []);
+    },
+  },
+};

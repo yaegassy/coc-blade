@@ -14,19 +14,14 @@ import {
 
 import path from 'path';
 
-import {
-  getConfigBladeCompletionEnable,
-  getConfigBladeCompletionEnableDirective,
-  getConfigBladeCompletionEnableSnippets,
-  getConfigBladeCompletionExcludeSnippets,
-} from '../config';
+import { config } from '../config';
 import * as bladeDirectiveCompletionLaguageService from './languageService/bladeDirective';
 import * as bladeSnippetsCompletionLanguageService from './languageService/bladeSnippets';
 import { BladeCompletionItemDataType } from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function register(context: ExtensionContext, _outputChannel: OutputChannel) {
-  if (!getConfigBladeCompletionEnable()) return;
+  if (!config.completion.enable) return;
 
   const { document } = await workspace.getCurrentState();
   if (document.languageId !== 'blade') return;
@@ -58,7 +53,7 @@ class BladeCompletionProvider implements CompletionItemProvider {
       path.join(this._context.extensionPath, 'data', 'snippets', 'blade.json'),
       path.join(this._context.extensionPath, 'data', 'snippets', 'livewire.json'),
     ];
-    this.excludeSnippetsKeys = getConfigBladeCompletionExcludeSnippets();
+    this.excludeSnippetsKeys = config.completion.excludeSnippets;
   }
 
   async provideCompletionItems(
@@ -72,7 +67,7 @@ class BladeCompletionProvider implements CompletionItemProvider {
     const items: CompletionItem[] | CompletionList = [];
 
     // bladeDirective
-    if (getConfigBladeCompletionEnableDirective()) {
+    if (config.completion.enableDirective) {
       const bladeDirectiveItems = await bladeDirectiveCompletionLaguageService.doCompletion(
         this._context,
         document,
@@ -86,7 +81,7 @@ class BladeCompletionProvider implements CompletionItemProvider {
     }
 
     // bladeSnippets
-    if (getConfigBladeCompletionEnableSnippets()) {
+    if (config.completion.enableSnippets) {
       const bladeSnippetsItems = await bladeSnippetsCompletionLanguageService.doCompletion(
         this._context,
         document,
@@ -108,7 +103,7 @@ class BladeCompletionProvider implements CompletionItemProvider {
     const itemData: BladeCompletionItemDataType = item.data;
 
     // bladeSnippets
-    if (getConfigBladeCompletionEnableSnippets() && itemData.source === 'blade-snippets') {
+    if (config.completion.enableSnippets && itemData.source === 'blade-snippets') {
       return await bladeSnippetsCompletionLanguageService.doResolveCompletion(item);
     }
 

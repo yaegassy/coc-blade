@@ -14,16 +14,10 @@ import {
 import { BladeDocument } from 'stillat-blade-parser/out/document/bladeDocument';
 import { ParserOptions } from 'stillat-blade-parser/out/parser/parserOptions';
 
-import {
-  getConfigBladeParserLintEnable,
-  getConfigBladeParserLintDebug,
-  getConfigBladeParserLintOptCustomIfs,
-  getConfigBladeParserLintOptDirectives,
-  getConfigBladeParserLintOptIgnoreDirectives,
-} from '../config';
+import { config } from '../config';
 
 export async function register(context: ExtensionContext, outputChannel: OutputChannel) {
-  if (getConfigBladeParserLintEnable()) {
+  if (config.bladeParserLint.enable) {
     const engine = new BladeParserLintEngine(outputChannel);
 
     // onOpen
@@ -77,9 +71,9 @@ class BladeParserLintEngine {
 
     const parserDocument = new BladeDocument();
     const parserOptions: ParserOptions = {
-      customIfs: getConfigBladeParserLintOptCustomIfs(),
-      directives: getConfigBladeParserLintOptDirectives(),
-      ignoreDirectives: getConfigBladeParserLintOptIgnoreDirectives(),
+      customIfs: config.bladeParserLint.optCustomIfs,
+      directives: config.bladeParserLint.optDirectives,
+      ignoreDirectives: config.bladeParserLint.optIgnoreDirectives,
     };
 
     parserDocument.getParser().withParserOptions(parserOptions);
@@ -89,7 +83,7 @@ class BladeParserLintEngine {
 
       res.errors.all().forEach((e) => {
         // channel logging
-        if (getConfigBladeParserLintDebug()) {
+        if (config.bladeParserLint.debug) {
           this.outputChannel.appendLine(`${'#'.repeat(10)} bladeParser\n`);
           this.outputChannel.appendLine(`errorCode: ${e.errorCode}`);
           this.outputChannel.appendLine(`level: ${e.level}`);

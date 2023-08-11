@@ -1,28 +1,12 @@
 import { ExtensionContext, OutputChannel, Range, TextDocument, Uri, window, workspace } from 'coc.nvim';
 
 import { FormatterOption } from 'blade-formatter';
-
 import fs from 'fs';
 import ignore from 'ignore';
 import path from 'path';
 import { createSyncFn } from 'synckit';
-import {
-  getConfigBladeFormatterOptCustomHtmlAttributesOrder,
-  getConfigBladeFormatterOptEndOfLine,
-  getConfigBladeFormatterOptEndWithNewLine,
-  getConfigBladeFormatterOptExtraLiners,
-  getConfigBladeFormatterOptIndentInnerHtml,
-  getConfigBladeFormatterOptIndentSize,
-  getConfigBladeFormatterOptNoMultipleEmptyLines,
-  getConfigBladeFormatterOptNoPhpSyntaxCheck,
-  getConfigBladeFormatterOptNoSingleQuote,
-  getConfigBladeFormatterOptSortHtmlAttributes,
-  getConfigBladeFormatterOptSortTailwindcssClasses,
-  getConfigBladeFormatterOptUseTabs,
-  getConfigBladeFormatterOptWrapAttributes,
-  getConfigBladeFormatterOptWrapAttributesMinAttrs,
-  getConfigBladeFormatterOptWrapLineLength,
-} from '../config';
+
+import { config } from '../config';
 
 export async function doFormat(
   context: ExtensionContext,
@@ -38,39 +22,28 @@ export async function doFormat(
     return originalText;
   }
 
-  const formatIndentSize = getConfigBladeFormatterOptIndentSize();
-  const formatWrapLineLength = getConfigBladeFormatterOptWrapLineLength();
-  const formatWrapAttributes = getConfigBladeFormatterOptWrapAttributes();
-  const formatEndWithNewLine = getConfigBladeFormatterOptEndWithNewLine();
-  const formatEndOFLine = getConfigBladeFormatterOptEndOfLine();
-  const formatUseTabs = getConfigBladeFormatterOptUseTabs();
-  const formatSortTailwindcssClasses = getConfigBladeFormatterOptSortTailwindcssClasses();
-  const formatSortHtmlAttributes = getConfigBladeFormatterOptSortHtmlAttributes();
-  const formatNoMultipleEmptyLines = getConfigBladeFormatterOptNoMultipleEmptyLines();
-  const formatNoPhpSyntaxCheck = getConfigBladeFormatterOptNoPhpSyntaxCheck();
-  const formatNoSingleQuote = getConfigBladeFormatterOptNoSingleQuote();
-  const formatCustomHtmlAttributesOrder = getConfigBladeFormatterOptCustomHtmlAttributesOrder();
-  const formatWrapAttributesMinAttrs = getConfigBladeFormatterOptWrapAttributesMinAttrs();
-  const formatIndentInnerHtml = getConfigBladeFormatterOptIndentInnerHtml();
-  const formatExtraLiners = getConfigBladeFormatterOptExtraLiners();
-
   const options: FormatterOption = {
-    indentSize: formatIndentSize,
-    wrapAttributes: formatWrapAttributes,
-    wrapLineLength: formatWrapLineLength,
-    endWithNewline: formatEndWithNewLine,
-    endOfLine: formatEndOFLine ? formatEndOFLine : undefined,
-    useTabs: formatUseTabs,
-    // MEMO: type is ----> sortTailwindcssClasses?: true;
-    sortTailwindcssClasses: formatSortTailwindcssClasses ? formatSortTailwindcssClasses : undefined,
-    sortHtmlAttributes: formatSortHtmlAttributes,
-    customHtmlAttributesOrder: formatCustomHtmlAttributesOrder ? formatCustomHtmlAttributesOrder : undefined,
-    noMultipleEmptyLines: formatNoMultipleEmptyLines,
-    noPhpSyntaxCheck: formatNoPhpSyntaxCheck,
-    noSingleQuote: formatNoSingleQuote,
-    wrapAttributesMinAttrs: formatWrapAttributesMinAttrs ? formatWrapAttributesMinAttrs : undefined,
-    indentInnerHtml: formatIndentInnerHtml,
-    extraLiners: formatExtraLiners,
+    indentSize: config.bladeFormatter.optIndentSize,
+    wrapAttributes: config.bladeFormatter.optWrapAttributes,
+    wrapLineLength: config.bladeFormatter.optWrapLineLength,
+    endWithNewline: config.bladeFormatter.optEndWithNewLine,
+    endOfLine: config.bladeFormatter.optEndOFLine ? config.bladeFormatter.optEndOFLine : undefined,
+    useTabs: config.bladeFormatter.optUseTabs,
+    sortTailwindcssClasses: config.bladeFormatter.optSortTailwindcssClasses
+      ? config.bladeFormatter.optSortTailwindcssClasses
+      : undefined,
+    sortHtmlAttributes: config.bladeFormatter.optSortHtmlAttributes,
+    customHtmlAttributesOrder: config.bladeFormatter.optCustomHtmlAttributesOrder
+      ? config.bladeFormatter.optCustomHtmlAttributesOrder
+      : undefined,
+    noMultipleEmptyLines: config.bladeFormatter.optNoMultipleEmptyLines,
+    noPhpSyntaxCheck: config.bladeFormatter.optNoPhpSyntaxCheck,
+    noSingleQuote: config.bladeFormatter.optNoSingleQuote,
+    wrapAttributesMinAttrs: config.bladeFormatter.optWrapAttributesMinAttrs
+      ? config.bladeFormatter.optWrapAttributesMinAttrs
+      : undefined,
+    indentInnerHtml: config.bladeFormatter.optIndentInnerHtml,
+    extraLiners: config.bladeFormatter.optExtraLiners,
   };
 
   const cwd = Uri.file(workspace.root).fsPath;

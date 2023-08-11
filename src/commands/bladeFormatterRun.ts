@@ -1,11 +1,11 @@
 import { commands, ExtensionContext, OutputChannel, TextEdit, workspace } from 'coc.nvim';
 
 import { fullDocumentRange } from '../common';
-import { getConfigBladeFormatterEnable } from '../config';
+import { config } from '../config';
 import { doFormat } from '../engines/bladeFormatter';
 
 export async function register(context: ExtensionContext, outputChannel: OutputChannel) {
-  if (getConfigBladeFormatterEnable()) {
+  if (config.bladeFormatter.enable) {
     context.subscriptions.push(
       commands.registerCommand('blade.bladeFormatter.run', async () => {
         const doc = await workspace.document;

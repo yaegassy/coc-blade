@@ -1,6 +1,6 @@
 import { ExtensionContext, window } from 'coc.nvim';
 
-import { getConfigBladeEnable } from './config';
+import { config } from './config';
 
 import * as bladeCodeActionFeature from './actions/action';
 import * as bladeFormatterRunCommandFeature from './commands/bladeFormatterRun';
@@ -13,7 +13,7 @@ import * as bladeHoverFeature from './hovers/hover';
 import * as bladeParserLintFeature from './linters/bladeParserLint';
 
 export async function activate(context: ExtensionContext): Promise<void> {
-  if (!getConfigBladeEnable()) return;
+  if (!config.enable) return;
 
   const outputChannel = window.createOutputChannel('blade');
 

@@ -11,7 +11,7 @@ import {
 } from 'coc.nvim';
 
 import { fullDocumentRange } from '../common';
-import { getConfigBladeFormatterEnable } from '../config';
+import { config } from '../config';
 import { doFormat } from '../engines/bladeFormatter';
 
 let formatterHandler: undefined | Disposable;
@@ -25,7 +25,7 @@ function disposeHandlers(): void {
 
 export function register(context: ExtensionContext, outputChannel: OutputChannel) {
   const documentSelector: DocumentSelector = [{ language: 'blade', scheme: 'file' }];
-  if (getConfigBladeFormatterEnable()) {
+  if (config.bladeFormatter.enable) {
     const editProvider = new BladeFormatterDocumantFormattingEditProvider(context, outputChannel);
     const priority = 1;
 

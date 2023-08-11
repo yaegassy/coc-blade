@@ -41,7 +41,9 @@ Plug 'yaegassy/coc-blade', {'do': 'yarn install --frozen-lockfile'}
 ## (Optional) Additional installation of laravel blade related coc-extension
 
 - [@yaegassy/coc-laravel](https://github.com/yaegassy/coc-laravel)
-  - Various completions and more for laravel are available
+  - Various completions, definitions, references, hovers, diagnostics, codeActions, artisan and sail commands integration and more features for Laravel projects.
+- [@yaegassy/coc-intelephense](https://github.com/yaegassy/coc-intelephense)
+  - intelephense (PHP language server) extension for coc.nvim. intelephense's various LSP features and this extension's additional features are available.
 - [coc-html](https://github.com/neoclide/coc-html)
   - html-related support will be added in blade
 

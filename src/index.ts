@@ -20,7 +20,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
   showOutputCommandFeature.register(context, outputChannel);
   bladeFormatterRunCommandFeature.register(context, outputChannel);
   bladeShowReferencesCommandFeature.register(context, outputChannel);
-  await bladeCompletionFeature.register(context, outputChannel);
+  bladeCompletionFeature.register(context, outputChannel);
   bladeFormatterDocumantFormattingEditFeature.register(context, outputChannel);
   bladeHoverFeature.register(context);
   bladeDefinisionFeature.register(context);

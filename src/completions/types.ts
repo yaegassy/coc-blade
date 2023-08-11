@@ -3,12 +3,4 @@ export type BladeCompletionItemDataType = {
   snippetsText?: string;
 };
 
-type BladeCompletionItemSource =
-  | 'blade-directive'
-  | 'blade-snippets'
-  | 'livewire-directive-component'
-  | 'livewire-tag'
-  | 'livewire-tag-component'
-  | 'livewire-wire'
-  | 'livewire-wire-action'
-  | 'livewire-wire-event';
+type BladeCompletionItemSource = 'blade-directive' | 'blade-snippets';

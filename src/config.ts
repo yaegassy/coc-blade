@@ -146,3 +146,9 @@ export function getConfigBladeFormatterOptIndentInnerHtml() {
 
   return workspace.getConfiguration('blade').get<boolean>('bladeFormatter.optIndentInnerHtml', defaultValue);
 }
+
+export function getConfigBladeFormatterOptExtraLiners() {
+  const defaultValue = [];
+
+  return workspace.getConfiguration('blade').get<string[]>('bladeFormatter.optExtraLiners', defaultValue);
+}

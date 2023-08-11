@@ -139,6 +139,7 @@ You can auto-complete by typing `@`.
 - `blade.bladeFormatter.optNoSingleQuote`: Use double quotes instead of single quotes for php expression, default: `false`
 - `blade.bladeFormatter.optWrapAttributesMinAttrs`: Minimum number of html tag attributes for force wrap attribute options. Wrap the first attribute only if 'force-expand-multiline' is specified in wrap attributes, valid type `integer` or `null`, default: `null`
 - `blade.bladeFormatter.optIndentInnerHtml`: Indent `<head>` and `<body>` sections in html, default: `false`
+- `blade.bladeFormatter.optExtraLiners`: Comma separated list of tags that should have an extra newline before them, default: `[]`
 - `blade.bladeParserLint.enable`: Enable/Disable the linting feature using `stillat-blade-parser`, default: `true`
 - `blade.bladeParserLint.debug`: Output the results of the parsing of stillat-blade-parser to the channel log, default: `false`
 - `blade.bladeParserLint.optCustomIfs`: A list of custom if directives, default: `[]`

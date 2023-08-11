@@ -10,6 +10,7 @@ import {
   getConfigBladeFormatterOptCustomHtmlAttributesOrder,
   getConfigBladeFormatterOptEndOfLine,
   getConfigBladeFormatterOptEndWithNewLine,
+  getConfigBladeFormatterOptExtraLiners,
   getConfigBladeFormatterOptIndentInnerHtml,
   getConfigBladeFormatterOptIndentSize,
   getConfigBladeFormatterOptNoMultipleEmptyLines,
@@ -51,6 +52,7 @@ export async function doFormat(
   const formatCustomHtmlAttributesOrder = getConfigBladeFormatterOptCustomHtmlAttributesOrder();
   const formatWrapAttributesMinAttrs = getConfigBladeFormatterOptWrapAttributesMinAttrs();
   const formatIndentInnerHtml = getConfigBladeFormatterOptIndentInnerHtml();
+  const formatExtraLiners = getConfigBladeFormatterOptExtraLiners();
 
   const options: FormatterOption = {
     indentSize: formatIndentSize,
@@ -68,6 +70,7 @@ export async function doFormat(
     noSingleQuote: formatNoSingleQuote,
     wrapAttributesMinAttrs: formatWrapAttributesMinAttrs ? formatWrapAttributesMinAttrs : undefined,
     indentInnerHtml: formatIndentInnerHtml,
+    extraLiners: formatExtraLiners,
   };
 
   const cwd = Uri.file(workspace.root).fsPath;

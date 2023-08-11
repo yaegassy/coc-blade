@@ -239,6 +239,11 @@
           "default": false,
           "markdownDescription": "Indent `<head>` and `<body>` sections in html"
         },
+        "blade.bladeFormatter.optExtraLiners": {
+          "type": "array",
+          "default": [],
+          "description": "Comma separated list of tags that should have an extra newline before them"
+        },
         "blade.bladeParserLint.enable": {
           "type": "boolean",
           "default": true,

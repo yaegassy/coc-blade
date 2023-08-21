@@ -2010,7 +2010,7 @@ source-map-js@^1.0.2:
   resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.0.2.tgz#adbc361d9c62df380125e7f161f71c826f1e490c"
   integrity sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==
 
-stillat-blade-parser@^1.2.0:
+stillat-blade-parser@1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/stillat-blade-parser/-/stillat-blade-parser-1.2.0.tgz#166a413be87fbbbd3e44e24ac84686328d27f840"
   integrity sha512-sqFvaGbEM2RFxhbDrVm3xHvmxSAHEjkNggsdZIBPN6QhhHSvbn54VBFoFDGOfzdTKpjTDS0C8COWBdGUU5285w==

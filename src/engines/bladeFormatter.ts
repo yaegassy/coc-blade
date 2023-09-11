@@ -43,6 +43,7 @@ export async function doFormat(
       ? config.bladeFormatter.optWrapAttributesMinAttrs
       : undefined,
     indentInnerHtml: config.bladeFormatter.optIndentInnerHtml,
+    noTrailingCommaPhp: config.bladeFormatter.optNoTrailingCommaPhp,
     extraLiners: config.bladeFormatter.optExtraLiners,
   };
 

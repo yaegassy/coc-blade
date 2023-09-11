@@ -91,6 +91,10 @@ export const config = {
       const defaultValue = false;
       return _config.get<boolean>('bladeFormatter.optIndentInnerHtml', defaultValue);
     },
+    get optNoTrailingCommaPhp() {
+      const defaultValue = false;
+      return _config.get<boolean>('bladeFormatter.optNoTrailingCommaPhp', defaultValue);
+    },
     get optExtraLiners() {
       const defaultValue = [];
       return _config.get<string[]>('bladeFormatter.optExtraLiners', defaultValue);

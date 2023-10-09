@@ -266,7 +266,7 @@
   resolved "https://registry.yarnpkg.com/@pkgjs/parseargs/-/parseargs-0.11.0.tgz#a77ea742fab25775145434eb1d2328cf5013ac33"
   integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
 
-"@prettier/plugin-php@^0.19.0", "@prettier/plugin-php@^0.19.4":
+"@prettier/plugin-php@^0.19.4", "@prettier/plugin-php@^0.19.7":
   version "0.19.7"
   resolved "https://registry.yarnpkg.com/@prettier/plugin-php/-/plugin-php-0.19.7.tgz#c11b710f319f83c276b6b3f8ab3f70f612302785"
   integrity sha512-QOzBs05nwuR92uak7xBHf7RCZCFXml+6Sk3cjTp2ahQlilBtupqlNjitlTXsOfPIAYwlFgLP1oSfyapS6DN00w==
@@ -535,12 +535,12 @@ binary-extensions@^2.0.0:
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
   integrity sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
 
-blade-formatter@1.38.1:
-  version "1.38.1"
-  resolved "https://registry.yarnpkg.com/blade-formatter/-/blade-formatter-1.38.1.tgz#ef5c326203451b111d36862385ecbbaeab9e6c29"
-  integrity sha512-cd5D3buT7VuJmcAoE3dlcq+nPAdRmMp07Fju7ehsbLZBLWuuO+kEPyNAXgrRlpxdPQSZEoUmPlW2wzJZCTMxTA==
+blade-formatter@1.38.2:
+  version "1.38.2"
+  resolved "https://registry.yarnpkg.com/blade-formatter/-/blade-formatter-1.38.2.tgz#629a32a8440200b6ecbc05c8d3940d9436280826"
+  integrity sha512-Ihy1xVDfS1FJehROxgcgjxABSPSuZub5FAa2fSK/0j3swnBIsx82WktgCTJMlI3RQb2VKCesESKXENkLkTzlug==
   dependencies:
-    "@prettier/plugin-php" "^0.19.0"
+    "@prettier/plugin-php" "^0.19.7"
     "@shufo/tailwindcss-class-sorter" "3.0.1"
     aigle "^1.14.1"
     ajv "^8.9.0"
@@ -556,7 +556,7 @@ blade-formatter@1.38.1:
     php-parser "3.1.5"
     prettier "^2.2.0"
     tailwindcss "^3.1.8"
-    vscode-oniguruma "2.0.0"
+    vscode-oniguruma "1.7.0"
     vscode-textmate "^7.0.1"
     xregexp "^5.0.1"
     yargs "^17.3.1"
@@ -1966,6 +1966,7 @@ stillat-blade-parser@1.2.0:
     uuid "^8.3.2"
 
 "string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
+  name string-width-cjs
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -2212,10 +2213,10 @@ vitest@^0.23.2:
     tinyspy "^1.0.2"
     vite "^2.9.12 || ^3.0.0-0"
 
-vscode-oniguruma@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/vscode-oniguruma/-/vscode-oniguruma-2.0.0.tgz#cdddaff982a0c112f9aebf29f877099014b93736"
-  integrity sha512-QWb6OZHNMxk1/nNOA6gjmbwA7gkKOYPAgteCOy8hX8/3FzoEb4pLHt2b2VHGy9gDdzGt3l5NqiQyo1HEQIanhw==
+vscode-oniguruma@1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/vscode-oniguruma/-/vscode-oniguruma-1.7.0.tgz#439bfad8fe71abd7798338d1cd3dc53a8beea94b"
+  integrity sha512-L9WMGRfrjOhgHSdOYgCt/yRMsXzLDJSL7BPrOZt73gU0iWO4mpqzqQzOz5srxqTvMBaR0XZTSrVWo4j55Rc6cA==
 
 vscode-textmate@^7.0.1:
   version "7.0.4"
@@ -2230,6 +2231,7 @@ which@^2.0.1:
     isexe "^2.0.0"
 
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
+  name wrap-ansi-cjs
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==

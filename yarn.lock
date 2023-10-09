@@ -1948,10 +1948,10 @@ source-map-js@^1.0.2:
   resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.0.2.tgz#adbc361d9c62df380125e7f161f71c826f1e490c"
   integrity sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==
 
-stillat-blade-parser@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/stillat-blade-parser/-/stillat-blade-parser-1.2.0.tgz#166a413be87fbbbd3e44e24ac84686328d27f840"
-  integrity sha512-sqFvaGbEM2RFxhbDrVm3xHvmxSAHEjkNggsdZIBPN6QhhHSvbn54VBFoFDGOfzdTKpjTDS0C8COWBdGUU5285w==
+stillat-blade-parser@1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/stillat-blade-parser/-/stillat-blade-parser-1.2.1.tgz#c2f1bce2da2225e3b4b24d695dc16fa9d22f95be"
+  integrity sha512-8cEO035mjuoYyiQbFXd+N11dXxvybVc5eiFBvksZzjgnab1eaN25tmbGIHWvrr7hCrT/7AoPfICu0Ebo54dAEg==
   dependencies:
     "@prettier/plugin-php" "^0.19.4"
     "@stedi/prettier-plugin-jsonata" "^1.10.0"

@@ -6,5 +6,4 @@ updates:
       interval: daily
     allow:
       - dependency-name: "blade-formatter"
-      - dependency-name: "stillat-blade-parser"
 

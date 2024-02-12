@@ -343,6 +343,11 @@
     "body": ["@pushOnce('${1:scripts}')", "    $2", "@endPushOnce"],
     "description": "Combine @once and @push for convenience (Laravel 9.x)"
   },
+  "pushIf": {
+    "prefix": "b:pushIf",
+    "body": ["@pushIf(${1:\\$condition}, '${2:scripts}')", "    $3", "@endPushIf"],
+    "description": "Combine @if and @push for convenience"
+  },
   "prepend": {
     "prefix": "b:prepend",
     "body": ["@prepend('${1:scripts}')", "    $2", "@prepend"],

@@ -237,7 +237,7 @@
         "blade.bladeFormatter.optIndentInnerHtml": {
           "type": "boolean",
           "default": false,
-          "markdownDescription": "Indent `<head>` and `<body>` sections in html"
+          "markdownDescription": "Indent `<head>` and `<body>` tag sections in html"
         },
         "blade.bladeFormatter.optNoTrailingCommaPhp": {
           "type": "boolean",

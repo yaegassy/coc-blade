@@ -1,6 +1,6 @@
 {
   "name": "coc-blade",
-  "version": "0.18.10",
+  "version": "0.18.11",
   "description": "Laravel Blade Templates extension for coc.nvim",
   "author": "yaegassy <yosstools@gmail.com>",
   "license": "MIT",
@@ -301,5 +301,6 @@
     "ignore": "^5.2.0",
     "stillat-blade-parser": "1.2.0",
     "synckit": "^0.6.0"
-  }
+  },
+  "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
 }

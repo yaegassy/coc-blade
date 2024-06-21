@@ -350,12 +350,17 @@
   },
   "prepend": {
     "prefix": "b:prepend",
-    "body": ["@prepend('${1:scripts}')", "    $2", "@prepend"],
+    "body": ["@prepend('${1:scripts}')", "    $2", "@endprepend"],
     "description": "prepend content to a stack"
   },
   "prependOnce": {
     "prefix": "b:prependOnce",
     "body": ["@prependOnce('${1:scripts}')", "    $2", "@endPrependOnce"],
     "description": "Combine @once and @prepend for convenience (Laravel 9.x)"
+  },
+  "session": {
+    "prefix": "b:session",
+    "body": ["@session('${1:status}')", "    $2", "@endsession"],
+    "description": "The @session directive may be used to determine if a session value exists (Laravel 10.x)"
   }
 }
